@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OIBSIP Web Development Portfolio — Oasis Infobyte Internship</title>
+  <meta name="description" content="Master portfolio showcase for Oasis Infobyte Student Internship Program (OIBSIP) featuring Level 1 and Level 2 web applications.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090c15;
+      --card-bg: rgba(20, 26, 42, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #6366f1;
+      --accent: #06b6d4;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --radius: 16px;
+      --transition: 0.25s ease;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 3rem 1.5rem;
+      background-image: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 400px),
+                        radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.12), transparent 400px);
+    }
+    .container { max-width: 1140px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 3.5rem; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      color: #a5b4fc;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 0.8rem;
+    }
+    .subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 680px; margin: 0 auto; }
+    .level-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 2.5rem 0 1.5rem 0;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.8rem;
+    }
+    .level-heading h2 { font-family: var(--font-heading); font-size: 1.5rem; }
+    .level-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+    .level-tag.l1 { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .level-tag.l2 { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+    .card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .task-num { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+    .card h3 { font-family: var(--font-heading); font-size: 1.3rem; margin: 0.3rem 0 0.6rem 0; color: #fff; }
+    .card p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.2rem;
+    }
+    .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .tag { font-size: 0.7rem; background: rgba(255, 255, 255, 0.05); color: #cbd5e1; padding: 0.2rem 0.5rem; border-radius: 6px; }
+    .btn-launch {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .btn-launch:hover { background: #4f46e5; transform: translateY(-2px); }
+    footer { text-align: center; margin-top: 4rem; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--card-border); padding-top: 2rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">✨ Oasis Infobyte SIP 2026</div>
+      <h1>Web Development Portfolio</h1>
+      <p class="subtitle">Complete implementation of Level 1 and Level 2 tasks for the Oasis Infobyte Student Internship Program.</p>
+    </header>
+
+    <!-- LEVEL 1 -->
+    <div class="level-heading">
+      <span class="level-tag l1">Level 1</span>
+      <h2>Foundational Web Engineering (3 Tasks)</h2>
+    </div>
+
+    <div class="grid">
+      <!-- Task 1 -->
+      <div class="card">
+        <div>
+          <div class="card-icon">🚀</div>
+          <span class="task-num">Level 1 • Task 1</span>
+          <h3>Landing Page</h3>
+          <p>NovaCloud AI — Ultra-modern SaaS product landing page with sticky frosted-glass navigation, feature grid, architecture terminal, testimonials, and tiered pricing.</p>
+        </div>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">Responsive</span>
+          </div>
+          <a href="WebDev-L1-LandingPage/" class="btn-launch">Launch ↗</a>
+        </div>
+      </div>
+
+      <!-- Task 2 -->
+      <div class="card">
+        <div>
+          <div class="card-icon">👨‍💻</div>
+          <span class="task-num">Level 1 • Task 2</span>
+          <h3>Personal Portfolio</h3>
+          <p>Alex Rivera Developer Portfolio — Digital résumé featuring an interactive hero avatar, bio, categorized skills, selected project previews, and interactive contact form.</p>
+        </div>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">Portfolio</span>
+            <span class="tag">Dark Mode</span>
+            <span class="tag">Glass</span>
+          </div>
+          <a href="WebDev-L1-PersonalPortfolio/" class="btn-launch">Launch ↗</a>
+        </div>
+      </div>
+
+      <!-- Task 3 -->
+      <div class="card">
+        <div>
+          <div class="card-icon">🌡️</div>
+          <span class="task-num">Level 1 • Task 3</span>
+          <h3>Temperature Converter</h3>
+          <p>ThermoPulse Converter — Real-time bi-directional conversion tool for Celsius, Fahrenheit, Kelvin, and Rankine with physical Absolute Zero boundary detection.</p>
+        </div>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">Math</span>
+            <span class="tag">Validation</span>
+            <span class="tag">Visualizer</span>
+          </div>
+          <a href="WebDev-L1-TemperatureConverter/" class="btn-launch">Launch ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEVEL 2 -->
+    <div class="level-heading">
+      <span class="level-tag l2">Level 2</span>
+      <h2>Interactive Applications & Systems (4 Tasks)</h2>
+    </div>
+
+    <div class="grid">
+      <!-- Task 1 -->
+      <div class="card">
+        <div>
+          <div class="card-icon">🧮</div>
+          <span class="task-num">Level 2 • Task 1</span>
+          <h3>Calculator</h3>
+          <p>NeoCalc Arithmetic Calculator — CSS Grid keypad layout with operator chaining, division-by-zero protection, keyboard support, and calculation history drawer.</p>
+        </div>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">CSS Grid</span>
+            <span class="tag">Arithmetic</span>
+            <span class="tag">History</span>
+          </div>
+          <a href="WebDev-L2-Calculator/" class="btn-launch">Launch ↗</a>
+        </div>
+      </div>
+
+      <!-- Task 2 -->
+      <div class="card">
+        <div>
+          <div class="card-icon">🕊️</div>
+          <span class="task-num">Level 2 • Task 2</span>
+          <h3>Tribute Page</h3>
+          <p>Dr. A.P.J. Abdul Kalam Tribute — Multi-palette editorial design detailing the Missile Man's life, career milestones timeline, awards, and immortal quotes.</p>
+        </div>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">Editorial</span>
+            <span class="tag">Timeline</span>
+            <span class="tag">Typography</span>
+          </div>
+          <a href="WebDev-L2-TributePage/" class="btn-launch">Launch ↗</a>
+        </div>
+      </div>
+
+      <!-- Task 3 -->
+      <div class="card">
+        <div>
+          <div class="card-icon">⚡</div>
+          <span class="task-num">Level 2 • Task 3</span>
+          <h3>To-Do Web App</h3>
+          <p>TaskFlow Productivity App — Dual-board task manager (Pending & Completed) with inline text editing, timestamps, priority tags, and localStorage persistence.</p>
+        </div>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">CRUD</span>
+            <span class="tag">LocalStorage</span>
+            <span class="tag">Filters</span>
+          </div>
+          <a href="WebDev-L2-ToDoWebApp/" class="btn-launch">Launch ↗</a>
+        </div>
+      </div>
+
+      <!-- Task 4 -->
+      <div class="card">
+        <div>
+          <div class="card-icon">🛡️</div>
+          <span class="task-num">Level 2 • Task 4</span>
+          <h3>Login Authentication</h3>
+          <p>SecureGate Auth System — Client-side authentication with Web Crypto SHA-256 password hashing, strength meter, route guards, and protected user dashboard.</p>
+        </div>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">SHA-256</span>
+            <span class="tag">Security</span>
+            <span class="tag">Route Guard</span>
+          </div>
+          <a href="WebDev-L2-LoginAuth/" class="btn-launch">Launch ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Oasis Infobyte Student Internship Program (OIBSIP). Repository: <strong>OIBSIP</strong>.</p>
+    </footer>
+  </div>
+</body>
+</html>
