@@ -73,4 +73,32 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 6000);
     });
   }
+
+  // Interactive Pricing Toggle
+  const pricingToggle = document.getElementById('pricing-toggle');
+  const labelMonthly = document.getElementById('label-monthly');
+  const labelAnnual = document.getElementById('label-annual');
+  const pricePro = document.querySelector('.pricing-card.popular .price-amount');
+  const priceEnt = document.querySelectorAll('.pricing-card')[2]?.querySelector('.price-amount');
+  const periodEls = document.querySelectorAll('.price-period');
+
+  if (pricingToggle && pricePro && priceEnt) {
+    pricingToggle.addEventListener('change', () => {
+      if (pricingToggle.checked) {
+        // Annual
+        labelMonthly.style.color = '#94a3b8';
+        labelAnnual.style.color = '#38bdf8';
+        pricePro.textContent = '39';
+        priceEnt.textContent = '239';
+        periodEls.forEach(p => p.textContent = '/ month, billed annually');
+      } else {
+        // Monthly
+        labelMonthly.style.color = '#38bdf8';
+        labelAnnual.style.color = '#94a3b8';
+        pricePro.textContent = '49';
+        priceEnt.textContent = '299';
+        periodEls.forEach(p => p.textContent = '/ month');
+      }
+    });
+  }
 });

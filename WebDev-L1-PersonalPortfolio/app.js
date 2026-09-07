@@ -1,11 +1,10 @@
-// Personal Portfolio Interactions
+// Personal Portfolio Interactions & Interactive CLI Terminal
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.getElementById('portfolio-menu-toggle');
   const navBar = document.getElementById('portfolio-nav');
   const navLinks = document.querySelectorAll('.nav-item');
   const contactForm = document.getElementById('portfolio-contact-form');
   const contactToast = document.getElementById('contact-toast');
-  const downloadCvBtn = document.getElementById('btn-download-resume');
 
   // Mobile menu toggle
   if (menuToggle && navBar) {
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Contact Form Submission Handler
+  // Contact Form Submission Handler with LocalStorage Persistence
   if (contactForm && contactToast) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -58,21 +57,90 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      // Save message to local inquiries list
+      const inquiries = JSON.parse(localStorage.getItem('portfolio_inquiries') || '[]');
+      inquiries.push({ name, email, subject, message, date: new Date().toISOString() });
+      localStorage.setItem('portfolio_inquiries', JSON.stringify(inquiries));
+
       contactToast.style.color = '#34d399';
-      contactToast.textContent = `Thank you, ${name}! Your message has been sent successfully. I will get back to you shortly.`;
+      contactToast.textContent = `Thank you, ${name}! Your message has been received. I will respond to ${email} promptly.`;
       contactForm.reset();
 
       setTimeout(() => {
         contactToast.textContent = '';
-      }, 6000);
+      }, 7000);
     });
   }
 
-  // Download CV dummy trigger
-  if (downloadCvBtn) {
-    downloadCvBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('📄 Resume Download: Curriculum Vitae PDF placeholder triggered.');
+  // Interactive CLI Terminal Emulator
+  const termInput = document.getElementById('term-cmd-input');
+  const termOutput = document.getElementById('term-output');
+
+  if (termInput && termOutput) {
+    termInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const cmd = termInput.value.trim().toLowerCase();
+        termInput.value = '';
+
+        const cmdRow = document.createElement('div');
+        cmdRow.innerHTML = `<span style="color:#38bdf8;">sourabh:~$</span> <span>${escapeHtml(cmd)}</span>`;
+        termOutput.appendChild(cmdRow);
+
+        let response = '';
+        switch (cmd) {
+          case 'help':
+            response = `<div style="color:#94a3b8;">Available Commands:
+  • <span style="color:#38bdf8;">whoami</span>    - Brief intro about Sourabh Patel
+  • <span style="color:#38bdf8;">skills</span>    - List core competencies & technical toolbelt
+  • <span style="color:#38bdf8;">projects</span>  - Show featured internship applications
+  • <span style="color:#38bdf8;">contact</span>   - Get official contact details
+  • <span style="color:#38bdf8;">github</span>    - Link to GitHub profile
+  • <span style="color:#38bdf8;">clear</span>     - Clear terminal buffer</div>`;
+            break;
+          case 'whoami':
+            response = `<div style="color:#34d399;">Sourabh Patel — Full-Stack Software Engineer & Web Developer.
+Intern at Oasis Infobyte (OIBSIP) specializing in modern web systems, JavaScript, and Python.</div>`;
+            break;
+          case 'skills':
+            response = `<div style="color:#a5b4fc;">Technical Toolbelt:
+  - Frontend: HTML5, CSS3 Grid/Flexbox, JavaScript (ES6+), Canvas, Audio API
+  - Backend : Python, Java, REST APIs, Socket Programming, Web Crypto (SHA-256)
+  - Data    : Pandas, NumPy, Scikit-Learn, SQLite, Data Cleaning Pipeline</div>`;
+            break;
+          case 'projects':
+            response = `<div style="color:#fbbf24;">Featured Works:
+  1. NovaCloud AI — SaaS Product Landing Page (WebDev-L1)
+  2. TaskFlow — Kanban Focus Manager with Confetti Celebrations (WebDev-L2)
+  3. ThermoPulse — Real-Time Thermal Physics Suite (WebDev-L1)
+  4. NeoCalc — Precision Calculator with Web Audio Synth (WebDev-L2)</div>`;
+            break;
+          case 'contact':
+            response = `<div>Email : <a href="mailto:sourabhpatel.dev@gmail.com" style="color:#38bdf8;">sourabhpatel.dev@gmail.com</a>
+GitHub: <a href="https://github.com/Sourabh123-atl" target="_blank" style="color:#38bdf8;">github.com/Sourabh123-atl</a></div>`;
+            break;
+          case 'github':
+            response = `<div>Redirecting to GitHub... <a href="https://github.com/Sourabh123-atl" target="_blank" style="color:#38bdf8;">github.com/Sourabh123-atl</a></div>`;
+            window.open('https://github.com/Sourabh123-atl', '_blank');
+            break;
+          case 'clear':
+            termOutput.innerHTML = '';
+            return;
+          case '':
+            return;
+          default:
+            response = `<div style="color:#ef4444;">Command not recognized: '${escapeHtml(cmd)}'. Type 'help' for available commands.</div>`;
+        }
+
+        const resDiv = document.createElement('div');
+        resDiv.innerHTML = response;
+        termOutput.appendChild(resDiv);
+        termOutput.scrollTop = termOutput.scrollHeight;
+      }
     });
+  }
+
+  function escapeHtml(text) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return text.replace(/[&<>"']/g, m => map[m]);
   }
 });
