@@ -8,6 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    // Bulletproof GitHub Pages subfolder resolution:
+    // If URL has no trailing slash (e.g. /OIBSIP), redirect to /OIBSIP/ so relative links don't 404
+    if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
+      window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
+    }
+  </script>
   <style>
     :root {
       --bg: #07090e;
@@ -430,13 +437,13 @@
           <div class="card-icon">👨‍💻</div>
           <span class="task-num">Level 1 • Task 2</span>
           <h3>Personal Portfolio</h3>
-          <p>Alex Rivera Developer Portfolio — Digital résumé featuring an interactive hero avatar, bio, categorized skills, selected project previews, and interactive contact form.</p>
+          <p>Sourabh Patel Portfolio — Production-grade digital résumé featuring an interactive in-browser CLI terminal emulator, live project repository matrix, technical skills radar, and persistent contact messaging.</p>
         </div>
         <div class="card-footer">
           <div class="tags">
-            <span class="tag">Portfolio</span>
-            <span class="tag">Dark Mode</span>
-            <span class="tag">Interactive</span>
+            <span class="tag">Sourabh Patel</span>
+            <span class="tag">CLI Terminal</span>
+            <span class="tag">Live Showcase</span>
           </div>
           <div class="actions-group">
             <button class="btn-record" onclick="openTitleCard('WebDev-L1-PersonalPortfolio/', 'Task 2: Personal Portfolio')">🔴 Video Mode</button>
@@ -597,10 +604,17 @@
       } catch (e) {}
     }
 
+    function resolveSafeUrl(relativePath) {
+      const loc = window.location.href.split('#')[0].split('?')[0];
+      const base = loc.endsWith('/') ? loc : (loc.endsWith('.html') ? loc.substring(0, loc.lastIndexOf('/') + 1) : loc + '/');
+      return new URL(relativePath, base).href;
+    }
+
     function openTitleCard(destinationUrl, taskTitle) {
       const overlay = document.getElementById('title-card-overlay');
       const taskElem = document.getElementById('tc-task-title');
       const statusElem = document.getElementById('tc-status-msg');
+      const targetUrl = resolveSafeUrl(destinationUrl);
       
       taskElem.textContent = taskTitle;
       overlay.classList.add('active');
@@ -617,7 +631,7 @@
           clearInterval(timerId);
           statusElem.textContent = "Launching live project demonstration...";
           setTimeout(() => {
-            window.location.href = destinationUrl;
+            window.location.href = targetUrl;
           }, 300);
         }
       }, 1000);
@@ -627,6 +641,16 @@
       if (timerId) clearInterval(timerId);
       document.getElementById('title-card-overlay').classList.remove('active');
     }
+
+    // Auto-sanitize all relative launch links on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a.btn-launch').forEach(a => {
+        const rel = a.getAttribute('href');
+        if (rel && !rel.startsWith('http') && !rel.startsWith('#')) {
+          a.href = resolveSafeUrl(rel);
+        }
+      });
+    });
   </script>
 </body>
 </html>

@@ -259,9 +259,9 @@ class AuthSystem {
       const demoHash = await this.hashPassword('Password123');
       users.push({
         id: 'usr_demo_1',
-        fullname: 'Alex Rivera',
-        username: 'alexrivera',
-        email: 'alex.rivera@example.com',
+        fullname: 'Sourabh Patel',
+        username: 'sourabhpatel',
+        email: 'sourabhpatel.dev@gmail.com',
         passwordHash: demoHash,
         createdAt: new Date().toISOString()
       });

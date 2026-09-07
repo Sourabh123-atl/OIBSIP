@@ -11,6 +11,18 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- OIBSIP Candidate Navigation Bar -->
+  <div class="candidate-bar">
+    <div class="candidate-bar-inner">
+      <a href="../index.html" class="candidate-back-link">← Back to OIBSIP Hub</a>
+      <div class="candidate-info">
+        <span class="candidate-pill">OIBSIP Level 1 • Task 3</span>
+        <span>Developer: <strong>Sourabh Patel</strong></span>
+      </div>
+      <button id="btn-copy-caption-temp" class="candidate-caption-btn" title="Copy ready-to-paste caption for LinkedIn">📋 Copy LinkedIn Post</button>
+    </div>
+  </div>
+
   <div class="converter-page">
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
@@ -122,27 +134,55 @@
           </div>
         </div>
 
+        <!-- Live Global Satellite Weather Integration -->
+        <div class="weather-sync-panel" style="margin-top: 1.8rem; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 14px; padding: 1.2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="live-beacon" style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block; box-shadow: 0 0 10px #10b981;"></span>
+              <strong style="font-size: 0.95rem; color: #38bdf8;">Live Satellite Weather Sync (Open-Meteo REST API)</strong>
+            </div>
+            <span id="weather-status" style="font-size: 0.8rem; color: #94a3b8;">Click any city to fetch real-time atmospheric data:</span>
+          </div>
+          <div class="weather-city-buttons" style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <button class="city-btn" data-city="New Delhi" data-lat="28.6139" data-lon="77.2090">🇮🇳 New Delhi (Live)</button>
+            <button class="city-btn" data-city="Mumbai" data-lat="19.0760" data-lon="72.8777">🇮🇳 Mumbai (Live)</button>
+            <button class="city-btn" data-city="Bengaluru" data-lat="12.9716" data-lon="77.5946">🇮🇳 Bengaluru (Live)</button>
+            <button class="city-btn" data-city="London" data-lat="51.5074" data-lon="-0.1278">🇬🇧 London (Live)</button>
+            <button class="city-btn" data-city="New York" data-lat="40.7128" data-lon="-74.0060">🇺🇸 New York (Live)</button>
+            <button class="city-btn" data-city="Tokyo" data-lat="35.6762" data-lon="139.6503">🇯🇵 Tokyo (Live)</button>
+            <button class="city-btn" data-city="Helsinki" data-lat="60.1699" data-lon="24.9384">🇫🇮 Helsinki (Live)</button>
+          </div>
+          <div id="weather-details" style="display:none; margin-top: 10px; font-size: 0.85rem; color: #34d399; background: rgba(16, 185, 129, 0.1); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.2);"></div>
+        </div>
+
+        <!-- Step-by-Step Derivation Breakdown -->
+        <div class="math-derivation-box" style="margin-top: 1.5rem; background: rgba(2, 6, 23, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.2rem;">
+          <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #a5b4fc; margin-bottom: 0.5rem;">📐 Dynamic Mathematical Derivation</div>
+          <div id="derivation-text" style="font-family: monospace; font-size: 0.9rem; color: #e2e8f0; line-height: 1.6;">Enter a temperature value above to see the physical equations solved step-by-step.</div>
+        </div>
+
         <!-- Quick Reference Benchmarks -->
-        <div class="benchmarks-container">
-          <span class="benchmarks-title">Quick Benchmarks:</span>
+        <div class="benchmarks-container" style="margin-top: 1.5rem;">
+          <span class="benchmarks-title">Physics Standard Benchmarks:</span>
           <div class="benchmark-chips">
             <button class="chip" data-temp="-273.15" data-unit="C">Absolute Zero (-273.15°C)</button>
             <button class="chip" data-temp="0" data-unit="C">Freezing Point (0°C)</button>
             <button class="chip" data-temp="22" data-unit="C">Room Temp (22°C)</button>
-            <button class="chip" data-temp="37" data-unit="C">Body Temp (37°C)</button>
-            <button class="chip" data-temp="100" data-unit="C">Boiling Point (100°C)</button>
-            <button class="chip" data-temp="28" data-unit="C">🌏 New Delhi (28°C)</button>
-            <button class="chip" data-temp="16" data-unit="C">🌧️ London (16°C)</button>
-            <button class="chip" data-temp="20" data-unit="C">🌸 Tokyo (20°C)</button>
-            <button class="chip" data-temp="-12" data-unit="C">❄️ Helsinki (-12°C)</button>
+            <button class="chip" data-temp="37" data-unit="C">Human Body (37°C)</button>
+            <button class="chip" data-temp="100" data-unit="C">Water Boiling (100°C)</button>
           </div>
         </div>
       </section>
 
       <footer class="converter-footer">
-        <p>OASIS INFOBYTE Internship — Web Development & Designing (Level 1, Task 3)</p>
+        <p>OASIS INFOBYTE Internship — Web Development &amp; Designing (Level 1, Task 3) • Candidate: <strong>Sourabh Patel</strong> (GitHub: <a href="https://github.com/Sourabh123-atl" target="_blank" style="color: #38bdf8;">@Sourabh123-atl</a>)</p>
       </footer>
     </main>
+  </div>
+
+  <!-- Toast for Copying LinkedIn Caption -->
+  <div id="caption-toast" class="caption-toast">
+    <span>✅ Ready-to-post LinkedIn Caption copied to clipboard!</span>
   </div>
 
   <script src="app.js"></script>

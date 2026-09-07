@@ -151,6 +151,40 @@ document.addEventListener('DOMContentLoaded', () => {
     valR.textContent = `${formatNum(r)}°R`;
 
     updateThermalGauge(c);
+
+    // Dynamic Mathematical Derivation Output
+    const derivText = document.getElementById('derivation-text');
+    if (derivText) {
+      if (unit === 'C') {
+        derivText.innerHTML = `
+          <strong>Input:</strong> ${numVal}°C<br>
+          • <strong>To Fahrenheit:</strong> (${numVal} × 9/5) + 32 = <span style="color:#38bdf8; font-weight:bold;">${formatNum(f)}°F</span><br>
+          • <strong>To Kelvin (SI):</strong> ${numVal} + 273.15 = <span style="color:#34d399; font-weight:bold;">${formatNum(k)} K</span><br>
+          • <strong>To Rankine:</strong> (${numVal} + 273.15) × 9/5 = <span style="color:#fbbf24; font-weight:bold;">${formatNum(r)}°R</span>
+        `;
+      } else if (unit === 'F') {
+        derivText.innerHTML = `
+          <strong>Input:</strong> ${numVal}°F<br>
+          • <strong>To Celsius:</strong> (${numVal} - 32) × 5/9 = <span style="color:#38bdf8; font-weight:bold;">${formatNum(c)}°C</span><br>
+          • <strong>To Kelvin (SI):</strong> ((${numVal} - 32) × 5/9) + 273.15 = <span style="color:#34d399; font-weight:bold;">${formatNum(k)} K</span><br>
+          • <strong>To Rankine:</strong> ${numVal} + 459.67 = <span style="color:#fbbf24; font-weight:bold;">${formatNum(r)}°R</span>
+        `;
+      } else if (unit === 'K') {
+        derivText.innerHTML = `
+          <strong>Input:</strong> ${numVal} K<br>
+          • <strong>To Celsius:</strong> ${numVal} - 273.15 = <span style="color:#38bdf8; font-weight:bold;">${formatNum(c)}°C</span><br>
+          • <strong>To Fahrenheit:</strong> ((${numVal} - 273.15) × 9/5) + 32 = <span style="color:#34d399; font-weight:bold;">${formatNum(f)}°F</span><br>
+          • <strong>To Rankine:</strong> ${numVal} × 9/5 = <span style="color:#fbbf24; font-weight:bold;">${formatNum(r)}°R</span>
+        `;
+      } else {
+        derivText.innerHTML = `
+          <strong>Input:</strong> ${numVal}°R<br>
+          • <strong>To Celsius:</strong> (${numVal} - 491.67) × 5/9 = <span style="color:#38bdf8; font-weight:bold;">${formatNum(c)}°C</span><br>
+          • <strong>To Fahrenheit:</strong> ${numVal} - 459.67 = <span style="color:#34d399; font-weight:bold;">${formatNum(f)}°F</span><br>
+          • <strong>To Kelvin (SI):</strong> ${numVal} × 5/9 = <span style="color:#fbbf24; font-weight:bold;">${formatNum(k)} K</span>
+        `;
+      }
+    }
   }
 
   // Event Listeners
@@ -183,7 +217,78 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Initial demo calculation
+  // Live Satellite Weather Integration (Open-Meteo REST API)
+  const cityBtns = document.querySelectorAll('.city-btn');
+  const weatherStatus = document.getElementById('weather-status');
+  const weatherDetails = document.getElementById('weather-details');
+
+  cityBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const cityName = btn.getAttribute('data-city');
+      const lat = btn.getAttribute('data-lat');
+      const lon = btn.getAttribute('data-lon');
+
+      btn.disabled = true;
+      weatherStatus.textContent = `📡 Querying satellite telemetry for ${cityName}...`;
+
+      try {
+        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+        const data = await res.json();
+        const liveTemp = data.current_weather.temperature;
+        const wind = data.current_weather.windspeed;
+        const time = new Date(data.current_weather.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        tempInput.value = liveTemp;
+        inputUnit.value = 'C';
+        performConversion();
+
+        weatherDetails.style.display = 'block';
+        weatherDetails.innerHTML = `🛰️ <strong>${cityName} Live Atmospheric Telemetry:</strong> Currently <strong>${liveTemp}°C</strong> (${formatNum((liveTemp * 9/5) + 32)}°F) • Wind Speed: ${wind} km/h • Synced at ${time}`;
+        weatherStatus.textContent = `✅ Live satellite telemetry synced from Open-Meteo REST API`;
+      } catch (err) {
+        weatherStatus.textContent = `⚠️ Network offline or satellite timeout. Using offline cache.`;
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  });
+
+  // Copy LinkedIn Post Caption Helper for Task 3
+  const btnCopyCaption = document.getElementById('btn-copy-caption-temp');
+  const captionToast = document.getElementById('caption-toast');
+
+  if (btnCopyCaption && captionToast) {
+    const task3Caption = `🌡️ Proud to present Task 3 of my Web Development & Designing Internship at Oasis Infobyte!
+
+For this project, I built "ThermoPulse" — a real-time Atmospheric & Thermal Physics Studio that elevates the standard temperature converter into an engineering tool.
+
+🌟 Key Innovations:
+✅ Live Satellite Weather Sync via Open-Meteo REST API (real-time temperature from global cities)
+✅ Multi-scale precision conversions (Celsius, Fahrenheit, Kelvin, and Rankine)
+✅ Physical Absolute Zero boundary detection & thermodynamic law alerts
+✅ Dynamic step-by-step mathematical derivation breakdown
+✅ Real-time thermal state fluid gauge & responsive glassmorphism UI
+
+🔗 Live Application: https://sourabh123-atl.github.io/OIBSIP/WebDev-L1-TemperatureConverter/
+📁 GitHub Repository: https://github.com/Sourabh123-atl/OIBSIP
+
+Special thanks to @Oasis Infobyte for this hands-on engineering journey!
+
+#oasisinfobyte #webdevelopment #javascript #physics #api #frontend #html5 #css3 #internship`;
+
+    btnCopyCaption.addEventListener('click', () => {
+      navigator.clipboard.writeText(task3Caption).then(() => {
+        captionToast.classList.add('show');
+        setTimeout(() => {
+          captionToast.classList.remove('show');
+        }, 3500);
+      }).catch(() => {
+        alert('Caption ready! Please check LINKEDIN_POSTS_GUIDE.md');
+      });
+    });
+  }
+
+  // Initial calculation
   tempInput.value = '37';
   performConversion();
 });

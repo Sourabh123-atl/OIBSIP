@@ -50,7 +50,7 @@ A special thanks to @Oasis Infobyte for this fantastic learning opportunity!
 
 ---
 
-### 📝 Task 2: Personal Portfolio (Alex Rivera)
+### 📝 Task 2: Personal Portfolio (Sourabh Patel)
 
 ```markdown
 👨‍💻 Thrilled to present Task 2 of my Oasis Infobyte (OIBSIP) Web Development internship: A high-performance Developer Portfolio & Digital Résumé!

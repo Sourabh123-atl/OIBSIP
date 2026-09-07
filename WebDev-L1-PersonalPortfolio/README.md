@@ -1,14 +1,14 @@
-# 👨‍💻 WebDev-L1-PersonalPortfolio — Alex Rivera
+# 👨‍💻 WebDev-L1-PersonalPortfolio — Sourabh Patel
 
 **Oasis Infobyte Internship — Web Development & Designing (Level 1, Task 2)**
 
-A personal developer portfolio showcasing skills, projects, background, and contact avenues.
+A personal developer portfolio showcasing skills, projects, background, interactive CLI terminal, and contact avenues.
 
 ---
 
 ## 📋 Feature Checklist Compliance
 
-- [x] **Profile / Hero Section**: Developer name (*Alex Rivera*), title (*Full-Stack Software Engineer & Cloud Architect*), availability indicator, and avatar badge.
+- [x] **Profile / Hero Section**: Developer name (*Sourabh Patel*), title (*Full-Stack Software Engineer & Distributed Systems*), availability indicator, and avatar badge.
 - [x] **About Me Section**: Concise paragraphs highlighting experience, background, core philosophies, and educational credentials.
 - [x] **Skills Section**: Visual categorized skill grid (*Frontend*, *Backend & APIs*, *Database & DevOps*) with custom pills.
 - [x] **Projects Section**: 3 interactive project cards with tech tags, description, live preview links, and source code triggers.

@@ -143,4 +143,39 @@ GitHub: <a href="https://github.com/Sourabh123-atl" target="_blank" style="color
     const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
     return text.replace(/[&<>"']/g, m => map[m]);
   }
+
+  // Copy LinkedIn Post Caption Helper for Task 2
+  const btnCopyCaption = document.getElementById('btn-copy-caption-portfolio');
+  const captionToast = document.getElementById('caption-toast');
+
+  if (btnCopyCaption && captionToast) {
+    const task2Caption = `👨‍💻 Excited to showcase Task 2 of my Web Development & Designing Internship at Oasis Infobyte!
+
+For this milestone, I engineered my Personal Developer Portfolio — a modern, production-grade digital résumé tailored for full-stack engineering roles.
+
+🌟 Technical Highlights:
+✅ Interactive in-browser CLI Terminal Emulator (try: whoami, skills, projects, github)
+✅ Filterable project repository matrix & interactive skill badges
+✅ Contact inquiry system with localStorage persistence
+✅ Audio-synthesized interactions & responsive glassmorphism aesthetic
+✅ Semantic HTML5, modern CSS Grid/Flexbox, and vanilla JavaScript
+
+🔗 Live Portfolio: https://sourabh123-atl.github.io/OIBSIP/WebDev-L1-PersonalPortfolio/
+📁 GitHub Repository: https://github.com/Sourabh123-atl/OIBSIP
+
+Grateful to @Oasis Infobyte for this enriching learning experience!
+
+#oasisinfobyte #webdevelopment #portfolio #fullstack #javascript #html5 #css3 #softwareengineering #developer`;
+
+    btnCopyCaption.addEventListener('click', () => {
+      navigator.clipboard.writeText(task2Caption).then(() => {
+        captionToast.classList.add('show');
+        setTimeout(() => {
+          captionToast.classList.remove('show');
+        }, 3500);
+      }).catch(() => {
+        alert('Caption ready! Please check LINKEDIN_POSTS_GUIDE.md');
+      });
+    });
+  }
 });
