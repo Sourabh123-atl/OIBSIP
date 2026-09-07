@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThermoPulse — Real-Time Temperature Converter & Visualizer</title>
+  <meta name="description" content="Interactive temperature converter tool supporting Celsius, Fahrenheit, Kelvin, and Rankine with real-time validation and absolute zero boundary checks.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="converter-page">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <main class="converter-card" id="converter-card">
+      <header class="converter-header">
+        <div class="app-badge">
+          <span>🌡️ Thermal Physics Suite</span>
+        </div>
+        <h1 class="app-title">ThermoPulse Converter</h1>
+        <p class="app-subtitle">Precision bi-directional temperature conversion with absolute-zero protection and state visualization.</p>
+      </header>
+
+      <!-- Main Input Controls -->
+      <section class="converter-body">
+        <div class="input-row">
+          <div class="input-field-group">
+            <label for="temp-input">Enter Temperature Value</label>
+            <div class="input-wrapper">
+              <input type="text" id="temp-input" placeholder="e.g. 37 or 98.6" autocomplete="off" autofocus>
+              <button class="clear-input-btn" id="btn-clear" title="Clear Input">✕</button>
+            </div>
+          </div>
+
+          <div class="input-field-group unit-select-group">
+            <label for="input-unit">From Unit</label>
+            <select id="input-unit" class="unit-dropdown">
+              <option value="C" selected>Celsius (°C)</option>
+              <option value="F">Fahrenheit (°F)</option>
+              <option value="K">Kelvin (K)</option>
+              <option value="R">Rankine (°R)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Conversion Mode & Controls -->
+        <div class="action-row">
+          <button class="btn btn-convert" id="btn-convert">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"/></svg>
+            <span>Convert Now</span>
+          </button>
+          <div class="toggle-wrapper">
+            <label class="switch">
+              <input type="checkbox" id="auto-convert-toggle" checked>
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Instant Live Conversion</span>
+          </div>
+        </div>
+
+        <!-- Error / Warning Banner -->
+        <div class="alert-box" id="alert-box" role="alert">
+          <span class="alert-icon">⚠️</span>
+          <span class="alert-message" id="alert-message"></span>
+        </div>
+
+        <!-- Converted Output Cards Grid -->
+        <div class="results-grid" id="results-grid">
+          <div class="result-card" id="card-celsius" data-unit="C">
+            <div class="result-header">
+              <span class="unit-name">Celsius</span>
+              <span class="unit-symbol">°C</span>
+            </div>
+            <div class="result-value" id="val-celsius">--</div>
+            <div class="result-formula" id="formula-celsius">Base Metric Standard</div>
+          </div>
+
+          <div class="result-card" id="card-fahrenheit" data-unit="F">
+            <div class="result-header">
+              <span class="unit-name">Fahrenheit</span>
+              <span class="unit-symbol">°F</span>
+            </div>
+            <div class="result-value" id="val-fahrenheit">--</div>
+            <div class="result-formula" id="formula-fahrenheit">(°C × 9/5) + 32</div>
+          </div>
+
+          <div class="result-card" id="card-kelvin" data-unit="K">
+            <div class="result-header">
+              <span class="unit-name">Kelvin</span>
+              <span class="unit-symbol">K</span>
+            </div>
+            <div class="result-value" id="val-kelvin">--</div>
+            <div class="result-formula" id="formula-kelvin">°C + 273.15 (SI Unit)</div>
+          </div>
+
+          <div class="result-card" id="card-rankine" data-unit="R">
+            <div class="result-header">
+              <span class="unit-name">Rankine</span>
+              <span class="unit-symbol">°R</span>
+            </div>
+            <div class="result-value" id="val-rankine">--</div>
+            <div class="result-formula" id="formula-rankine">(°C + 273.15) × 9/5</div>
+          </div>
+        </div>
+
+        <!-- Thermal Scale Visualizer -->
+        <div class="thermal-visualizer">
+          <div class="vis-header">
+            <span>Thermal State Gauge</span>
+            <span class="state-label" id="thermal-state-label">Waiting for input</span>
+          </div>
+          <div class="gauge-bar-track">
+            <div class="gauge-bar-fill" id="gauge-fill"></div>
+            <div class="gauge-marker marker-abszero" title="Absolute Zero (-273.15°C)">0K</div>
+            <div class="gauge-marker marker-freeze" title="Water Freezing (0°C)">0°C</div>
+            <div class="gauge-marker marker-room" title="Room Temp (20°C)">20°C</div>
+            <div class="gauge-marker marker-body" title="Human Body (37°C)">37°C</div>
+            <div class="gauge-marker marker-boil" title="Water Boiling (100°C)">100°C</div>
+          </div>
+        </div>
+
+        <!-- Quick Reference Benchmarks -->
+        <div class="benchmarks-container">
+          <span class="benchmarks-title">Quick Benchmarks:</span>
+          <div class="benchmark-chips">
+            <button class="chip" data-temp="-273.15" data-unit="C">Absolute Zero</button>
+            <button class="chip" data-temp="0" data-unit="C">Freezing Point (0°C)</button>
+            <button class="chip" data-temp="22" data-unit="C">Room Temp (22°C)</button>
+            <button class="chip" data-temp="37" data-unit="C">Body Temp (37°C)</button>
+            <button class="chip" data-temp="100" data-unit="C">Boiling Point (100°C)</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="converter-footer">
+        <p>OASIS INFOBYTE Internship — Web Development & Designing (Level 1, Task 3)</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

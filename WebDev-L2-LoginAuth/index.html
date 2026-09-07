@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecureGate — Client-Side Authentication & Protected Dashboard</title>
+  <meta name="description" content="Secure client-side authentication system with SHA-256 cryptographic password hashing, registration, validation, session guard, and protected dashboard.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="auth-page-wrapper">
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+
+    <!-- Container holding both Auth Card and Protected Dashboard -->
+    <div class="app-viewport">
+      
+      <!-- ================= AUTH VIEW (Login / Register) ================= -->
+      <section class="auth-card" id="auth-view">
+        <header class="auth-header">
+          <div class="auth-brand">
+            <span class="shield-icon">🛡️</span>
+            <h2>SecureGate</h2>
+          </div>
+          <p class="auth-subtitle">Zero-Knowledge SHA-256 Client Authentication System</p>
+        </header>
+
+        <!-- Auth Mode Switcher Tabs -->
+        <div class="auth-tabs">
+          <button type="button" class="tab-btn active" id="tab-login" data-tab="login">Sign In</button>
+          <button type="button" class="tab-btn" id="tab-register" data-tab="register">Create Account</button>
+        </div>
+
+        <!-- Global Alert Message -->
+        <div class="auth-alert" id="auth-alert" role="alert">
+          <span class="alert-icon" id="alert-icon">ℹ️</span>
+          <span class="alert-text" id="alert-text"></span>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="login-form" class="auth-form">
+          <div class="form-group">
+            <label for="login-identifier">Username or Email</label>
+            <div class="input-container">
+              <span class="input-icon">👤</span>
+              <input type="text" id="login-identifier" placeholder="alex.rivera@example.com" autocomplete="username" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <div class="input-container">
+              <span class="input-icon">🔒</span>
+              <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" required>
+              <button type="button" class="btn-toggle-pwd" data-target="login-password" title="Show/Hide Password">👁️</button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="remember-checkbox">
+              <input type="checkbox" id="remember-me">
+              <span>Remember me for 24h</span>
+            </label>
+            <a href="#" class="forgot-link" id="btn-forgot-demo">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-auth-submit" id="btn-login-submit">
+            <span>Sign In to Dashboard</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <form id="register-form" class="auth-form hidden">
+          <div class="form-group">
+            <label for="reg-fullname">Full Name</label>
+            <div class="input-container">
+              <span class="input-icon">🪪</span>
+              <input type="text" id="reg-fullname" placeholder="Alex Rivera" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-username">Username</label>
+            <div class="input-container">
+              <span class="input-icon">🏷️</span>
+              <input type="text" id="reg-username" placeholder="alexrivera" autocomplete="username" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <div class="input-container">
+              <span class="input-icon">📧</span>
+              <input type="email" id="reg-email" placeholder="alex.rivera@example.com" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-password">Password</label>
+            <div class="input-container">
+              <span class="input-icon">🔒</span>
+              <input type="password" id="reg-password" placeholder="Min. 8 chars with a number" autocomplete="new-password" required>
+              <button type="button" class="btn-toggle-pwd" data-target="reg-password" title="Show/Hide Password">👁️</button>
+            </div>
+            
+            <!-- Live Password Strength Meter -->
+            <div class="strength-meter-box">
+              <div class="strength-bars">
+                <div class="bar bar-1"></div>
+                <div class="bar bar-2"></div>
+                <div class="bar bar-3"></div>
+                <div class="bar bar-4"></div>
+              </div>
+              <span class="strength-text" id="pwd-strength-text">Password strength: Enter password</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-auth-submit" id="btn-register-submit">
+            <span>Create Secure Account</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+          </button>
+        </form>
+
+        <footer class="card-footer">
+          <p class="crypto-note">
+            🔐 Passwords are salted and hashed using <strong>SHA-256</strong> via Web Crypto API before local persistence.
+          </p>
+        </footer>
+      </section>
+
+      <!-- ================= PROTECTED DASHBOARD VIEW ================= -->
+      <section class="dashboard-card hidden" id="dashboard-view">
+        <header class="dash-header">
+          <div class="dash-user-welcome">
+            <div class="dash-avatar" id="dash-avatar">AR</div>
+            <div>
+              <span class="dash-greeting">Welcome back,</span>
+              <h2 class="dash-user-name" id="dash-user-name">Alex Rivera</h2>
+              <span class="user-role-badge">Verified Authenticated Session</span>
+            </div>
+          </div>
+          <button type="button" class="btn-logout" id="btn-logout">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span>Sign Out</span>
+          </button>
+        </header>
+
+        <!-- Dashboard Content Grid -->
+        <div class="dash-content-grid">
+          <!-- Session Details Card -->
+          <div class="dash-widget">
+            <div class="widget-header">
+              <span class="widget-icon">🔑</span>
+              <h3>Active Session Cryptography</h3>
+            </div>
+            <div class="widget-body">
+              <div class="info-row">
+                <span class="info-label">Account Email</span>
+                <span class="info-val" id="dash-user-email">--</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Username</span>
+                <span class="info-val" id="dash-user-username">--</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Session Token (SHA-256)</span>
+                <span class="info-val hash-val" id="dash-session-token">--</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Login Timestamp</span>
+                <span class="info-val" id="dash-login-time">--</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Metrics -->
+          <div class="dash-widget">
+            <div class="widget-header">
+              <span class="widget-icon">⚡</span>
+              <h3>Security & Account Status</h3>
+            </div>
+            <div class="widget-body">
+              <div class="status-box-grid">
+                <div class="status-metric">
+                  <span class="status-num">SHA-256</span>
+                  <span class="status-lbl">Client Hash Mode</span>
+                </div>
+                <div class="status-metric">
+                  <span class="status-num">Protected</span>
+                  <span class="status-lbl">Route Guard Active</span>
+                </div>
+                <div class="status-metric">
+                  <span class="status-num">Active</span>
+                  <span class="status-lbl">Session Status</span>
+                </div>
+              </div>
+              <p class="guard-explanation">
+                🛡️ This page is protected by route authentication guards. Direct URL visits without an active authenticated session token will immediately trigger a redirect to the Sign In portal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

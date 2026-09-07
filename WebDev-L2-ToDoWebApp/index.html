@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow — Interactive Daily Task Manager</title>
+  <meta name="description" content="A feature-packed interactive To-Do web app with dual pending and completed lists, inline editing, timestamps, priority tags, and localStorage persistence.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-container">
+        <div class="brand">
+          <span class="brand-icon">⚡</span>
+          <div>
+            <h1 class="brand-title">TaskFlow</h1>
+            <p class="brand-subtitle">Streamlined Daily Task & Focus Management</p>
+          </div>
+        </div>
+
+        <div class="header-stats">
+          <div class="stat-pill">
+            <span class="stat-num" id="stat-total">0</span>
+            <span class="stat-lbl">Total Tasks</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-num" id="stat-rate">0%</span>
+            <span class="stat-lbl">Completion Rate</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content container">
+      <!-- Add Task Input Card -->
+      <section class="task-creator-card">
+        <form id="task-form" class="task-form">
+          <div class="input-main-group">
+            <input type="text" id="task-input" placeholder="What needs to be done today? (e.g. Prepare system architecture diagram)" autocomplete="off" required>
+            <button type="submit" class="btn btn-add" id="btn-add-task">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <span>Add Task</span>
+            </button>
+          </div>
+
+          <div class="input-options-group">
+            <div class="opt-field">
+              <label for="task-priority">Priority</label>
+              <select id="task-priority" class="select-styled">
+                <option value="high">🔴 High Priority</option>
+                <option value="medium" selected>🟡 Medium Priority</option>
+                <option value="low">🟢 Low Priority</option>
+              </select>
+            </div>
+
+            <div class="opt-field">
+              <label for="task-category">Category</label>
+              <select id="task-category" class="select-styled">
+                <option value="Engineering" selected>💻 Engineering</option>
+                <option value="Design">🎨 Design</option>
+                <option value="Meeting">📅 Meeting</option>
+                <option value="Personal">🌟 Personal</option>
+              </select>
+            </div>
+
+            <div class="opt-field flex-end">
+              <button type="button" class="btn-clear-completed" id="btn-clear-all-completed">Clear All Completed</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Dual Task Boards Grid (Pending vs Completed) -->
+      <div class="boards-grid">
+        <!-- Pending Tasks Column -->
+        <section class="board-column pending-column">
+          <div class="board-header">
+            <div class="board-title-group">
+              <span class="status-indicator indicator-pending"></span>
+              <h2>Pending Tasks</h2>
+            </div>
+            <span class="count-badge count-pending" id="pending-count-badge">0 pending</span>
+          </div>
+
+          <div class="task-list" id="pending-task-list">
+            <!-- Rendered Dynamically -->
+          </div>
+
+          <div class="empty-state" id="pending-empty-state">
+            <div class="empty-icon">🎉</div>
+            <h3>All Caught Up!</h3>
+            <p>You have no pending tasks right now. Add a task above to keep your momentum going.</p>
+          </div>
+        </section>
+
+        <!-- Completed Tasks Column -->
+        <section class="board-column completed-column">
+          <div class="board-header">
+            <div class="board-title-group">
+              <span class="status-indicator indicator-completed"></span>
+              <h2>Completed Tasks</h2>
+            </div>
+            <span class="count-badge count-completed" id="completed-count-badge">0 completed</span>
+          </div>
+
+          <div class="task-list" id="completed-task-list">
+            <!-- Rendered Dynamically -->
+          </div>
+
+          <div class="empty-state" id="completed-empty-state">
+            <div class="empty-icon">📋</div>
+            <h3>No Completed Tasks</h3>
+            <p>Tasks you mark as completed will appear here with completion timestamps.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>OASIS INFOBYTE Internship — Web Development & Designing (Level 2, Task 3)</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

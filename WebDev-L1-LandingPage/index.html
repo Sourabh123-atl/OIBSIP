@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaCloud AI — Next-Generation Cloud Intelligence Platform</title>
+  <meta name="description" content="Deploy, monitor, and scale AI-native autonomous cloud infrastructure with sub-millisecond edge latency and automated neural optimization.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header & Sticky Navigation -->
+  <header class="navbar-wrapper" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" id="brand-logo">
+        <span class="logo-icon">✨</span>
+        <span class="logo-text">Nova<span>Cloud</span></span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#features" class="nav-link" id="nav-link-features">Features</a></li>
+          <li><a href="#architecture" class="nav-link" id="nav-link-arch">Architecture</a></li>
+          <li><a href="#testimonials" class="nav-link" id="nav-link-testimonials">Testimonials</a></li>
+          <li><a href="#pricing" class="nav-link" id="nav-link-pricing">Pricing</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="#pricing" class="btn btn-secondary" id="btn-nav-login">Sign In</a>
+          <a href="#pricing" class="btn btn-primary" id="btn-nav-cta">Start Free Trial</a>
+        </div>
+      </nav>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-glow"></div>
+      <div class="container hero-container">
+        <div class="hero-badge">
+          <span class="badge-pulse"></span>
+          <span>NovaCore 3.0 Live — Intelligent Multi-Region Scaling</span>
+        </div>
+        <h1 class="hero-headline">
+          Build & Scale Autonomous <br>
+          <span class="gradient-text">Cloud Intelligence</span> with Zero Friction
+        </h1>
+        <p class="hero-subheadline">
+          Empower engineering teams with self-healing edge microservices, real-time neural observability, and declarative serverless deployment at planetary scale.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#pricing" class="btn btn-primary btn-lg" id="hero-btn-primary">
+            <span>Get Started for Free</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#features" class="btn btn-glass btn-lg" id="hero-btn-demo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            <span>Explore Platform</span>
+          </a>
+        </div>
+        
+        <!-- Live Metrics Strip -->
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <span class="metric-val">99.999%</span>
+            <span class="metric-lbl">Uptime SLA Guaranteed</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-val">&lt; 1.4ms</span>
+            <span class="metric-lbl">Global Edge Latency</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-val">4.8M+</span>
+            <span class="metric-lbl">Daily Neural Operations</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-val">70%</span>
+            <span class="metric-lbl">Infra Cost Reduction</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features-section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Core Capabilities</span>
+          <h2 class="section-title">Engineered for Hyper-Scale Performance</h2>
+          <p class="section-desc">Experience frictionless infrastructure management driven by advanced machine learning models.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(99, 102, 241, 0.15); color: #818cf8;">⚡</div>
+            <h3>Autonomous Provisioning</h3>
+            <p>Automatically predict traffic surges and pre-warm cold containers before latency degradation occurs.</p>
+            <ul class="feature-bullets">
+              <li>Predictive cluster scaling</li>
+              <li>Instant 0-millisecond warm starts</li>
+              <li>Resource overprovisioning guard</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">🛡️</div>
+            <h3>Zero-Trust Edge Security</h3>
+            <p>End-to-end mTLS encryption, automated DDoS mitigation, and continuous vulnerability scanning at every edge node.</p>
+            <ul class="feature-bullets">
+              <li>Automatic SSL/TLS certificate rotation</li>
+              <li>L3-L7 behavioral threat protection</li>
+              <li>SOC2 Type II & HIPAA compliant</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">📊</div>
+            <h3>Real-Time Neural Observability</h3>
+            <p>Unified telemetry streaming across logs, metrics, and traces with intelligent root-cause anomaly detection.</p>
+            <ul class="feature-bullets">
+              <li>Automated distributed tracing</li>
+              <li>Sub-second anomaly alert dispatch</li>
+              <li>Custom metric aggregations</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" style="background: rgba(236, 72, 153, 0.15); color: #f472b6;">🌐</div>
+            <h3>Global Edge Mesh</h3>
+            <p>Deploy code adjacent to your users across 320+ worldwide edge locations with automatic GeoDNS routing.</p>
+            <ul class="feature-bullets">
+              <li>Anycast IP routing</li>
+              <li>Dynamic cached payload delivery</li>
+              <li>Smart regional failover</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture / About Section -->
+    <section class="section arch-section" id="architecture">
+      <div class="container">
+        <div class="arch-wrapper">
+          <div class="arch-content">
+            <span class="section-tag">Next-Gen Architecture</span>
+            <h2 class="section-title">A Declarative Cloud Built for Modern Developers</h2>
+            <p class="section-desc">
+              Write clean infrastructure code in YAML or TypeScript. NovaCloud compiles your definitions into zero-overhead container instances, distributed storage buckets, and smart load balancers.
+            </p>
+            <div class="arch-steps">
+              <div class="arch-step-item">
+                <span class="step-num">01</span>
+                <div>
+                  <h4>Define Infrastructure</h4>
+                  <p>Declare your containers, databases, and microservices in intuitive configuration files.</p>
+                </div>
+              </div>
+              <div class="arch-step-item">
+                <span class="step-num">02</span>
+                <div>
+                  <h4>Push to Deploy</h4>
+                  <p>Seamless Git integration kicks off lightning-fast automated build and sanity testing pipelines.</p>
+                </div>
+              </div>
+              <div class="arch-step-item">
+                <span class="step-num">03</span>
+                <div>
+                  <h4>Self-Healing Production</h4>
+                  <p>AI monitors system telemetry 24/7, rolling back flawed builds and auto-healing failing nodes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="arch-visual">
+            <div class="code-terminal">
+              <div class="terminal-header">
+                <span class="t-dot red"></span>
+                <span class="t-dot yellow"></span>
+                <span class="t-dot green"></span>
+                <span class="t-title">novacloud.config.ts</span>
+              </div>
+              <pre class="terminal-code"><code><span class="c-keyword">import</span> { defineCluster, region } <span class="c-keyword">from</span> <span class="c-string">'@novacloud/core'</span>;
+
+<span class="c-keyword">export default</span> defineCluster({
+  name: <span class="c-string">'production-cluster-global'</span>,
+  regions: [region.US_EAST, region.EU_CENTRAL, region.AP_SOUTH],
+  scaling: {
+    minReplicas: <span class="c-number">3</span>,
+    maxReplicas: <span class="c-number">120</span>,
+    neuralPredictive: <span class="c-boolean">true</span>
+  },
+  security: {
+    zeroTrust: <span class="c-boolean">true</span>,
+    ddosProtection: <span class="c-string">'enterprise'</span>
+  }
+});</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Trusted by Industry Leaders</span>
+          <h2 class="section-title">Loved by High-Growth Engineering Teams</h2>
+          <p class="section-desc">Discover how top technical teams migrate to NovaCloud and scale effortlessly.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="rating-stars">★★★★★</div>
+            <p class="testimonial-quote">"NovaCloud reduced our infrastructure latency by 65% on day one. The predictive scaling saved us tens of thousands in idle server costs during Black Friday."</p>
+            <div class="author-info">
+              <div class="author-avatar" style="background: #3b82f6;">SC</div>
+              <div>
+                <h4 class="author-name">Sarah Chen</h4>
+                <p class="author-role">VP of Infrastructure, Fintech Stream</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="rating-stars">★★★★★</div>
+            <p class="testimonial-quote">"Deploying multi-region failover used to take a dedicated team of DevOps specialists weeks. With NovaCloud, our engineers did it in a single afternoon."</p>
+            <div class="author-info">
+              <div class="author-avatar" style="background: #8b5cf6;">AR</div>
+              <div>
+                <h4 class="author-name">Alex Rivera</h4>
+                <p class="author-role">Chief Technology Officer, HyperScale Health</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="rating-stars">★★★★★</div>
+            <p class="testimonial-quote">"The neural observability feature alerted us to an obscure database bottleneck before a single customer experienced downtime. Irreplaceable technology."</p>
+            <div class="author-info">
+              <div class="author-avatar" style="background: #ec4899;">EM</div>
+              <div>
+                <h4 class="author-name">Elena Morozov</h4>
+                <p class="author-role">Principal Site Reliability Engineer, DataMesh</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section pricing-section" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Simple & Transparent Pricing</span>
+          <h2 class="section-title">Flexible Plans for Every Stage</h2>
+          <p class="section-desc">Start building for free. Upgrade as your product scales globally.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3 class="plan-name">Starter Developer</h3>
+            <p class="plan-desc">Perfect for hobby projects and early prototype development.</p>
+            <div class="plan-price">
+              <span class="price-currency">$</span>
+              <span class="price-amount">0</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <ul class="plan-features">
+              <li>✓ 3 Edge Microservices</li>
+              <li>✓ 100 GB Bandwidth/mo</li>
+              <li>✓ Automated SSL & GeoDNS</li>
+              <li>✓ Community Discord Support</li>
+            </ul>
+            <button class="btn btn-outline" id="plan-btn-starter">Get Started Free</button>
+          </div>
+
+          <div class="pricing-card popular">
+            <div class="popular-tag">Most Popular</div>
+            <h3 class="plan-name">Scale Pro</h3>
+            <p class="plan-desc">For growing startups demanding high-availability multi-region clusters.</p>
+            <div class="plan-price">
+              <span class="price-currency">$</span>
+              <span class="price-amount">49</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <ul class="plan-features">
+              <li>✓ Unlimited Edge Services</li>
+              <li>✓ 2 TB High-Speed Bandwidth</li>
+              <li>✓ Neural Predictive Auto-Scaling</li>
+              <li>✓ Real-Time Root Cause AI Tracing</li>
+              <li>✓ 24/7 Priority Support</li>
+            </ul>
+            <button class="btn btn-primary" id="plan-btn-pro">Start 14-Day Free Trial</button>
+          </div>
+
+          <div class="pricing-card">
+            <h3 class="plan-name">Enterprise</h3>
+            <p class="plan-desc">For mission-critical workloads requiring dedicated infrastructure & SLAs.</p>
+            <div class="plan-price">
+              <span class="price-currency">$</span>
+              <span class="price-amount">299</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <ul class="plan-features">
+              <li>✓ Dedicated Virtual Private Cloud</li>
+              <li>✓ Custom Edge Ingress Rules</li>
+              <li>✓ 99.999% Guaranteed SLA</li>
+              <li>✓ SOC2 & Custom Compliance Audits</li>
+              <li>✓ Dedicated Solutions Architect</li>
+            </ul>
+            <button class="btn btn-outline" id="plan-btn-enterprise">Contact Enterprise Sales</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner-section">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Ready to Supercharge Your Cloud Infrastructure?</h2>
+          <p>Join over 40,000+ developers building the future of distributed intelligent applications.</p>
+          <div class="cta-input-group">
+            <input type="email" id="cta-email-input" placeholder="Enter your work email..." aria-label="Work Email Address">
+            <button class="btn btn-primary" id="cta-submit-btn">Get Started</button>
+          </div>
+          <div class="cta-feedback" id="cta-feedback"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#hero" class="brand-logo">
+          <span class="logo-icon">✨</span>
+          <span class="logo-text">Nova<span>Cloud</span></span>
+        </a>
+        <p class="footer-tagline">
+          Next-generation autonomous edge cloud computing platform. Built for modern software engineers.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="GitHub">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Twitter / X">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="#features">Edge Compute</a></li>
+            <li><a href="#features">Neural Observability</a></li>
+            <li><a href="#architecture">Declarative Infra</a></li>
+            <li><a href="#pricing">Enterprise Scale</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">API Documentation</a></li>
+            <li><a href="#">Interactive SDKs</a></li>
+            <li><a href="#">Status Page</a></li>
+            <li><a href="#">Security & Compliance</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 NovaCloud AI Inc. Developed for Oasis Infobyte SIP Internship (Web Development Track Task 1).</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
