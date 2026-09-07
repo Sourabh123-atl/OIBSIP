@@ -20,15 +20,15 @@
 
 ## 📌 Project Directory & Matrix
 
-| Level | Task | Project Name | Tech Stack | Status | Directory Link |
+| Level | Task | Project Name | Tech Stack | Status | Live Demo Link |
 | :--- | :--- | :--- | :--- | :---: | :--- |
-| **Level 1** | **Task 1** | **Landing Page** | HTML5, CSS3, JavaScript | `COMPLETED` | [`WebDev-L1-LandingPage/`](./WebDev-L1-LandingPage/) |
-| **Level 1** | **Task 2** | **Personal Portfolio** | HTML5, CSS3, JavaScript | `COMPLETED` | [`WebDev-L1-PersonalPortfolio/`](./WebDev-L1-PersonalPortfolio/) |
-| **Level 1** | **Task 3** | **Temperature Converter** | HTML5, CSS3, JavaScript | `COMPLETED` | [`WebDev-L1-TemperatureConverter/`](./WebDev-L1-TemperatureConverter/) |
-| **Level 2** | **Task 1** | **Calculator** | HTML5, CSS3 (Grid), JavaScript | `COMPLETED` | [`WebDev-L2-Calculator/`](./WebDev-L2-Calculator/) |
-| **Level 2** | **Task 2** | **Tribute Page** | HTML5, CSS3, JavaScript | `COMPLETED` | [`WebDev-L2-TributePage/`](./WebDev-L2-TributePage/) |
-| **Level 2** | **Task 3** | **To-Do Web App** | HTML5, CSS3, JavaScript, LocalStorage | `COMPLETED` | [`WebDev-L2-ToDoWebApp/`](./WebDev-L2-ToDoWebApp/) |
-| **Level 2** | **Task 4** | **Login Authentication System** | HTML5, CSS3, JS, Web Crypto (SHA-256) | `COMPLETED` | [`WebDev-L2-LoginAuth/`](./WebDev-L2-LoginAuth/) |
+| **Level 1** | **Task 1** | **Landing Page** | HTML5, CSS3, JavaScript | `COMPLETED` | [🌐 Launch App](https://sourabh123-atl.github.io/OIBSIP/WebDev-L1-LandingPage/) |
+| **Level 1** | **Task 2** | **Personal Portfolio** | HTML5, CSS3, JavaScript | `COMPLETED` | [🌐 Launch App](https://sourabh123-atl.github.io/OIBSIP/WebDev-L1-PersonalPortfolio/) |
+| **Level 1** | **Task 3** | **Temperature Converter** | HTML5, CSS3, JavaScript | `COMPLETED` | [🌐 Launch App](https://sourabh123-atl.github.io/OIBSIP/WebDev-L1-TemperatureConverter/) |
+| **Level 2** | **Task 1** | **Calculator** | HTML5, CSS3 (Grid), JavaScript | `COMPLETED` | [🌐 Launch App](https://sourabh123-atl.github.io/OIBSIP/WebDev-L2-Calculator/) |
+| **Level 2** | **Task 2** | **Tribute Page** | HTML5, CSS3, JavaScript | `COMPLETED` | [🌐 Launch App](https://sourabh123-atl.github.io/OIBSIP/WebDev-L2-TributePage/) |
+| **Level 2** | **Task 3** | **To-Do Web App** | HTML5, CSS3, JavaScript, LocalStorage | `COMPLETED` | [🌐 Launch App](https://sourabh123-atl.github.io/OIBSIP/WebDev-L2-ToDoWebApp/) |
+| **Level 2** | **Task 4** | **Login Authentication System** | HTML5, CSS3, JS, Web Crypto (SHA-256) | `COMPLETED` | [🌐 Launch App](https://sourabh123-atl.github.io/OIBSIP/WebDev-L2-LoginAuth/) |
 
 ---
 
@@ -38,7 +38,7 @@ All projects are built using pure, standards-compliant HTML5, modern responsive 
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/OIBSIP.git
+git clone https://github.com/Sourabh123-atl/OIBSIP.git
 cd OIBSIP
 ```
 
