@@ -7,21 +7,24 @@
   <meta name="description" content="Master portfolio showcase for Oasis Infobyte Student Internship Program (OIBSIP) featuring Level 1 and Level 2 web applications.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090c15;
-      --card-bg: rgba(20, 26, 42, 0.75);
+      --bg: #07090e;
+      --card-bg: rgba(17, 24, 39, 0.75);
       --card-border: rgba(255, 255, 255, 0.08);
       --primary: #6366f1;
+      --primary-hover: #4f46e5;
       --accent: #06b6d4;
+      --accent-pink: #ec4899;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --text-dim: #64748b;
       --font-heading: 'Outfit', sans-serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
-      --radius: 16px;
-      --transition: 0.25s ease;
+      --radius: 18px;
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -31,64 +34,154 @@
       line-height: 1.6;
       min-height: 100vh;
       padding: 3rem 1.5rem;
-      background-image: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 400px),
-                        radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.12), transparent 400px);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.18), transparent 450px),
+        radial-gradient(circle at 85% 25%, rgba(6, 182, 212, 0.15), transparent 400px),
+        radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.12), transparent 500px);
+      background-attachment: fixed;
     }
-    .container { max-width: 1140px; margin: 0 auto; }
-    header { text-align: center; margin-bottom: 3.5rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    
+    header { text-align: center; margin-bottom: 3.5rem; position: relative; }
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
       background: rgba(99, 102, 241, 0.15);
-      border: 1px solid rgba(99, 102, 241, 0.35);
+      border: 1px solid rgba(99, 102, 241, 0.4);
       color: #a5b4fc;
-      padding: 0.4rem 1rem;
+      padding: 0.45rem 1.2rem;
       border-radius: 9999px;
       font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 1.2rem;
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
     }
     h1 {
       font-family: var(--font-heading);
-      font-size: 2.8rem;
-      font-weight: 800;
-      letter-spacing: -1px;
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: -1.5px;
       margin-bottom: 0.8rem;
+      background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 70%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 680px; margin: 0 auto; }
+    .subtitle { color: var(--text-muted); font-size: 1.15rem; max-width: 720px; margin: 0 auto 2rem auto; }
+
+    /* LinkedIn Video Studio Promo Banner */
+    .linkedin-studio-card {
+      background: linear-gradient(135deg, rgba(30, 27, 75, 0.9), rgba(15, 23, 42, 0.9));
+      border: 2px solid rgba(99, 102, 241, 0.5);
+      border-radius: 24px;
+      padding: 2.2rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.3);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .linkedin-studio-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.25), transparent 70%);
+      pointer-events: none;
+    }
+    .studio-text h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .studio-text p {
+      color: #cbd5e1;
+      font-size: 1rem;
+      max-width: 650px;
+      line-height: 1.5;
+    }
+    .studio-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-studio {
+      background: linear-gradient(135deg, #0284c7, #6366f1);
+      color: #ffffff;
+      border: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+    }
+    .btn-studio:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(2, 132, 199, 0.6);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #f8fafc;
+      padding: 0.9rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #38bdf8;
+    }
+
+    /* Section Headings */
     .level-heading {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      margin: 2.5rem 0 1.5rem 0;
+      gap: 1rem;
+      margin: 3rem 0 1.8rem 0;
       border-bottom: 1px solid var(--card-border);
-      padding-bottom: 0.8rem;
+      padding-bottom: 1rem;
     }
-    .level-heading h2 { font-family: var(--font-heading); font-size: 1.5rem; }
+    .level-heading h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; }
     .level-tag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.2rem 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 0.3rem 0.8rem;
       border-radius: 9999px;
-      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     .level-tag.l1 { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
     .level-tag.l2 { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    /* Grid & Cards */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.8rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
     }
     .card {
       background: var(--card-bg);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
-      padding: 2rem;
+      padding: 2.2rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -96,53 +189,217 @@
       position: relative;
       overflow: hidden;
     }
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(99, 102, 241, 0.4);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      opacity: 0;
+      transition: opacity var(--transition);
     }
-    .card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
-    .task-num { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
-    .card h3 { font-family: var(--font-heading); font-size: 1.3rem; margin: 0.3rem 0 0.6rem 0; color: #fff; }
-    .card p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.5);
+    }
+    .card:hover::before { opacity: 1; }
+    .card-icon {
+      font-size: 2.4rem;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+    }
+    .task-num {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+    }
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid var(--card-border);
       padding-top: 1.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      gap: 1rem;
     }
     .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-    .tag { font-size: 0.7rem; background: rgba(255, 255, 255, 0.05); color: #cbd5e1; padding: 0.2rem 0.5rem; border-radius: 6px; }
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      color: #94a3b8;
+    }
+    .actions-group { display: flex; gap: 0.5rem; align-items: center; }
+    .btn-record {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: var(--transition);
+    }
+    .btn-record:hover {
+      background: #ef4444;
+      color: #ffffff;
+    }
     .btn-launch {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
       background: var(--primary);
       color: #fff;
-      font-weight: 600;
-      font-size: 0.88rem;
+      text-decoration: none;
       padding: 0.55rem 1.1rem;
       border-radius: 8px;
-      text-decoration: none;
-      transition: all var(--transition);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background var(--transition);
     }
-    .btn-launch:hover { background: #4f46e5; transform: translateY(-2px); }
-    footer { text-align: center; margin-top: 4rem; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--card-border); padding-top: 2rem; }
+    .btn-launch:hover { background: var(--primary-hover); }
+
+    /* Cinematic 2-Second Video Title Card Modal */
+    #title-card-overlay {
+      position: fixed;
+      inset: 0;
+      background: #060810;
+      z-index: 99999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    #title-card-overlay.active { display: flex; }
+    .tc-box {
+      max-width: 900px;
+      width: 100%;
+      border: 2px solid rgba(99, 102, 241, 0.6);
+      border-radius: 28px;
+      padding: 3.5rem 2rem;
+      background: radial-gradient(circle at center, rgba(30, 27, 75, 0.95), #060810 80%);
+      box-shadow: 0 0 80px rgba(99, 102, 241, 0.4);
+      animation: pulseIn 0.6s ease-out;
+      position: relative;
+    }
+    @keyframes pulseIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .tc-org {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #38bdf8;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .tc-name {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin-bottom: 0.6rem;
+    }
+    .tc-track {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #a5b4fc;
+      margin-bottom: 1.5rem;
+    }
+    .tc-task-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #06b6d4, #6366f1);
+      color: #ffffff;
+      font-size: 1.3rem;
+      font-weight: 800;
+      padding: 0.6rem 2rem;
+      border-radius: 9999px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+    }
+    .tc-timer {
+      font-family: monospace;
+      font-size: 1rem;
+      color: #94a3b8;
+    }
+    .tc-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      background: transparent;
+      border: none;
+      color: #64748b;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    .tc-close:hover { color: #fff; }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--card-border);
+      color: #64748b;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="badge">✨ Oasis Infobyte SIP 2026</div>
-      <h1>Web Development Portfolio</h1>
-      <p class="subtitle">Complete implementation of Level 1 and Level 2 tasks for the Oasis Infobyte Student Internship Program.</p>
+      <div class="badge">OASIS INFOBYTE • SIP 2026</div>
+      <h1>Web Development &amp; Designing</h1>
+      <p class="subtitle">Complete portfolio submission featuring 7 interactive web applications adhering strictly to Level 1 and Level 2 specifications.</p>
     </header>
+
+    <!-- LinkedIn Video Demo Recording Studio Banner -->
+    <div class="linkedin-studio-card">
+      <div class="studio-text">
+        <h2>🎬 LinkedIn Video Post Recording Studio</h2>
+        <p>Prepare professional 30-60 second video demos for your LinkedIn submission with a built-in <strong>Oasis Infobyte 2-Second Title Card</strong> (Full Name + Track + Task Title) mandated by the official internship guidelines.</p>
+      </div>
+      <div class="studio-actions">
+        <button class="btn-studio" onclick="openTitleCard('WebDev-L1-LandingPage/', 'Task 1: Landing Page (NovaCloud AI)')">
+          🎥 Record Task 1 Demo
+        </button>
+        <a href="LINKEDIN_POSTS_GUIDE.md" target="_blank" class="btn-outline">
+          📋 View Post Captions &amp; Scripts
+        </a>
+      </div>
+    </div>
 
     <!-- LEVEL 1 -->
     <div class="level-heading">
       <span class="level-tag l1">Level 1</span>
-      <h2>Foundational Web Engineering (3 Tasks)</h2>
+      <h2>Foundational Web Experiences (3 Tasks)</h2>
     </div>
 
     <div class="grid">
@@ -158,9 +415,12 @@
           <div class="tags">
             <span class="tag">HTML5</span>
             <span class="tag">CSS3</span>
-            <span class="tag">Responsive</span>
+            <span class="tag">SaaS UI</span>
           </div>
-          <a href="WebDev-L1-LandingPage/" class="btn-launch">Launch ↗</a>
+          <div class="actions-group">
+            <button class="btn-record" onclick="openTitleCard('WebDev-L1-LandingPage/', 'Task 1: Landing Page')">🔴 Video Mode</button>
+            <a href="WebDev-L1-LandingPage/" class="btn-launch">Launch ↗</a>
+          </div>
         </div>
       </div>
 
@@ -176,9 +436,12 @@
           <div class="tags">
             <span class="tag">Portfolio</span>
             <span class="tag">Dark Mode</span>
-            <span class="tag">Glass</span>
+            <span class="tag">Interactive</span>
           </div>
-          <a href="WebDev-L1-PersonalPortfolio/" class="btn-launch">Launch ↗</a>
+          <div class="actions-group">
+            <button class="btn-record" onclick="openTitleCard('WebDev-L1-PersonalPortfolio/', 'Task 2: Personal Portfolio')">🔴 Video Mode</button>
+            <a href="WebDev-L1-PersonalPortfolio/" class="btn-launch">Launch ↗</a>
+          </div>
         </div>
       </div>
 
@@ -192,11 +455,14 @@
         </div>
         <div class="card-footer">
           <div class="tags">
-            <span class="tag">Math</span>
-            <span class="tag">Validation</span>
-            <span class="tag">Visualizer</span>
+            <span class="tag">Converter</span>
+            <span class="tag">Thermo Fluid</span>
+            <span class="tag">Real-Time</span>
           </div>
-          <a href="WebDev-L1-TemperatureConverter/" class="btn-launch">Launch ↗</a>
+          <div class="actions-group">
+            <button class="btn-record" onclick="openTitleCard('WebDev-L1-TemperatureConverter/', 'Task 3: Temperature Converter')">🔴 Video Mode</button>
+            <a href="WebDev-L1-TemperatureConverter/" class="btn-launch">Launch ↗</a>
+          </div>
         </div>
       </div>
     </div>
@@ -204,7 +470,7 @@
     <!-- LEVEL 2 -->
     <div class="level-heading">
       <span class="level-tag l2">Level 2</span>
-      <h2>Interactive Applications & Systems (4 Tasks)</h2>
+      <h2>Interactive Applications &amp; Systems (4 Tasks)</h2>
     </div>
 
     <div class="grid">
@@ -219,10 +485,13 @@
         <div class="card-footer">
           <div class="tags">
             <span class="tag">CSS Grid</span>
-            <span class="tag">Arithmetic</span>
+            <span class="tag">Sci-Fi Sounds</span>
             <span class="tag">History</span>
           </div>
-          <a href="WebDev-L2-Calculator/" class="btn-launch">Launch ↗</a>
+          <div class="actions-group">
+            <button class="btn-record" onclick="openTitleCard('WebDev-L2-Calculator/', 'Task 4: Precision Calculator')">🔴 Video Mode</button>
+            <a href="WebDev-L2-Calculator/" class="btn-launch">Launch ↗</a>
+          </div>
         </div>
       </div>
 
@@ -238,9 +507,12 @@
           <div class="tags">
             <span class="tag">Editorial</span>
             <span class="tag">Timeline</span>
-            <span class="tag">Typography</span>
+            <span class="tag">Quotes</span>
           </div>
-          <a href="WebDev-L2-TributePage/" class="btn-launch">Launch ↗</a>
+          <div class="actions-group">
+            <button class="btn-record" onclick="openTitleCard('WebDev-L2-TributePage/', 'Tribute Page (Dr. APJ Abdul Kalam)')">🔴 Video Mode</button>
+            <a href="WebDev-L2-TributePage/" class="btn-launch">Launch ↗</a>
+          </div>
         </div>
       </div>
 
@@ -254,11 +526,14 @@
         </div>
         <div class="card-footer">
           <div class="tags">
-            <span class="tag">CRUD</span>
-            <span class="tag">LocalStorage</span>
-            <span class="tag">Filters</span>
+            <span class="tag">Kanban</span>
+            <span class="tag">Confetti FX</span>
+            <span class="tag">Pomodoro</span>
           </div>
-          <a href="WebDev-L2-ToDoWebApp/" class="btn-launch">Launch ↗</a>
+          <div class="actions-group">
+            <button class="btn-record" onclick="openTitleCard('WebDev-L2-ToDoWebApp/', 'Task 5: TaskFlow Productivity Web App')">🔴 Video Mode</button>
+            <a href="WebDev-L2-ToDoWebApp/" class="btn-launch">Launch ↗</a>
+          </div>
         </div>
       </div>
 
@@ -273,17 +548,85 @@
         <div class="card-footer">
           <div class="tags">
             <span class="tag">SHA-256</span>
-            <span class="tag">Security</span>
-            <span class="tag">Route Guard</span>
+            <span class="tag">Auth Guard</span>
+            <span class="tag">Dashboard</span>
           </div>
-          <a href="WebDev-L2-LoginAuth/" class="btn-launch">Launch ↗</a>
+          <div class="actions-group">
+            <button class="btn-record" onclick="openTitleCard('WebDev-L2-LoginAuth/', 'Login Authentication System')">🔴 Video Mode</button>
+            <a href="WebDev-L2-LoginAuth/" class="btn-launch">Launch ↗</a>
+          </div>
         </div>
       </div>
     </div>
 
     <footer>
-      <p>&copy; 2026 Oasis Infobyte Student Internship Program (OIBSIP). Repository: <strong>OIBSIP</strong>.</p>
+      <p>&copy; 2026 Oasis Infobyte Student Internship Program (OIBSIP) • Candidate: <strong>Sourabh Patel</strong> • Repository: <strong>OIBSIP</strong></p>
     </footer>
   </div>
+
+  <!-- Cinematic 2-Second Title Card Overlay -->
+  <div id="title-card-overlay">
+    <div class="tc-box">
+      <button class="tc-close" onclick="closeTitleCard()">✕</button>
+      <div class="tc-org">OASIS INFOBYTE — STUDENT INTERNSHIP PROGRAM</div>
+      <div class="tc-name" id="tc-candidate-name">SOURABH PATEL</div>
+      <div class="tc-track">Web Development &amp; Designing Track</div>
+      <div class="tc-task-badge" id="tc-task-title">Task 1: Landing Page</div>
+      <div class="tc-timer" id="tc-status-msg">Title Card Active (2 seconds) — Launching app demonstration...</div>
+    </div>
+  </div>
+
+  <script>
+    let timerId = null;
+
+    // Web Audio Synthesizer for Title Card Chime
+    function playChime() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3); // A5
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.8);
+      } catch (e) {}
+    }
+
+    function openTitleCard(destinationUrl, taskTitle) {
+      const overlay = document.getElementById('title-card-overlay');
+      const taskElem = document.getElementById('tc-task-title');
+      const statusElem = document.getElementById('tc-status-msg');
+      
+      taskElem.textContent = taskTitle;
+      overlay.classList.add('active');
+      playChime();
+
+      let secondsRemaining = 2;
+      statusElem.textContent = `Showing Title Card for recording (${secondsRemaining}s remaining)...`;
+
+      timerId = setInterval(() => {
+        secondsRemaining--;
+        if (secondsRemaining > 0) {
+          statusElem.textContent = `Showing Title Card for recording (${secondsRemaining}s remaining)...`;
+        } else {
+          clearInterval(timerId);
+          statusElem.textContent = "Launching live project demonstration...";
+          setTimeout(() => {
+            window.location.href = destinationUrl;
+          }, 300);
+        }
+      }, 1000);
+    }
+
+    function closeTitleCard() {
+      if (timerId) clearInterval(timerId);
+      document.getElementById('title-card-overlay').classList.remove('active');
+    }
+  </script>
 </body>
 </html>

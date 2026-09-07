@@ -199,6 +199,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function playClickBeep(freq = 600) {
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.07);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.07);
+    } catch(e) {}
+  }
+
   // Keypad Click Event Delegations
   const keypad = document.getElementById('keypad');
   keypad.addEventListener('click', (e) => {
@@ -206,28 +222,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!target) return;
 
     if (target.dataset.number != null) {
+      playClickBeep(520);
       calculator.appendNumber(target.dataset.number);
       calculator.updateDisplay();
     } else if (target.dataset.operator != null) {
+      playClickBeep(780);
       calculator.chooseOperation(target.dataset.operator);
       calculator.updateDisplay();
     } else if (target.dataset.action === 'calculate') {
+      playClickBeep(1040);
       calculator.compute();
       calculator.updateDisplay();
       renderHistory();
     } else if (target.dataset.action === 'all-clear') {
+      playClickBeep(320);
       calculator.clearAll();
       calculator.updateDisplay();
     } else if (target.dataset.action === 'clear-entry') {
+      playClickBeep(360);
       calculator.clearEntry();
       calculator.updateDisplay();
     } else if (target.dataset.action === 'backspace') {
+      playClickBeep(400);
       calculator.delete();
       calculator.updateDisplay();
     } else if (target.dataset.action === 'toggle-sign') {
+      playClickBeep(640);
       calculator.toggleSign();
       calculator.updateDisplay();
     } else if (target.dataset.action === 'decimal') {
+      playClickBeep(580);
       calculator.appendNumber('.');
       calculator.updateDisplay();
     }
