@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — Sourabh Patel Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #f7f8fa;
+      --bg-surface: #ffffff;
+      --text-primary: #172033;
+      --text-secondary: #667085;
+      --border-color: #e5e7eb;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .card-404 {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 48px 32px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 1px 3px rgba(16, 24, 40, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .badge-404 {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: #eff6ff;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid #dbeafe;
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .btn-home {
+      margin-top: 8px;
+      background-color: var(--primary);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.2s ease;
+    }
+    .btn-home:hover {
+      background-color: var(--primary-hover);
+    }
+  </style>
+</head>
+<body>
+  <div class="card-404">
+    <span class="badge-404">404 Error</span>
+    <h1>Page Not Found</h1>
+    <p>The requested page or project route does not exist. Return to the main portfolio to browse all live applications.</p>
+    <a href="/OIBSIP/" class="btn-home">
+      <span>← Return to Portfolio</span>
+    </a>
+  </div>
+</body>
+</html>

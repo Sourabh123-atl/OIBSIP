@@ -3,1333 +3,1617 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OIBSIP Web Development &amp; Designing All-in-One Master Suite — Sourabh Patel</title>
-  <meta name="description" content="All-in-one master interactive web suite for Oasis Infobyte Student Internship Program (OIBSIP) featuring 8 full-scale Level 1, Level 2, and Level 3 web applications by Sourabh Patel.">
+  <title>Sourabh Patel &mdash; Web Development &amp; Designing Portfolio</title>
+  <meta name="description" content="A curated collection of practical frontend and JavaScript applications developed by Sourabh Patel for the Oasis Infobyte Student Internship Program (OIBSIP).">
+  <meta name="author" content="Sourabh Patel">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sourabh Patel — Web Development Portfolio">
+  <meta property="og:description" content="A curated collection of practical frontend and JavaScript applications developed by Sourabh Patel. Hosted on GitHub Pages.">
+  <meta property="og:url" content="https://sourabh123-atl.github.io/OIBSIP/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Ctext x='16' y='21' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='white' text-anchor='middle'%3ESP%3C/text%3E%3C/svg%3E">
+
+  <!-- Typography: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <script>
-    // Bulletproof GitHub Pages subfolder resolution:
+    // GitHub Pages subfolder trailing slash resolver
     if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
       window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
     }
   </script>
+
   <style>
+    /* =========================================================
+       DESIGN TOKENS — CLEAN, PROFESSIONAL, HUMAN-DESIGNED
+       ========================================================= */
     :root {
-      --bg: #07090e;
-      --card-bg: rgba(17, 24, 39, 0.78);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --primary: #6366f1;
-      --primary-hover: #4f46e5;
-      --accent: #06b6d4;
-      --accent-pink: #ec4899;
-      --accent-emerald: #10b981;
-      --accent-amber: #f59e0b;
-      --text-main: #f8fafc;
+      --bg-page: #f7f8fa;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f1f4f8;
+      
+      --text-primary: #172033;
+      --text-secondary: #667085;
       --text-muted: #94a3b8;
-      --text-dim: #64748b;
-      --font-heading: 'Outfit', sans-serif;
-      --font-body: 'Plus Jakarta Sans', sans-serif;
-      --font-mono: 'Fira Code', monospace;
-      --radius: 20px;
-      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      --border-color: #e5e7eb;
+      --border-focus: #2563eb;
+      
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-subtle: #eff6ff;
+      --primary-text: #1e40af;
+      
+      --accent: #0f766e;
+      --accent-subtle: #f0fdfa;
+      
+      --badge-l1-bg: #eff6ff;
+      --badge-l1-text: #1d4ed8;
+      --badge-l1-border: #dbeafe;
+      
+      --badge-l2-bg: #fffbeb;
+      --badge-l2-text: #b45309;
+      --badge-l2-border: #fef3c7;
+      
+      --badge-l3-bg: #faf5ff;
+      --badge-l3-text: #6b21a8;
+      --badge-l3-border: #f3e8ff;
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+      --shadow-card: 0 1px 3px 0 rgba(16, 24, 40, 0.08), 0 1px 2px -1px rgba(16, 24, 40, 0.04);
+      --shadow-hover: 0 10px 24px -4px rgba(16, 24, 40, 0.08), 0 4px 8px -2px rgba(16, 24, 40, 0.03);
+      
+      --transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
     body {
-      background: var(--bg);
-      color: var(--text-main);
-      font-family: var(--font-body);
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: var(--font);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
-      padding: 2.5rem 1.5rem 4rem 1.5rem;
-      background-image: 
-        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.18), transparent 500px),
-        radial-gradient(circle at 90% 20%, rgba(6, 182, 212, 0.16), transparent 450px),
-        radial-gradient(circle at 50% 90%, rgba(236, 72, 153, 0.12), transparent 550px);
-      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
     }
-    .container { max-width: 1280px; margin: 0 auto; }
-    
-    /* Sticky Top Control Bar */
-    .top-all-in-one-bar {
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Accessibility Focus */
+    :focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 2px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* =========================================================
+       1. TOP NAVIGATION BAR
+       ========================================================= */
+    .navbar {
       position: sticky;
-      top: 15px;
-      z-index: 100;
-      background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 18px;
-      padding: 0.85rem 1.4rem;
-      margin-bottom: 2.5rem;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      transition: box-shadow var(--transition);
+    }
+    .navbar.scrolled {
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-primary);
+    }
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      background-color: var(--primary);
+      color: #ffffff;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+    .brand-title {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-link {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color var(--transition);
+      position: relative;
+      padding: 6px 0;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+    .nav-github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all var(--transition);
+    }
+    .nav-github-btn:hover {
+      background-color: var(--bg-subtle);
+      border-color: #cbd5e1;
+    }
+    
+    /* Mobile Hamburger */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+    }
+    .mobile-nav-drawer {
+      display: none;
+      flex-direction: column;
+      padding: 16px 24px 24px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      gap: 16px;
+    }
+    .mobile-nav-drawer.open {
+      display: flex;
+    }
+    .mobile-nav-drawer .nav-link {
+      padding: 10px 0;
+      font-size: 1rem;
+      border-bottom: 1px solid var(--bg-subtle);
+    }
+
+    /* =========================================================
+       2. HERO SECTION
+       ========================================================= */
+    .hero {
+      padding: 64px 0 56px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      width: fit-content;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #10b981;
+      border-radius: 50%;
+    }
+    .hero h1 {
+      font-size: 2.85rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .hero-desc {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 540px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color var(--transition), transform var(--transition);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background-color: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color var(--transition), border-color var(--transition);
+    }
+    .btn-secondary:hover {
+      background-color: var(--bg-subtle);
+      border-color: #cbd5e1;
+    }
+
+    /* Clean Code Preview Card in Hero */
+    .hero-card-preview {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .preview-header {
+      background: var(--bg-subtle);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot.red { background-color: #ef4444; }
+    .dot.yellow { background-color: #f59e0b; }
+    .dot.green { background-color: #10b981; }
+    .window-title {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 500;
+    }
+    .preview-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+    }
+    .code-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .line-num {
+      color: var(--text-muted);
+      user-select: none;
+      min-width: 20px;
+    }
+    .code-text {
+      color: var(--text-primary);
+    }
+    .code-comment { color: var(--text-secondary); }
+    .code-key { color: #2563eb; font-weight: 600; }
+    .code-val { color: #0d9488; }
+    .code-num { color: #b45309; }
+
+    /* =========================================================
+       3. OVERVIEW METRICS SECTION
+       ========================================================= */
+    .overview-section {
+      padding: 24px 0 48px;
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .metric-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: var(--shadow-sm);
+    }
+    .metric-label {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .metric-val {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .metric-note {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* =========================================================
+       4. APPLICATIONS SECTION
+       ========================================================= */
+    .applications-section {
+      padding: 48px 0 80px;
+      border-top: 1px solid var(--border-color);
+    }
+    .section-head {
+      margin-bottom: 32px;
+    }
+    .section-eyebrow {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+    }
+
+    /* Toolbar: Filters + Search */
+    .controls-toolbar {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      gap: 16px;
+      margin-bottom: 32px;
+      background: var(--bg-surface);
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
     }
-    .quick-brand {
+    .filter-tabs {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 6px;
+      flex-wrap: wrap;
     }
-    .status-dot {
-      width: 10px;
-      height: 10px;
-      background: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 12px #10b981;
-      animation: pulse 2s infinite;
+    .filter-tab {
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all var(--transition);
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.25); opacity: 0.7; }
+    .filter-tab:hover {
+      color: var(--text-primary);
+      background-color: var(--bg-subtle);
     }
-    .brand-title {
-      font-family: var(--font-heading);
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: #fff;
-    }
-    .brand-cand {
-      font-size: 0.82rem;
-      color: #38bdf8;
+    .filter-tab.active {
+      background-color: var(--primary-subtle);
+      color: var(--primary-text);
       font-weight: 600;
-      background: rgba(56, 189, 248, 0.1);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
     }
-    .search-box {
-      flex: 1;
-      max-width: 380px;
+    .search-wrapper {
       position: relative;
+      min-width: 260px;
     }
     .search-input {
       width: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px;
-      padding: 0.55rem 1rem 0.55rem 2.4rem;
-      color: #fff;
-      font-family: var(--font-body);
+      background: var(--bg-page);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px 8px 36px;
       font-size: 0.88rem;
+      font-family: inherit;
+      color: var(--text-primary);
       outline: none;
-      transition: all var(--transition);
+      transition: border-color var(--transition), box-shadow var(--transition);
     }
     .search-input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+      background-color: #ffffff;
     }
     .search-icon {
       position: absolute;
-      left: 10px;
+      left: 11px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 0.9rem;
-      opacity: 0.6;
-    }
-    .level-filters {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-    .filter-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--text-muted);
-      padding: 0.45rem 0.85rem;
-      border-radius: 8px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all var(--transition);
-    }
-    .filter-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
-    }
-    .filter-btn.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
-    }
-
-    /* Main Hero Header */
-    header { text-align: center; margin-bottom: 3.5rem; position: relative; }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: rgba(99, 102, 241, 0.15);
-      border: 1px solid rgba(99, 102, 241, 0.4);
-      color: #a5b4fc;
-      padding: 0.45rem 1.3rem;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
-    }
-    h1 {
-      font-family: var(--font-heading);
-      font-size: 3.4rem;
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      margin-bottom: 0.8rem;
-      background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 70%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1.18rem;
-      max-width: 800px;
-      margin: 0 auto 2.2rem auto;
-      line-height: 1.65;
-    }
-
-    /* Quick Jump Pill Bar */
-    .quick-jump-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.6rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .jump-pill {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #cbd5e1;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      transition: all var(--transition);
-      cursor: pointer;
-    }
-    .jump-pill:hover {
-      background: rgba(99, 102, 241, 0.2);
-      border-color: rgba(99, 102, 241, 0.5);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    /* LinkedIn Video Studio Promo Banner */
-    .linkedin-studio-card {
-      background: linear-gradient(135deg, rgba(30, 27, 75, 0.92), rgba(15, 23, 42, 0.95));
-      border: 2px solid rgba(99, 102, 241, 0.5);
-      border-radius: 24px;
-      padding: 2.2rem;
-      margin-top: 3.5rem;
-      margin-bottom: 4rem;
-      box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.35);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .linkedin-studio-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.25), transparent 70%);
       pointer-events: none;
     }
-    .studio-text h2 {
-      font-family: var(--font-heading);
-      font-size: 1.85rem;
-      font-weight: 800;
-      color: #38bdf8;
-      margin-bottom: 0.5rem;
+
+    /* Cards Grid */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+    .app-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .app-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: #cbd5e1;
+    }
+    .card-top {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .card-header-row {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      justify-content: space-between;
     }
-    .studio-text p {
-      color: #cbd5e1;
-      font-size: 1rem;
-      max-width: 680px;
+    .card-icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+    .level-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      letter-spacing: 0.02em;
+    }
+    .level-badge.l1 {
+      background-color: var(--badge-l1-bg);
+      color: var(--badge-l1-text);
+      border: 1px solid var(--badge-l1-border);
+    }
+    .level-badge.l2 {
+      background-color: var(--badge-l2-bg);
+      color: var(--badge-l2-text);
+      border: 1px solid var(--badge-l2-border);
+    }
+    .level-badge.l3 {
+      background-color: var(--badge-l3-bg);
+      color: var(--badge-l3-text);
+      border: 1px solid var(--badge-l3-border);
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
       line-height: 1.55;
     }
-    .studio-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-studio {
-      background: linear-gradient(135deg, #0284c7, #6366f1);
-      color: #ffffff;
-      border: none;
-      padding: 0.9rem 1.8rem;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1.02rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      transition: var(--transition);
-      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
-    }
-    .btn-studio:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(2, 132, 199, 0.6);
-    }
-    .btn-outline {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #f8fafc;
-      padding: 0.9rem 1.5rem;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: #38bdf8;
-    }
-
-    /* Section Headings */
-    .level-heading {
+    .tech-tags {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1rem;
-      margin: 3.5rem 0 1.8rem 0;
-      border-bottom: 1px solid var(--card-border);
-      padding-bottom: 1.1rem;
+      gap: 6px;
+      margin-top: 4px;
     }
-    .level-title-group {
+    .tech-tag {
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .card-actions {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 10px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-color);
     }
-    .level-heading h2 {
-      font-family: var(--font-heading);
-      font-size: 1.7rem;
-      font-weight: 800;
+    .btn-card-live {
+      flex: 1;
+      background-color: var(--primary);
+      color: #ffffff;
+      padding: 9px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background-color var(--transition);
     }
-    .level-tag {
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 0.35rem 0.9rem;
-      border-radius: 9999px;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
+    .btn-card-live:hover {
+      background-color: var(--primary-hover);
     }
-    .level-tag.l1 { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); }
-    .level-tag.l2 { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); }
-    .level-tag.l3 { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.35); }
+    .btn-card-source {
+      background-color: var(--bg-surface);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      padding: 9px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+    }
+    .btn-card-source:hover {
+      background-color: var(--bg-subtle);
+      color: var(--text-primary);
+      border-color: #cbd5e1;
+    }
 
-    /* Grid & Task Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
-      gap: 2.2rem;
-      margin-bottom: 3rem;
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
     }
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 2.2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(99, 102, 241, 0.45);
-      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
-    }
-    .card:hover::before { opacity: 1; }
-    
-    .card-top { margin-bottom: 1.5rem; }
-    .card-icon-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.2rem;
-    }
-    .card-icon {
-      font-size: 2.5rem;
-      display: inline-block;
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
-    }
-    .status-badge-live {
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34d399;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.25rem 0.65rem;
-      border-radius: 9999px;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .task-num {
-      font-size: 0.82rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
+    .no-results.visible {
       display: block;
     }
-    .card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.55rem;
-      font-weight: 800;
-      margin-bottom: 0.75rem;
-      color: #ffffff;
-    }
-    .card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.2rem;
-      line-height: 1.6;
-    }
 
-    /* Key Feature Checklist */
-    .feature-checklist {
-      list-style: none;
+    /* =========================================================
+       5. ABOUT THE COLLECTION SECTION
+       ========================================================= */
+    .about-section {
+      padding: 72px 0;
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .about-text {
       display: flex;
       flex-direction: column;
-      gap: 0.45rem;
-      margin-bottom: 1.5rem;
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      padding: 0.85rem 1rem;
-      border-radius: 12px;
+      gap: 16px;
     }
-    .feature-checklist li {
-      font-size: 0.82rem;
-      color: #cbd5e1;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .about-text p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.65;
     }
-    .feature-checklist li::before {
-      content: '✓';
-      color: #10b981;
-      font-weight: 800;
-    }
-
-    /* Card Footer & Actions */
-    .card-footer {
+    .key-points {
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      gap: 16px;
     }
-    .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-    .tag {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.6rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 6px;
-      color: #94a3b8;
-      font-family: var(--font-mono);
-    }
-    .actions-group {
+    .key-point-item {
       display: flex;
-      gap: 0.5rem;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .point-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background-color: var(--primary-subtle);
+      color: var(--primary);
+      display: flex;
       align-items: center;
-      flex-wrap: wrap;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
     }
-    .btn-sandbox {
-      background: linear-gradient(135deg, #0284c7, #6366f1);
-      color: #ffffff;
-      border: none;
-      padding: 0.6rem 1.1rem;
-      border-radius: 10px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: all var(--transition);
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-    }
-    .btn-sandbox:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.5);
-    }
-    .btn-record {
-      background: rgba(239, 68, 68, 0.12);
-      color: #f87171;
-      border: 1px solid rgba(239, 68, 68, 0.35);
-      padding: 0.55rem 0.9rem;
-      border-radius: 10px;
-      font-size: 0.82rem;
+    .point-content h4 {
+      font-size: 0.98rem;
       font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: var(--transition);
+      color: var(--text-primary);
+      margin-bottom: 2px;
     }
-    .btn-record:hover {
-      background: #ef4444;
-      color: #ffffff;
+    .point-content p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
     }
-    .btn-launch {
-      display: inline-flex;
+
+    /* =========================================================
+       6. TECHNOLOGIES SECTION
+       ========================================================= */
+    .tech-section {
+      padding: 64px 0;
+    }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .tech-pill-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0.35rem;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #f8fafc;
-      text-decoration: none;
-      padding: 0.55rem 0.95rem;
-      border-radius: 10px;
+      text-align: center;
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .tech-pill-card:hover {
+      transform: translateY(-2px);
+      border-color: #cbd5e1;
+    }
+    .tech-pill-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+    }
+    .tech-pill-name {
       font-size: 0.85rem;
       font-weight: 600;
-      transition: all var(--transition);
-    }
-    .btn-launch:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: #38bdf8;
+      color: var(--text-primary);
     }
 
-    /* ========================================================= */
-    /* ALL-IN-ONE IN-APP LIVE SANDBOX PREVIEW MODAL              */
-    /* ========================================================= */
-    #sandbox-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(4, 6, 12, 0.92);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      z-index: 9999;
-      display: none;
-      flex-direction: column;
-      padding: 1.2rem;
-      animation: modalFadeIn 0.25s ease-out;
+    /* =========================================================
+       7. FOOTER
+       ========================================================= */
+    .footer {
+      margin-top: auto;
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
     }
-    #sandbox-modal.active { display: flex; }
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: scale(0.98); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    
-    .sandbox-header-bar {
+    .footer-inner {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      background: #0f172a;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 14px 14px 0 0;
-      padding: 0.75rem 1.4rem;
+      flex-wrap: wrap;
+      gap: 20px;
     }
-    .sandbox-app-switcher {
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .footer-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-primary);
+    }
+    .footer-motto {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+    .footer-right {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 20px;
     }
-    .sandbox-select {
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fff;
-      font-family: var(--font-body);
-      font-size: 0.92rem;
-      font-weight: 600;
-      padding: 0.45rem 1rem;
-      border-radius: 8px;
-      outline: none;
-      cursor: pointer;
-    }
-    .device-switcher {
-      display: flex;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      padding: 0.2rem;
-      gap: 0.2rem;
-    }
-    .dev-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      font-weight: 600;
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: all var(--transition);
-    }
-    .dev-btn:hover { color: #fff; }
-    .dev-btn.active {
-      background: var(--primary);
-      color: #fff;
-    }
-    .sandbox-tools {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .btn-tool {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff;
-      padding: 0.45rem 0.85rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
+    .footer-link {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      font-weight: 500;
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 6px;
+      transition: color var(--transition);
+    }
+    .footer-link:hover {
+      color: var(--primary);
+    }
+    .btn-top {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       transition: all var(--transition);
     }
-    .btn-tool:hover { background: rgba(255, 255, 255, 0.18); }
-    .btn-close-sandbox {
-      background: rgba(239, 68, 68, 0.2);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #fca5a5;
-      padding: 0.45rem 0.9rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all var(--transition);
-    }
-    .btn-close-sandbox:hover {
-      background: #ef4444;
-      color: #fff;
+    .btn-top:hover {
+      background-color: #ffffff;
+      color: var(--text-primary);
     }
 
-    .sandbox-viewport-wrapper {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #020408;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-top: none;
-      border-radius: 0 0 14px 14px;
-      overflow: hidden;
-      position: relative;
-    }
-    .sandbox-iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: #fff;
-      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .sandbox-iframe.desktop { width: 100%; }
-    .sandbox-iframe.tablet { width: 768px; box-shadow: 0 0 40px rgba(0,0,0,0.8); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; }
-    .sandbox-iframe.mobile { width: 390px; box-shadow: 0 0 40px rgba(0,0,0,0.8); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; }
-
-    /* Cinematic 2-Second Video Title Card Modal */
-    #title-card-overlay {
-      position: fixed;
-      inset: 0;
-      background: #060810;
-      z-index: 99999;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-    }
-    #title-card-overlay.active { display: flex; }
-    .tc-box {
-      max-width: 900px;
-      width: 100%;
-      border: 2px solid rgba(99, 102, 241, 0.6);
-      border-radius: 28px;
-      padding: 3.5rem 2rem;
-      background: radial-gradient(circle at center, rgba(30, 27, 75, 0.95), #060810 80%);
-      box-shadow: 0 0 80px rgba(99, 102, 241, 0.4);
-      animation: pulseIn 0.6s ease-out;
-      position: relative;
-    }
-    @keyframes pulseIn {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    .tc-org {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: 3px;
-      color: #38bdf8;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-    .tc-name {
-      font-family: var(--font-heading);
-      font-size: 3.5rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-      color: #ffffff;
-      margin-bottom: 0.6rem;
-    }
-    .tc-track {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #a5b4fc;
-      margin-bottom: 1.5rem;
-    }
-    .tc-task-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #06b6d4, #6366f1);
-      color: #ffffff;
-      font-size: 1.3rem;
-      font-weight: 800;
-      padding: 0.6rem 2rem;
-      border-radius: 9999px;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
-    }
-    .tc-timer {
-      font-family: monospace;
-      font-size: 1rem;
-      color: #94a3b8;
-    }
-    .tc-close {
-      position: absolute;
-      top: 20px;
-      right: 25px;
-      background: transparent;
-      border: none;
-      color: #64748b;
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-    .tc-close:hover { color: #fff; }
-
-    footer {
-      text-align: center;
-      margin-top: 5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--card-border);
-      color: #64748b;
-      font-size: 0.95rem;
+    /* =========================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================= */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .hero-card-preview {
+        max-width: 580px;
+      }
+      .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      h1 { font-size: 2.5rem; }
-      .grid { grid-template-columns: 1fr; }
-      .top-all-in-one-bar { flex-direction: column; align-items: stretch; }
-      .search-box { max-width: 100%; }
-      .tc-name { font-size: 2.4rem; }
+    @media (max-width: 768px) {
+      .nav-links, .nav-github-btn {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .hero {
+        padding: 40px 0 36px;
+      }
+      .hero h1 {
+        font-size: 2.15rem;
+      }
+      .hero-desc {
+        font-size: 1rem;
+      }
+      .controls-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-wrapper {
+        min-width: 100%;
+      }
+      .apps-grid {
+        grid-template-columns: 1fr;
+      }
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .overview-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-primary, .btn-secondary {
+        justify-content: center;
+      }
+    }
+
+    /* Reduced Motion Support */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <!-- Sticky Top Control & Navigation Bar -->
-    <nav class="top-all-in-one-bar" id="master-nav">
-      <div class="quick-brand">
-        <span class="status-dot" title="Live Server Active"></span>
-        <span class="brand-title">OIBSIP 2026 Master Suite</span>
-        <span class="brand-cand">Candidate: Sourabh Patel</span>
+  <!-- =========================================================
+       1. TOP NAVIGATION BAR
+       ========================================================= -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#top" class="brand-link" aria-label="Sourabh Patel Portfolio Home">
+        <div class="brand-logo" aria-hidden="true">SP</div>
+        <div class="brand-name">
+          <span class="brand-title">Sourabh Patel</span>
+          <span class="brand-sub">Oasis Infobyte Internship</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#top" class="nav-link active">Home</a></li>
+          <li><a href="#applications" class="nav-link">Applications</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#technologies" class="nav-link">Technologies</a></li>
+        </ul>
+      </nav>
+
+      <a href="https://github.com/Sourabh123-atl/OIBSIP" target="_blank" rel="noopener noreferrer" class="nav-github-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        <span>GitHub Repository</span>
+      </a>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+      <a href="#top" class="nav-link mobile-link">Home</a>
+      <a href="#applications" class="nav-link mobile-link">Applications</a>
+      <a href="#about" class="nav-link mobile-link">About</a>
+      <a href="#technologies" class="nav-link mobile-link">Technologies</a>
+      <a href="https://github.com/Sourabh123-atl/OIBSIP" target="_blank" rel="noopener noreferrer" class="nav-github-btn" style="justify-content: center; width: 100%; margin-top: 8px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        <span>View on GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- =========================================================
+         2. HERO SECTION
+         ========================================================= -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>9 projects hosted on GitHub Pages</span>
+          </div>
+
+          <h1>A collection of practical web experiences</h1>
+
+          <p class="hero-desc">
+            A curated suite of frontend and JavaScript applications developed by <strong>Sourabh Patel</strong> for the Oasis Infobyte Student Internship Program (OIBSIP). Built with semantic HTML5, modern CSS3, and modular Vanilla JavaScript.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#applications" class="btn-primary">
+              <span>Explore Applications</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </a>
+            <a href="https://github.com/Sourabh123-atl/OIBSIP" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              <span>View GitHub</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Code-inspired Architectural Preview -->
+        <div class="hero-card-preview" aria-hidden="true">
+          <div class="preview-header">
+            <div class="window-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="window-title">oibsip-manifest.json</span>
+            <span style="width: 36px;"></span>
+          </div>
+          <div class="preview-body">
+            <div class="code-line">
+              <span class="line-num">01</span>
+              <span class="code-text"><span class="code-comment">// Candidate Profile</span></span>
+            </div>
+            <div class="code-line">
+              <span class="line-num">02</span>
+              <span class="code-text"><span class="code-key">"engineer"</span>: <span class="code-val">"Sourabh Patel"</span>,</span>
+            </div>
+            <div class="code-line">
+              <span class="line-num">03</span>
+              <span class="code-text"><span class="code-key">"internship"</span>: <span class="code-val">"Oasis Infobyte (OIBSIP)"</span>,</span>
+            </div>
+            <div class="code-line">
+              <span class="line-num">04</span>
+              <span class="code-text"><span class="code-key">"track"</span>: <span class="code-val">"Web Development & Designing"</span>,</span>
+            </div>
+            <div class="code-line">
+              <span class="line-num">05</span>
+              <span class="code-text"><span class="code-key">"tasksCompleted"</span>: <span class="code-num">8</span>,</span>
+            </div>
+            <div class="code-line">
+              <span class="line-num">06</span>
+              <span class="code-text"><span class="code-key">"runtimeDependencies"</span>: <span class="code-val">"None (Pure Vanilla)"</span>,</span>
+            </div>
+            <div class="code-line">
+              <span class="line-num">07</span>
+              <span class="code-text"><span class="code-key">"deployment"</span>: <span class="code-val">"GitHub Pages (Automated CI)"</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3. PROJECT OVERVIEW METRICS SECTION
+         ========================================================= -->
+    <section class="overview-section" aria-label="Project Overview Statistics">
+      <div class="container">
+        <div class="overview-grid">
+          <div class="metric-card">
+            <span class="metric-label">Completed Applications</span>
+            <span class="metric-val">8 Projects</span>
+            <span class="metric-note">Level 1, Level 2, and Level 3</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Engineering Stack</span>
+            <span class="metric-val">Vanilla Web</span>
+            <span class="metric-note">HTML5, CSS3, ES6+ JavaScript</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Hosting &amp; CI/CD</span>
+            <span class="metric-val">GitHub Pages</span>
+            <span class="metric-note">Automated workflow deployment</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Interface Scope</span>
+            <span class="metric-val">Fully Responsive</span>
+            <span class="metric-note">Tested from 320px to 4K</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. APPLICATIONS SECTION
+         ========================================================= -->
+    <section class="applications-section" id="applications">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">Portfolio Index</div>
+          <h2 class="section-title">Applications</h2>
+          <p class="section-desc">
+            Explore each task built for the internship curriculum. Every application is independently deployed with live previews and open-source GitHub code.
+          </p>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="controls-toolbar" role="region" aria-label="Application Filtering">
+          <div class="filter-tabs" role="tablist">
+            <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All (8)</button>
+            <button class="filter-tab" data-filter="l1" role="tab" aria-selected="false">Level 1 (3)</button>
+            <button class="filter-tab" data-filter="l2" role="tab" aria-selected="false">Level 2 (4)</button>
+            <button class="filter-tab" data-filter="l3" role="tab" aria-selected="false">Level 3 (1)</button>
+          </div>
+
+          <div class="search-wrapper">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="search-input" class="search-input" placeholder="Search applications..." aria-label="Search applications by title or tech">
+          </div>
+        </div>
+
+        <!-- Applications Grid -->
+        <div class="apps-grid" id="apps-grid">
+
+          <!-- 1. SaaS Landing Page -->
+          <article class="app-card" data-level="l1" data-search="saas landing page novacloud ai cloud pricing conversion html5 css3 javascript">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                </div>
+                <span class="level-badge l1">Level 1 • Task 1</span>
+              </div>
+              <h3 class="card-title">SaaS Landing Page</h3>
+              <p class="card-desc">A responsive SaaS landing page for NovaCloud AI with modern sections, pricing content, feature highlights, and conversion-focused design.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS Grid</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">ROI Estimator</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="WebDev-L1-LandingPage/" target="_blank" rel="noopener noreferrer" class="btn-card-live">
+                <span>Open Live App</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L1-LandingPage" target="_blank" rel="noopener noreferrer" class="btn-card-source" aria-label="View SaaS Landing Page source code on GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>Source</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 2. Personal Portfolio -->
+          <article class="app-card" data-level="l1" data-search="personal portfolio sourabh patel developer resume cli terminal skills contact html5 css3 javascript">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <span class="level-badge l1">Level 1 • Task 2</span>
+              </div>
+              <h3 class="card-title">Personal Portfolio</h3>
+              <p class="card-desc">A clean developer portfolio presenting Sourabh Patel’s skills, projects, education, and contact information.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">CLI Emulator</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="WebDev-L1-PersonalPortfolio/" target="_blank" rel="noopener noreferrer" class="btn-card-live">
+                <span>Open Live App</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L1-PersonalPortfolio" target="_blank" rel="noopener noreferrer" class="btn-card-source" aria-label="View Personal Portfolio source code on GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>Source</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 3. Temperature Converter -->
+          <article class="app-card" data-level="l1" data-search="temperature converter thermopulse celsius fahrenheit kelvin math calculation html5 css3 javascript">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+                </div>
+                <span class="level-badge l1">Level 1 • Task 3</span>
+              </div>
+              <h3 class="card-title">Temperature Converter</h3>
+              <p class="card-desc">A practical temperature conversion tool supporting Celsius, Fahrenheit, and Kelvin with instant JavaScript calculations.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Input Validation</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="WebDev-L1-TemperatureConverter/" target="_blank" rel="noopener noreferrer" class="btn-card-live">
+                <span>Open Live App</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L1-TemperatureConverter" target="_blank" rel="noopener noreferrer" class="btn-card-source" aria-label="View Temperature Converter source code on GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>Source</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 4. Precision Calculator -->
+          <article class="app-card" data-level="l2" data-search="precision calculator neocalc arithmetic math keyboard history grid html5 css3 javascript">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+                </div>
+                <span class="level-badge l2">Level 2 • Task 1</span>
+              </div>
+              <h3 class="card-title">Precision Calculator</h3>
+              <p class="card-desc">A responsive calculator interface with accurate arithmetic operations, keyboard support, and input validation.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS Grid</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Keyboard Input</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="WebDev-L2-Calculator/" target="_blank" rel="noopener noreferrer" class="btn-card-live">
+                <span>Open Live App</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L2-Calculator" target="_blank" rel="noopener noreferrer" class="btn-card-source" aria-label="View Precision Calculator source code on GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>Source</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 5. APJ Abdul Kalam Tribute -->
+          <article class="app-card" data-level="l2" data-search="apj abdul kalam tribute quiz editorial timeline speech quotes html5 css3 javascript">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+                </div>
+                <span class="level-badge l2">Level 2 • Task 2</span>
+              </div>
+              <h3 class="card-title">APJ Abdul Kalam Tribute</h3>
+              <p class="card-desc">An interactive tribute page and quiz celebrating the life, achievements, and inspiring ideas of Dr. APJ Abdul Kalam.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Interactive Quiz</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="WebDev-L2-TributePage/" target="_blank" rel="noopener noreferrer" class="btn-card-live">
+                <span>Open Live App</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L2-TributePage" target="_blank" rel="noopener noreferrer" class="btn-card-source" aria-label="View Tribute Page source code on GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>Source</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 6. TaskFlow -->
+          <article class="app-card" data-level="l2" data-search="taskflow to-do todo pomodoro timer kanban task management localstorage html5 css3 javascript">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
+                </div>
+                <span class="level-badge l2">Level 2 • Task 3</span>
+              </div>
+              <h3 class="card-title">TaskFlow</h3>
+              <p class="card-desc">A productivity application combining task management with a focused Pomodoro timer for daily work sessions.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">LocalStorage</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="WebDev-L2-ToDoWebApp/" target="_blank" rel="noopener noreferrer" class="btn-card-live">
+                <span>Open Live App</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L2-ToDoWebApp" target="_blank" rel="noopener noreferrer" class="btn-card-source" aria-label="View TaskFlow source code on GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>Source</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 7. SecureGate -->
+          <article class="app-card" data-level="l2" data-search="securegate login authentication sha-256 web crypto dashboard route guard security html5 css3 javascript">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <span class="level-badge l2">Level 2 • Task 4</span>
+              </div>
+              <h3 class="card-title">SecureGate</h3>
+              <p class="card-desc">A security-focused login and dashboard interface demonstrating SHA-256 hashing, validation, and protected UI states.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">Web Crypto API</span>
+                <span class="tech-tag">SHA-256</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="WebDev-L2-LoginAuth/" target="_blank" rel="noopener noreferrer" class="btn-card-live">
+                <span>Open Live App</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L2-LoginAuth" target="_blank" rel="noopener noreferrer" class="btn-card-source" aria-label="View SecureGate source code on GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>Source</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 8. SliceCraft -->
+          <article class="app-card" data-level="l3" data-search="slicecraft pizza ordering food delivery builder cart inventory tracking html5 css3 javascript">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m14 14-4-4"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                </div>
+                <span class="level-badge l3">Level 3 • Task 1</span>
+              </div>
+              <h3 class="card-title">SliceCraft</h3>
+              <p class="card-desc">A responsive pizza ordering experience with menu browsing, customization, cart management, and order summary.</p>
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Cart &amp; Checkout</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="WebDev-L3-PizzaApp/" target="_blank" rel="noopener noreferrer" class="btn-card-live">
+                <span>Open Live App</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L3-PizzaApp" target="_blank" rel="noopener noreferrer" class="btn-card-source" aria-label="View SliceCraft source code on GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>Source</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="no-results" id="no-results">
+          <p>No applications found matching your search query.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         5. ABOUT THE COLLECTION SECTION
+         ========================================================= -->
+    <section class="about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-text">
+          <div class="section-eyebrow">Context &amp; Purpose</div>
+          <h2 class="section-title">About the Collection</h2>
+          <p>
+            This collection brings together eight individual projects created to practice HTML, CSS, JavaScript, responsive design, UI design, validation, and application logic.
+          </p>
+          <p>
+            Rather than relying on heavy frameworks or template bundles, each application was constructed using foundational web standards. This approach solidifies core principles: understanding layout rendering, managing component state in vanilla JavaScript, securing client-side forms, and structuring clean, semantic markup that works reliably across all browsers.
+          </p>
+        </div>
+
+        <div class="key-points">
+          <div class="key-point-item">
+            <div class="point-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+            </div>
+            <div class="point-content">
+              <h4>Progressive Complexity</h4>
+              <p>Tasks scale logically from foundational presentation and responsive grids (Level 1) to stateful tools and security mechanisms (Level 2), culminating in an end-to-end interactive platform (Level 3).</p>
+            </div>
+          </div>
+
+          <div class="key-point-item">
+            <div class="point-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <div class="point-content">
+              <h4>Real Browser Standards</h4>
+              <p>Direct implementation of Web Storage for persistence, Web Crypto API for SHA-256 client password hashing, and semantic HTML5 for screen readers.</p>
+            </div>
+          </div>
+
+          <div class="key-point-item">
+            <div class="point-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+            </div>
+            <div class="point-content">
+              <h4>Reliable Deployment</h4>
+              <p>Every project is organized into modular folders and continuously served via GitHub Pages with automated git-driven deployments.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         6. TECHNOLOGIES SECTION
+         ========================================================= -->
+    <section class="tech-section" id="technologies">
+      <div class="container">
+        <div class="section-head" style="text-align: center; margin-bottom: 0;">
+          <div class="section-eyebrow">Tech Stack</div>
+          <h2 class="section-title">Core Technologies</h2>
+          <p class="section-desc" style="margin: 0 auto;">Standard web technologies utilized across the entire project collection.</p>
+        </div>
+
+        <div class="tech-grid">
+          <div class="tech-pill-card">
+            <div class="tech-pill-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <span class="tech-pill-name">HTML5</span>
+          </div>
+
+          <div class="tech-pill-card">
+            <div class="tech-pill-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            </div>
+            <span class="tech-pill-name">CSS3</span>
+          </div>
+
+          <div class="tech-pill-card">
+            <div class="tech-pill-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m10 13 2 2 5-5"/><rect width="20" height="20" x="2" y="2" rx="4"/></svg>
+            </div>
+            <span class="tech-pill-name">JavaScript</span>
+          </div>
+
+          <div class="tech-pill-card">
+            <div class="tech-pill-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+            </div>
+            <span class="tech-pill-name">Responsive</span>
+          </div>
+
+          <div class="tech-pill-card">
+            <div class="tech-pill-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
+            <span class="tech-pill-name">GitHub Pages</span>
+          </div>
+
+          <div class="tech-pill-card">
+            <div class="tech-pill-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </div>
+            <span class="tech-pill-name">Git &amp; GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       7. FOOTER
+       ========================================================= -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="footer-name">Sourabh Patel</span>
+        <span class="footer-motto">Building practical web experiences one project at a time.</span>
       </div>
 
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="task-search-input" class="search-input" placeholder="Search tasks, auth, pizza, math, audio..." aria-label="Search Projects">
-      </div>
-
-      <div class="level-filters">
-        <button class="filter-btn active" data-filter="all">All (8 Tasks)</button>
-        <button class="filter-btn" data-filter="l1">Level 1 (3)</button>
-        <button class="filter-btn" data-filter="l2">Level 2 (4)</button>
-        <button class="filter-btn" data-filter="l3">Level 3 (1)</button>
-      </div>
-    </nav>
-
-    <!-- Main Header -->
-    <header>
-      <div class="badge">OASIS INFOBYTE • STUDENT INTERNSHIP PROGRAM</div>
-      <h1>Web Development &amp; Designing</h1>
-      <p class="subtitle">Complete, production-ready portfolio submission featuring <strong>8 real-world interactive applications</strong> with client-side SHA-256 cryptography, full pizza builder &amp; order tracking, scientific calculations, and responsive UI engineering.</p>
-      
-      <!-- Quick Jump Pills -->
-      <div class="quick-jump-container">
-        <span class="jump-pill" onclick="openSandboxModal('WebDev-L1-LandingPage/', 'Task 1: NovaCloud SaaS Landing Page')">🚀 SaaS Landing</span>
-        <span class="jump-pill" onclick="openSandboxModal('WebDev-L1-PersonalPortfolio/', 'Task 2: Personal Portfolio')">👨‍💻 Sourabh Portfolio</span>
-        <span class="jump-pill" onclick="openSandboxModal('WebDev-L1-TemperatureConverter/', 'Task 3: Temperature Converter')">🌡️ Temp Converter</span>
-        <span class="jump-pill" onclick="openSandboxModal('WebDev-L2-Calculator/', 'Task 4: NeoCalc Scientific Calculator')">🧮 Calculator</span>
-        <span class="jump-pill" onclick="openSandboxModal('WebDev-L2-TributePage/', 'Task 5: Dr. APJ Abdul Kalam Tribute')">🕊️ Tribute &amp; Quiz</span>
-        <span class="jump-pill" onclick="openSandboxModal('WebDev-L2-ToDoWebApp/', 'Task 6: TaskFlow Productivity')">⚡ To-Do Kanban</span>
-        <span class="jump-pill" onclick="openSandboxModal('WebDev-L2-LoginAuth/', 'Task 7: SecureGate Auth &amp; Dashboard')">🛡️ SHA-256 Auth</span>
-        <span class="jump-pill" onclick="openSandboxModal('WebDev-L3-PizzaApp/', 'Task 8: SliceCraft Pizza Delivery Platform')">🍕 SliceCraft Pizza</span>
-      </div>
-    </header>
-
-    <!-- LinkedIn Video Demo Recording Studio Banner -->
-    <div class="linkedin-studio-card">
-      <div class="studio-text">
-        <h2>🎬 LinkedIn Video Post Recording Studio</h2>
-        <p>Prepare professional 30-60 second video walkthroughs for LinkedIn with the official <strong>Oasis Infobyte 2-Second Title Card</strong> (Sourabh Patel • Web Development &amp; Designing • Task Title) mandated by the official internship guidelines.</p>
-      </div>
-      <div class="studio-actions">
-        <button class="btn-studio" onclick="openTitleCard('WebDev-L3-PizzaApp/', 'Level 3 Task: SliceCraft Pizza Ordering &amp; Tracking Platform')">
-          🎥 Record Level 3 Pizza App Demo
-        </button>
-        <a href="LINKEDIN_POSTS_GUIDE.md" target="_blank" class="btn-outline">
-          📋 View Post Captions &amp; Scripts
+      <div class="footer-right">
+        <a href="https://github.com/Sourabh123-atl" target="_blank" rel="noopener noreferrer" class="footer-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          <span>GitHub</span>
         </a>
+        <button type="button" class="btn-top" id="btn-back-to-top" aria-label="Scroll back to top">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+          <span>Back to top</span>
+        </button>
       </div>
     </div>
+  </footer>
 
-    <!-- ================= LEVEL 1 ================= -->
-    <div class="level-section" data-level="l1">
-      <div class="level-heading">
-        <div class="level-title-group">
-          <span class="level-tag l1">Level 1</span>
-          <h2>Foundational Web Experiences (3 Tasks)</h2>
-        </div>
-      </div>
-
-      <div class="grid">
-        <!-- Task 1 -->
-        <div class="card" data-keywords="landing page novacloud saas pricing roi calculator architecture dark mode ui">
-          <div class="card-top">
-            <div class="card-icon-bar">
-              <span class="card-icon">🚀</span>
-              <span class="status-badge-live">🟢 Live Ready</span>
-            </div>
-            <span class="task-num">Level 1 • Task 1</span>
-            <h3>SaaS Landing Page</h3>
-            <p>NovaCloud AI — Ultra-modern cloud infrastructure SaaS landing page with frosted-glass navigation, live monthly/annual pricing switch, ROI savings estimator, interactive terminal, and newsletter token generator.</p>
-            <ul class="feature-checklist">
-              <li>Annual / Monthly Billing Switcher with instant pricing discount</li>
-              <li>Live Interactive Cloud Cost &amp; ROI Calculator</li>
-              <li>Terminal Sandbox &amp; Verified Security Badges</li>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag">HTML5</span>
-              <span class="tag">CSS Grid</span>
-              <span class="tag">ROI Calculator</span>
-            </div>
-            <div class="actions-group">
-              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L1-LandingPage/', 'Task 1: NovaCloud SaaS Landing Page')">⚡ Live Sandbox</button>
-              <button class="btn-record" onclick="openTitleCard('WebDev-L1-LandingPage/', 'Task 1: Landing Page (NovaCloud AI)')">🔴 Video</button>
-              <a href="WebDev-L1-LandingPage/" class="btn-launch" target="_blank">↗ Full</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Task 2 -->
-        <div class="card" data-keywords="personal portfolio sourabh patel digital resume cli terminal skills radar contact inbox theme">
-          <div class="card-top">
-            <div class="card-icon-bar">
-              <span class="card-icon">👨‍💻</span>
-              <span class="status-badge-live">🟢 Live Ready</span>
-            </div>
-            <span class="task-num">Level 1 • Task 2</span>
-            <h3>Personal Portfolio</h3>
-            <p>Sourabh Patel Portfolio — Professional digital résumé featuring an interactive in-browser CLI terminal emulator, live project repository matrix, technical skills radar, theme toggle, and persistent contact messaging.</p>
-            <ul class="feature-checklist">
-              <li>Interactive In-Browser CLI Terminal (help, skills, projects, contact)</li>
-              <li>Live Contact Form with LocalStorage inbox &amp; auto-reply simulation</li>
-              <li>Interactive Skills Radar &amp; Project Filtering</li>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag">Sourabh Patel</span>
-              <span class="tag">CLI Terminal</span>
-              <span class="tag">Live Inbox</span>
-            </div>
-            <div class="actions-group">
-              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L1-PersonalPortfolio/', 'Task 2: Personal Portfolio (Sourabh Patel)')">⚡ Live Sandbox</button>
-              <button class="btn-record" onclick="openTitleCard('WebDev-L1-PersonalPortfolio/', 'Task 2: Personal Portfolio')">🔴 Video</button>
-              <a href="WebDev-L1-PersonalPortfolio/" class="btn-launch" target="_blank">↗ Full</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Task 3 -->
-        <div class="card" data-keywords="temperature converter celsius fahrenheit kelvin rankine absolute zero thermo fluid weather">
-          <div class="card-top">
-            <div class="card-icon-bar">
-              <span class="card-icon">🌡️</span>
-              <span class="status-badge-live">🟢 Live Ready</span>
-            </div>
-            <span class="task-num">Level 1 • Task 3</span>
-            <h3>Temperature Converter</h3>
-            <p>ThermoPulse Converter — Real-time bi-directional conversion engine for Celsius, Fahrenheit, Kelvin, and Rankine with physical Absolute Zero boundary detection, fluid thermometer animation, and global city presets.</p>
-            <ul class="feature-checklist">
-              <li>4-Unit Bi-directional Conversion (Celsius, Fahrenheit, Kelvin, Rankine)</li>
-              <li>Fluid Mercury Level Animation &amp; Thermal Sensation Warnings</li>
-              <li>Global Weather Presets (Delhi, London, Tokyo, Dubai, Antarctic)</li>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag">Real-Time Math</span>
-              <span class="tag">SVG Thermometer</span>
-              <span class="tag">City Presets</span>
-            </div>
-            <div class="actions-group">
-              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L1-TemperatureConverter/', 'Task 3: Temperature Converter (ThermoPulse)')">⚡ Live Sandbox</button>
-              <button class="btn-record" onclick="openTitleCard('WebDev-L1-TemperatureConverter/', 'Task 3: Temperature Converter')">🔴 Video</button>
-              <a href="WebDev-L1-TemperatureConverter/" class="btn-launch" target="_blank">↗ Full</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= LEVEL 2 ================= -->
-    <div class="level-section" data-level="l2">
-      <div class="level-heading">
-        <div class="level-title-group">
-          <span class="level-tag l2">Level 2</span>
-          <h2>Interactive Applications &amp; Systems (4 Tasks)</h2>
-        </div>
-      </div>
-
-      <div class="grid">
-        <!-- Task 1 -->
-        <div class="card" data-keywords="calculator neocalc arithmetic scientific math keyboard history sounds audio web audio">
-          <div class="card-top">
-            <div class="card-icon-bar">
-              <span class="card-icon">🧮</span>
-              <span class="status-badge-live">🟢 Live Ready</span>
-            </div>
-            <span class="task-num">Level 2 • Task 1</span>
-            <h3>Calculator</h3>
-            <p>NeoCalc Arithmetic Calculator — CSS Grid keypad layout with operator chaining, division-by-zero protection, keyboard support, calculation history drawer, and Web Audio sound synthesis.</p>
-            <ul class="feature-checklist">
-              <li>Arithmetic &amp; Percentage calculation with parentheses support</li>
-              <li>Calculation History Drawer with restore and clear functions</li>
-              <li>Full Keyboard Support + Sci-Fi Audio feedback</li>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag">CSS Grid</span>
-              <span class="tag">Web Audio API</span>
-              <span class="tag">History Log</span>
-            </div>
-            <div class="actions-group">
-              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L2-Calculator/', 'Task 4: Precision Calculator (NeoCalc)')">⚡ Live Sandbox</button>
-              <button class="btn-record" onclick="openTitleCard('WebDev-L2-Calculator/', 'Task 4: Precision Calculator')">🔴 Video</button>
-              <a href="WebDev-L2-Calculator/" class="btn-launch" target="_blank">↗ Full</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Task 2 -->
-        <div class="card" data-keywords="tribute page apj abdul kalam missile man quotes quiz text to speech audio timeline">
-          <div class="card-top">
-            <div class="card-icon-bar">
-              <span class="card-icon">🕊️</span>
-              <span class="status-badge-live">🟢 Live Ready</span>
-            </div>
-            <span class="task-num">Level 2 • Task 2</span>
-            <h3>Tribute Page</h3>
-            <p>Dr. A.P.J. Abdul Kalam Tribute — Multi-palette editorial experience detailing the Missile Man's life, career milestones timeline, awards, quote generator with text-to-speech voice narration, and interactive trivia quiz.</p>
-            <ul class="feature-checklist">
-              <li>Interactive Career Timeline (ISRO, DRDO, Presidency, Vision 2020)</li>
-              <li>Text-to-Speech Quote Narrator (Web Speech API)</li>
-              <li>Interactive 5-Question Kalam Trivia Quiz with Badge Scoring</li>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag">Editorial UI</span>
-              <span class="tag">Web Speech API</span>
-              <span class="tag">Interactive Quiz</span>
-            </div>
-            <div class="actions-group">
-              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L2-TributePage/', 'Task 5: Tribute Page (Dr. APJ Abdul Kalam)')">⚡ Live Sandbox</button>
-              <button class="btn-record" onclick="openTitleCard('WebDev-L2-TributePage/', 'Tribute Page (Dr. APJ Abdul Kalam)')">🔴 Video</button>
-              <a href="WebDev-L2-TributePage/" class="btn-launch" target="_blank">↗ Full</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Task 3 -->
-        <div class="card" data-keywords="todo to-do taskflow kanban productivity pomodoro focus timer confetti localstorage tags priority">
-          <div class="card-top">
-            <div class="card-icon-bar">
-              <span class="card-icon">⚡</span>
-              <span class="status-badge-live">🟢 Live Ready</span>
-            </div>
-            <span class="task-num">Level 2 • Task 3</span>
-            <h3>To-Do Web App</h3>
-            <p>TaskFlow Productivity App — Dual-board task manager (Pending &amp; Completed) with inline text editing, timestamps, priority tags, confetti celebration on completion, Pomodoro focus timer, and localStorage persistence.</p>
-            <ul class="feature-checklist">
-              <li>Dual Kanban Boards (Pending &amp; Completed) with Inline Editing</li>
-              <li>Confetti Particle FX &amp; Victory Chimes on Task Completion</li>
-              <li>Integrated 25-minute Pomodoro Focus Timer with Chime Alerts</li>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag">LocalStorage</span>
-              <span class="tag">Confetti FX</span>
-              <span class="tag">Pomodoro Timer</span>
-            </div>
-            <div class="actions-group">
-              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L2-ToDoWebApp/', 'Task 6: TaskFlow Productivity Web App')">⚡ Live Sandbox</button>
-              <button class="btn-record" onclick="openTitleCard('WebDev-L2-ToDoWebApp/', 'Task 6: TaskFlow Productivity Web App')">🔴 Video</button>
-              <a href="WebDev-L2-ToDoWebApp/" class="btn-launch" target="_blank">↗ Full</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Task 4 -->
-        <div class="card" data-keywords="login auth authentication sha-256 web crypto password hashing dashboard session security audit log demo">
-          <div class="card-top">
-            <div class="card-icon-bar">
-              <span class="card-icon">🛡️</span>
-              <span class="status-badge-live">🟢 Live Ready</span>
-            </div>
-            <span class="task-num">Level 2 • Task 4</span>
-            <h3>Login Authentication</h3>
-            <p>SecureGate Auth System — Zero-Knowledge SHA-256 password hashing with Web Crypto API, real user registration, 1-click demo account filler, route guards, live profile editor, password changer, and live security audit logs.</p>
-            <ul class="feature-checklist">
-              <li>Real SHA-256 Web Crypto Hashing + Salt &amp; Strength Meter</li>
-              <li>1-Click Quick Demo Login (Sourabh Patel credentials pre-filled)</li>
-              <li>Protected Dashboard: Profile Editor, Password Changer &amp; Audit Logs</li>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag">SHA-256 Crypto</span>
-              <span class="tag">Route Guard</span>
-              <span class="tag">Live Dashboard</span>
-            </div>
-            <div class="actions-group">
-              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L2-LoginAuth/', 'Task 7: SecureGate Authentication &amp; Dashboard')">⚡ Live Sandbox</button>
-              <button class="btn-record" onclick="openTitleCard('WebDev-L2-LoginAuth/', 'Login Authentication System')">🔴 Video</button>
-              <a href="WebDev-L2-LoginAuth/" class="btn-launch" target="_blank">↗ Full</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= LEVEL 3 ================= -->
-    <div class="level-section" data-level="l3">
-      <div class="level-heading">
-        <div class="level-title-group">
-          <span class="level-tag l3">Level 3</span>
-          <h2>Advanced Full-Stack Systems (1 Task)</h2>
-        </div>
-      </div>
-
-      <div class="grid">
-        <!-- Level 3 Task 1 -->
-        <div class="card" data-keywords="pizza delivery slicecraft custom builder cart checkout razorpay tracking inventory admin stock order">
-          <div class="card-top">
-            <div class="card-icon-bar">
-              <span class="card-icon">🍕</span>
-              <span class="status-badge-live">🟢 Live Ready</span>
-            </div>
-            <span class="task-num">Level 3 • Task 1</span>
-            <h3>Pizza Delivery &amp; Inventory App</h3>
-            <p>SliceCraft Artisan Platform — Full-stack food ordering platform featuring a 4-step custom pizza builder (Crust, Sauce, Cheese, Veggies), live cart &amp; payment simulator, real-time animated order status tracker, and admin inventory portal.</p>
-            <ul class="feature-checklist">
-              <li>4-Step Custom Pizza Builder with dynamic visual layers &amp; price calculator</li>
-              <li>Cart &amp; Simulated Checkout with Coupon codes (OASIS20) &amp; Invoice</li>
-              <li>Real-Time Order Progress Tracker (Baking ➔ Out for Delivery ➔ Delivered)</li>
-              <li>Admin Portal: Manage ingredient stock counts and item availability</li>
-            </ul>
-          </div>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag">Pizza Builder</span>
-              <span class="tag">Order Tracker</span>
-              <span class="tag">Admin Inventory</span>
-            </div>
-            <div class="actions-group">
-              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L3-PizzaApp/', 'Level 3: SliceCraft Pizza Delivery &amp; Inventory Platform')">⚡ Live Sandbox</button>
-              <button class="btn-record" onclick="openTitleCard('WebDev-L3-PizzaApp/', 'Level 3 Task: SliceCraft Pizza Platform')">🔴 Video</button>
-              <a href="WebDev-L3-PizzaApp/" class="btn-launch" target="_blank">↗ Full</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <p>&copy; 2026 Oasis Infobyte Student Internship Program (OIBSIP) • Candidate: <strong>Sourabh Patel</strong> • Track: <strong>Web Development &amp; Designing</strong></p>
-      <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #94a3b8;">All 8 interactive web applications are running live on the local development environment with zero placeholders.</p>
-    </footer>
-  </div>
-
-  <!-- ========================================================= -->
-  <!-- ALL-IN-ONE IN-APP LIVE SANDBOX PREVIEW MODAL              -->
-  <!-- ========================================================= -->
-  <div id="sandbox-modal" role="dialog" aria-modal="true">
-    <div class="sandbox-header-bar">
-      <div class="sandbox-app-switcher">
-        <span style="font-weight: 700; color: #38bdf8; font-size: 0.9rem;">📱 Live App Sandbox:</span>
-        <select id="sandbox-app-select" class="sandbox-select" onchange="onSandboxSelectChange(this.value)">
-          <option value="WebDev-L1-LandingPage/">🚀 Level 1: SaaS Landing Page</option>
-          <option value="WebDev-L1-PersonalPortfolio/">👨‍💻 Level 1: Sourabh Patel Portfolio</option>
-          <option value="WebDev-L1-TemperatureConverter/">🌡️ Level 1: Temperature Converter</option>
-          <option value="WebDev-L2-Calculator/">🧮 Level 2: NeoCalc Calculator</option>
-          <option value="WebDev-L2-TributePage/">🕊️ Level 2: APJ Abdul Kalam Tribute</option>
-          <option value="WebDev-L2-ToDoWebApp/">⚡ Level 2: TaskFlow To-Do App</option>
-          <option value="WebDev-L2-LoginAuth/">🛡️ Level 2: SecureGate Auth System</option>
-          <option value="WebDev-L3-PizzaApp/">🍕 Level 3: SliceCraft Pizza Platform</option>
-        </select>
-      </div>
-
-      <div class="device-switcher">
-        <button class="dev-btn active" data-device="desktop" onclick="setDeviceMode('desktop')">💻 Desktop (100%)</button>
-        <button class="dev-btn" data-device="tablet" onclick="setDeviceMode('tablet')">📋 Tablet (768px)</button>
-        <button class="dev-btn" data-device="mobile" onclick="setDeviceMode('mobile')">📱 Mobile (390px)</button>
-      </div>
-
-      <div class="sandbox-tools">
-        <button class="btn-tool" onclick="reloadSandboxIframe()" title="Reload App">🔄 Reload</button>
-        <a href="#" id="sandbox-ext-link" class="btn-tool" target="_blank" title="Open in New Tab">↗ Full Page</a>
-        <button class="btn-close-sandbox" onclick="closeSandboxModal()">✕ Close</button>
-      </div>
-    </div>
-
-    <div class="sandbox-viewport-wrapper">
-      <iframe id="sandbox-frame" class="sandbox-iframe desktop" src="about:blank" title="Live Project Sandbox"></iframe>
-    </div>
-  </div>
-
-  <!-- ========================================================= -->
-  <!-- CINEMATIC 2-SECOND TITLE CARD MODAL                       -->
-  <!-- ========================================================= -->
-  <div id="title-card-overlay">
-    <div class="tc-box">
-      <button class="tc-close" onclick="closeTitleCard()">✕</button>
-      <div class="tc-org">OASIS INFOBYTE — STUDENT INTERNSHIP PROGRAM</div>
-      <div class="tc-name" id="tc-candidate-name">SOURABH PATEL</div>
-      <div class="tc-track">Web Development &amp; Designing Track</div>
-      <div class="tc-task-badge" id="tc-task-title">Task 1: Landing Page</div>
-      <div class="tc-timer" id="tc-status-msg">Showing Title Card for recording (2s remaining)...</div>
-    </div>
-  </div>
-
+  <!-- =========================================================
+       JAVASCRIPT LOGIC
+       ========================================================= -->
   <script>
-    let titleTimerId = null;
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Mobile Menu Toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileDrawer = document.getElementById('mobile-nav-drawer');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
 
-    // Web Audio Synthesizer for Title Card Chime
-    function playChime() {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
-        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3); // A5
-        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.8);
-      } catch (e) {}
-    }
+      if (mobileBtn && mobileDrawer) {
+        mobileBtn.addEventListener('click', () => {
+          const isOpen = mobileDrawer.classList.toggle('open');
+          mobileBtn.setAttribute('aria-expanded', isOpen);
+        });
 
-    function resolveSafeUrl(relativePath) {
-      const loc = window.location.href.split('#')[0].split('?')[0];
-      const base = loc.endsWith('/') ? loc : (loc.endsWith('.html') ? loc.substring(0, loc.lastIndexOf('/') + 1) : loc + '/');
-      return new URL(relativePath, base).href;
-    }
-
-    // =========================================================
-    // IN-APP LIVE SANDBOX MODAL LOGIC
-    // =========================================================
-    function openSandboxModal(urlPath, taskTitle) {
-      const modal = document.getElementById('sandbox-modal');
-      const iframe = document.getElementById('sandbox-frame');
-      const select = document.getElementById('sandbox-app-select');
-      const extLink = document.getElementById('sandbox-ext-link');
-      const fullUrl = resolveSafeUrl(urlPath);
-
-      modal.classList.add('active');
-      iframe.src = fullUrl;
-      extLink.href = fullUrl;
-
-      // Update select dropdown value
-      if (select) {
-        for (let i = 0; i < select.options.length; i++) {
-          if (select.options[i].value === urlPath) {
-            select.selectedIndex = i;
-            break;
-          }
-        }
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileDrawer.classList.remove('open');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
       }
 
-      document.body.style.overflow = 'hidden';
-    }
+      // 2. Navbar Scroll Shadow & Spy
+      const navbar = document.getElementById('navbar');
+      const navLinks = document.querySelectorAll('.nav-links .nav-link');
+      const sections = document.querySelectorAll('section[id], main[id]');
 
-    function closeSandboxModal() {
-      const modal = document.getElementById('sandbox-modal');
-      const iframe = document.getElementById('sandbox-frame');
-      modal.classList.remove('active');
-      iframe.src = 'about:blank';
-      document.body.style.overflow = '';
-    }
-
-    function onSandboxSelectChange(urlPath) {
-      const iframe = document.getElementById('sandbox-frame');
-      const extLink = document.getElementById('sandbox-ext-link');
-      const fullUrl = resolveSafeUrl(urlPath);
-      iframe.src = fullUrl;
-      extLink.href = fullUrl;
-    }
-
-    function setDeviceMode(mode) {
-      const iframe = document.getElementById('sandbox-frame');
-      iframe.className = `sandbox-iframe ${mode}`;
-      document.querySelectorAll('.dev-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.device === mode);
-      });
-    }
-
-    function reloadSandboxIframe() {
-      const iframe = document.getElementById('sandbox-frame');
-      const current = iframe.src;
-      iframe.src = '';
-      setTimeout(() => { iframe.src = current; }, 50);
-    }
-
-    // =========================================================
-    // 2-SECOND RECORDING TITLE CARD LOGIC
-    // =========================================================
-    function openTitleCard(destinationUrl, taskTitle) {
-      const overlay = document.getElementById('title-card-overlay');
-      const taskElem = document.getElementById('tc-task-title');
-      const statusElem = document.getElementById('tc-status-msg');
-      const targetUrl = resolveSafeUrl(destinationUrl);
-      
-      taskElem.textContent = taskTitle;
-      overlay.classList.add('active');
-      playChime();
-
-      let secondsRemaining = 2;
-      statusElem.textContent = `Showing Title Card for recording (${secondsRemaining}s remaining)...`;
-
-      titleTimerId = setInterval(() => {
-        secondsRemaining--;
-        if (secondsRemaining > 0) {
-          statusElem.textContent = `Showing Title Card for recording (${secondsRemaining}s remaining)...`;
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          navbar.classList.add('scrolled');
         } else {
-          clearInterval(titleTimerId);
-          statusElem.textContent = "Launching live project demonstration...";
-          setTimeout(() => {
-            window.location.href = targetUrl;
-          }, 300);
+          navbar.classList.remove('scrolled');
         }
-      }, 1000);
-    }
 
-    function closeTitleCard() {
-      if (titleTimerId) clearInterval(titleTimerId);
-      document.getElementById('title-card-overlay').classList.remove('active');
-    }
+        // Active state spy
+        let currentSectionId = 'top';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          if (window.pageYOffset >= sectionTop) {
+            currentSectionId = section.getAttribute('id');
+          }
+        });
 
-    // =========================================================
-    // SEARCH & FILTERING LOGIC
-    // =========================================================
-    document.addEventListener('DOMContentLoaded', () => {
-      const searchInput = document.getElementById('task-search-input');
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const cards = document.querySelectorAll('.card');
-      const levelSections = document.querySelectorAll('.level-section');
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentSectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }, { passive: true });
 
-      function filterCards() {
-        const query = searchInput.value.trim().toLowerCase();
-        const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+      // 3. Filtering & Search Logic
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      const searchInput = document.getElementById('search-input');
+      const cards = document.querySelectorAll('.app-card');
+      const noResults = document.getElementById('no-results');
+
+      let currentFilter = 'all';
+      let searchQuery = '';
+
+      function updateCardVisibility() {
+        let visibleCount = 0;
 
         cards.forEach(card => {
-          const text = card.textContent.toLowerCase();
-          const keywords = card.dataset.keywords || '';
-          const matchesSearch = !query || text.includes(query) || keywords.includes(query);
-          
-          const section = card.closest('.level-section');
-          const level = section?.dataset.level;
-          const matchesLevel = activeFilter === 'all' || level === activeFilter;
+          const cardLevel = card.getAttribute('data-level');
+          const searchData = card.getAttribute('data-search').toLowerCase();
 
-          if (matchesSearch && matchesLevel) {
+          const matchesFilter = (currentFilter === 'all') || (cardLevel === currentFilter);
+          const matchesSearch = !searchQuery || searchData.includes(searchQuery);
+
+          if (matchesFilter && matchesSearch) {
             card.style.display = 'flex';
+            visibleCount++;
           } else {
             card.style.display = 'none';
           }
         });
 
-        // Hide entire section if no cards match
-        levelSections.forEach(sec => {
-          const visibleInSec = sec.querySelectorAll('.card[style*="display: flex"], .card:not([style*="display"])');
-          const isVisible = Array.from(visibleInSec).some(c => c.style.display !== 'none');
-          sec.style.display = isVisible ? 'block' : 'none';
+        if (visibleCount === 0) {
+          noResults.classList.add('visible');
+        } else {
+          noResults.classList.remove('visible');
+        }
+      }
+
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterTabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          currentFilter = tab.getAttribute('data-filter');
+          updateCardVisibility();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value.trim().toLowerCase();
+          updateCardVisibility();
         });
       }
 
-      searchInput.addEventListener('input', filterCards);
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          filterCards();
+      // 4. Back to top button
+      const btnBackToTop = document.getElementById('btn-back-to-top');
+      if (btnBackToTop) {
+        btnBackToTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-      });
-
-      // Close modals on Escape
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          closeSandboxModal();
-          closeTitleCard();
-        }
-      });
+      }
     });
   </script>
 </body>
