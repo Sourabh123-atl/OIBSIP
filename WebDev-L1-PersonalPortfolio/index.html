@@ -3,695 +3,488 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sourabh Patel &mdash; Full-Stack Software Engineer &amp; Web Developer</title>
-  <meta name="description" content="Personal engineering portfolio of Sourabh Patel, Full-Stack Software Engineer specializing in modern JavaScript, Python, web systems, and interactive architectures.">
-  <meta name="author" content="Sourabh Patel">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Sourabh Patel &mdash; Software Engineer Portfolio">
-  <meta property="og:description" content="Personal engineering portfolio of Sourabh Patel. Featuring 8 live web applications built for the Oasis Infobyte Student Internship Program.">
-  <meta property="og:url" content="https://sourabh123-atl.github.io/OIBSIP/WebDev-L1-PersonalPortfolio/">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Ctext x='16' y='21' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='white' text-anchor='middle'%3ESP%3C/text%3E%3C/svg%3E">
-
-  <!-- Typography: Inter -->
+  <title>Sourabh Patel — Full-Stack Software Engineer &amp; Web Developer</title>
+  <meta name="description" content="Personal portfolio of Sourabh Patel, Full-Stack Software Engineer specializing in modern JavaScript, Python, cloud architectures, and interactive web applications.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Interactive Terminal Widget Styles */
+    .terminal-container {
+      background: #0b0f19;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 2.5rem;
+      font-family: 'Fira Code', monospace;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .terminal-bar {
+      background: #111827;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .term-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .term-red { background: #ef4444; }
+    .term-yellow { background: #f59e0b; }
+    .term-green { background: #10b981; }
+    .term-title { margin-left: 8px; font-size: 0.8rem; color: #94a3b8; }
+    .terminal-body {
+      padding: 18px;
+      max-height: 240px;
+      overflow-y: auto;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .terminal-input-row {
+      display: flex;
+      align-items: center;
+      padding: 10px 18px 16px 18px;
+      gap: 8px;
+    }
+    .term-prompt { color: #38bdf8; font-weight: bold; }
+    .term-input {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      width: 100%;
+      outline: none;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- =========================================================
-       TOP CONTEXT & RETURN BAR
-       ========================================================= -->
+  <!-- OIBSIP Candidate Navigation Bar -->
   <div class="candidate-bar">
-    <div class="container candidate-bar-inner">
-      <a href="../" class="candidate-back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        <span>Return to Master Portfolio Hub</span>
-      </a>
+    <div class="candidate-bar-inner">
+      <a href="../index.html" class="candidate-back-link">← Back to OIBSIP Hub</a>
       <div class="candidate-info">
-        <span class="candidate-pill">OIBSIP 2026</span>
+        <span class="candidate-pill">OIBSIP Level 1 • Task 2</span>
         <span>Developer: <strong>Sourabh Patel</strong></span>
       </div>
+      <button id="btn-copy-caption-portfolio" class="candidate-caption-btn" title="Copy ready-to-paste caption for LinkedIn">📋 Copy LinkedIn Post</button>
     </div>
   </div>
 
-  <!-- =========================================================
-       MAIN STICKY NAVIGATION BAR
-       ========================================================= -->
+  <!-- Header / Navigation -->
   <header class="portfolio-header" id="header">
-    <div class="container header-container">
-      <a href="#top" class="logo" aria-label="Sourabh Patel Home">
-        <div class="logo-badge" aria-hidden="true">SP</div>
-        <div class="logo-text">
-          <span class="logo-title">Sourabh Patel</span>
-          <span class="logo-sub">Software Engineer</span>
-        </div>
+    <div class="header-container">
+      <a href="#hero" class="logo">
+        <span class="logo-badge">SP</span>
+        <span class="logo-name">Sourabh Patel</span>
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <nav aria-label="Portfolio Navigation">
-        <ul class="nav-bar" id="portfolio-nav">
-          <li><a href="#about" class="nav-item">About</a></li>
-          <li><a href="#projects" class="nav-item">Projects</a></li>
-          <li><a href="#skills" class="nav-item">Skills</a></li>
-          <li><a href="#terminal" class="nav-item">CLI Terminal</a></li>
-          <li><a href="#contact" class="nav-item">Contact</a></li>
-        </ul>
+      <nav class="nav-bar" id="portfolio-nav">
+        <a href="#about" class="nav-item">About</a>
+        <a href="#skills" class="nav-item">Skills</a>
+        <a href="#projects" class="nav-item">Projects</a>
+        <a href="#terminal-section" class="nav-item">CLI Terminal</a>
+        <a href="#contact" class="nav-item">Contact</a>
+        <a href="#contact" class="btn-hire">Connect</a>
       </nav>
 
-      <div style="display: flex; align-items: center; gap: 12px;">
-        <a href="#contact" class="btn-nav-action">
-          <span>Get in Touch</span>
-        </a>
-        <button class="mobile-toggle" id="portfolio-menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Drawer -->
-    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
-      <a href="#about" class="nav-item mobile-nav-link">About</a>
-      <a href="#projects" class="nav-item mobile-nav-link">Projects</a>
-      <a href="#skills" class="nav-item mobile-nav-link">Skills</a>
-      <a href="#terminal" class="nav-item mobile-nav-link">CLI Terminal</a>
-      <a href="#contact" class="nav-item mobile-nav-link">Contact</a>
-      <a href="../" class="nav-item mobile-nav-link" style="color: var(--primary); font-weight: 600;">← Master Portfolio Hub</a>
+      <button class="mobile-toggle" id="portfolio-menu-toggle" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main id="top">
-    <!-- =========================================================
-         HERO SECTION (STRIPE / APPLE MINIMALIST)
-         ========================================================= -->
-    <section class="hero-section">
-      <div class="container hero-grid">
+  <main>
+    <!-- Hero / Profile Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-content">
         <div class="hero-text">
           <div class="availability-pill">
             <span class="status-dot"></span>
-            <span>Available for Software Engineering &amp; Web Roles</span>
+            <span>Available for Software Engineering Roles &amp; Open Source</span>
           </div>
-
           <h1 class="hero-title">
-            Sourabh Patel
+            Hi, I'm <span class="highlight">Sourabh Patel</span><br>
+            Building High-Impact Web &amp; Distributed Systems
           </h1>
-
           <p class="hero-role-desc">
-            Full-stack software engineer crafting robust web applications, scalable client systems, and intuitive user interfaces with pure HTML5, CSS3, and modern JavaScript.
+            Full-Stack Software Engineer passionate about crafting intuitive, accessible user interfaces, robust backend APIs, and modern data-driven architectures.
           </p>
-
           <div class="hero-actions">
             <a href="#projects" class="btn btn-primary">
-              <span>View Featured Projects</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+              <span>Explore My Work</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="#contact" class="btn btn-secondary">
-              <span>Contact Me</span>
+            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            <a href="https://github.com/Sourabh123-atl" target="_blank" rel="noopener" class="btn btn-glass">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub @Sourabh123-atl</span>
             </a>
-            <a href="https://github.com/Sourabh123-atl" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" title="View GitHub Profile">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-              <span>GitHub</span>
+          </div>
+          <div class="social-hero">
+            <a href="https://github.com/Sourabh123-atl" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="mailto:sourabhpatel.dev@gmail.com" class="social-icon" aria-label="Email">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Clean Profile Summary Card -->
-        <div class="hero-profile-card">
-          <div class="profile-card-header">
-            <div class="profile-card-avatar" aria-hidden="true">SP</div>
-            <div class="profile-card-details">
-              <h3>Sourabh Patel</h3>
-              <p>Full-Stack Web Developer &bull; OIBSIP Intern</p>
+        <div class="hero-avatar-wrapper">
+          <div class="avatar-ring"></div>
+          <div class="avatar-card">
+            <!-- Custom Developer Avatar Badge -->
+            <div class="avatar-img-placeholder" style="background: radial-gradient(circle at 30% 30%, #38bdf8, #1e1b4b); display: flex; align-items: center; justify-content: center;">
+              <span class="avatar-initials" style="font-size: 3.8rem; font-weight: 900; color: #ffffff; letter-spacing: 2px;">SP</span>
             </div>
-          </div>
-
-          <div class="profile-meta-list">
-            <div class="meta-row">
-              <span class="meta-label">Track</span>
-              <span class="meta-val">Web Development &amp; Designing</span>
+            <div class="floating-badge badge-top">
+              <span>🚀 OIBSIP Intern</span>
             </div>
-            <div class="meta-row">
-              <span class="meta-label">Primary Stack</span>
-              <span class="meta-val">JavaScript, HTML5, CSS3, Python</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">Location</span>
-              <span class="meta-val">India &bull; Remote Capable</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">Deployment</span>
-              <span class="meta-val">GitHub Pages (CI/CD)</span>
-            </div>
-          </div>
-
-          <div class="profile-stats-row">
-            <div class="profile-stat-box">
-              <span class="stat-digit">8</span>
-              <span class="stat-sub">Live Apps</span>
-            </div>
-            <div class="profile-stat-box">
-              <span class="stat-digit">100%</span>
-              <span class="stat-sub">Vanilla Tech</span>
-            </div>
-            <div class="profile-stat-box">
-              <span class="stat-digit">0</span>
-              <span class="stat-sub">Build Bloat</span>
+            <div class="floating-badge badge-bottom">
+              <span>⚡ Full-Stack Ready</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================================================
-         ABOUT SECTION
-         ========================================================= -->
+    <!-- About Me Section -->
     <section class="section about-section" id="about">
-      <div class="container about-grid">
-        <div class="about-bio">
-          <div class="section-eyebrow">Biographical Background</div>
-          <h2 class="section-title">About Me</h2>
-          <p>
-            I am a software engineering student and developer participating in the <strong>Oasis Infobyte Student Internship Program (OIBSIP)</strong>. My focus centers on architecting clean, responsive user interfaces, robust client-side state models, and performant web workflows.
-          </p>
-          <p>
-            During this internship, I engineered eight comprehensive web applications spanning foundational layout design, calculation utilities, client-side SHA-256 cryptographic authentication, and full-featured ordering platforms.
-          </p>
-          <p>
-            I place high value on craftsmanship: writing self-documenting code, minimizing bundle footprints by leveraging native web platform APIs, and ensuring every design is thoroughly accessible across mobile and desktop devices.
-          </p>
-        </div>
-
-        <div class="about-cards-col">
-          <div class="about-feature-card">
-            <div class="feature-icon-wrap" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </div>
-            <div class="feature-card-body">
-              <h4>Modern Web Standards</h4>
-              <p>Specializing in modern ES6+ JavaScript, CSS Grid architectures, and semantic HTML5 structures without relying on heavy framework dependencies.</p>
-            </div>
-          </div>
-
-          <div class="about-feature-card">
-            <div class="feature-icon-wrap" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            </div>
-            <div class="feature-card-body">
-              <h4>Client Security &amp; Storage</h4>
-              <p>Hands-on implementation of the Web Crypto API for zero-knowledge SHA-256 hashing, localStorage state machines, and authenticated route guards.</p>
-            </div>
-          </div>
-
-          <div class="about-feature-card">
-            <div class="feature-icon-wrap" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <div class="feature-card-body">
-              <h4>Automated Deployment</h4>
-              <p>Continuous integration and static hosting workflows managed directly through GitHub Actions and GitHub Pages.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         PROJECTS SECTION
-         ========================================================= -->
-    <section class="section projects-section" id="projects">
       <div class="container">
         <div class="section-heading">
-          <div class="section-eyebrow">Internship Portfolio</div>
-          <h2 class="section-title">Featured Applications</h2>
-          <p class="section-desc">
-            Explore 8 production-ready web applications built and deployed during the Oasis Infobyte internship.
-          </p>
+          <span class="badge-tag">Biography</span>
+          <h2>About Me</h2>
         </div>
-
-        <!-- Filter Toolbar -->
-        <div class="project-filter-toolbar">
-          <div class="project-tabs" role="tablist">
-            <button class="project-tab-btn active" data-category="all" role="tab" aria-selected="true">All Projects (8)</button>
-            <button class="project-tab-btn" data-category="systems" role="tab" aria-selected="false">Systems &amp; Auth (3)</button>
-            <button class="project-tab-btn" data-category="tools" role="tab" aria-selected="false">Interactive Tools (3)</button>
-            <button class="project-tab-btn" data-category="platform" role="tab" aria-selected="false">SaaS &amp; Platforms (2)</button>
+        <div class="about-grid">
+          <div class="about-card main-bio">
+            <h3>Turning ideas into high-performance, elegant software solutions.</h3>
+            <p>
+              I am a dedicated software engineering student and web developer participating in the <strong>Oasis Infobyte Student Internship Program (OIBSIP)</strong>. I specialize in building reactive user experiences with modern JavaScript, Python automation, and structured Java systems.
+            </p>
+            <p>
+              During this internship, I built end-to-end applications across multiple domains including Web Development, Python Programming, Java Systems, and Data Science. I believe in clean code, strong modularity, and pixel-perfect design.
+            </p>
+            <div class="bio-stats">
+              <div class="stat-box">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Tasks Built</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number">6+</span>
+                <span class="stat-label">Active Repos</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Commitment</span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Projects Grid -->
-        <div class="projects-grid" id="portfolio-projects-grid">
-
-          <!-- 1. SliceCraft Pizza Platform -->
-          <article class="project-card" data-category="platform systems">
-            <div class="project-top-row">
-              <div class="project-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m14 14-4-4"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          <div class="about-side-cards">
+            <div class="about-mini-card">
+              <div class="mini-icon">🎓</div>
+              <div>
+                <h4>Education &amp; Growth</h4>
+                <p>Computer Science &amp; Engineering. Continuously learning modern frameworks and cloud tooling.</p>
               </div>
-              <span class="level-badge l3">Level 3 • Full-Stack</span>
             </div>
-            <h3 class="project-title">SliceCraft Pizza Platform</h3>
-            <p class="project-desc">
-              A responsive pizza ordering experience featuring a 4-step custom pizza builder, dynamic pricing calculator, cart management, simulated checkout, and real-time order tracking.
-            </p>
-            <div class="tech-pill-list">
-              <span class="tech-pill">HTML5</span>
-              <span class="tech-pill">CSS3</span>
-              <span class="tech-pill">JavaScript</span>
-              <span class="tech-pill">State Machine</span>
-            </div>
-            <div class="project-actions">
-              <a href="../WebDev-L3-PizzaApp/" target="_blank" rel="noopener noreferrer" class="btn-proj-live">
-                <span>Live Demo</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L3-PizzaApp" target="_blank" rel="noopener noreferrer" class="btn-proj-code" aria-label="View SliceCraft source code on GitHub">
-                <span>Code</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- 2. SecureGate Login Auth -->
-          <article class="project-card" data-category="systems">
-            <div class="project-top-row">
-              <div class="project-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <div class="about-mini-card">
+              <div class="mini-icon">💡</div>
+              <div>
+                <h4>Core Philosophy</h4>
+                <p>Write clean code, minimize latency, automate repetitive tasks, and design for humans.</p>
               </div>
-              <span class="level-badge l2">Level 2 • Security</span>
             </div>
-            <h3 class="project-title">SecureGate Auth System</h3>
-            <p class="project-desc">
-              Client-side authentication system demonstrating SHA-256 password hashing with Web Crypto API, real-time password strength meter, route protection, and protected dashboard.
-            </p>
-            <div class="tech-pill-list">
-              <span class="tech-pill">Web Crypto API</span>
-              <span class="tech-pill">SHA-256</span>
-              <span class="tech-pill">Route Guard</span>
-              <span class="tech-pill">JavaScript</span>
-            </div>
-            <div class="project-actions">
-              <a href="../WebDev-L2-LoginAuth/" target="_blank" rel="noopener noreferrer" class="btn-proj-live">
-                <span>Live Demo</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L2-LoginAuth" target="_blank" rel="noopener noreferrer" class="btn-proj-code" aria-label="View SecureGate source code on GitHub">
-                <span>Code</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- 3. TaskFlow To-Do & Pomodoro -->
-          <article class="project-card" data-category="tools systems">
-            <div class="project-top-row">
-              <div class="project-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
+            <div class="about-mini-card">
+              <div class="mini-icon">🌍</div>
+              <div>
+                <h4>Contact &amp; Location</h4>
+                <p>Open for full-time software engineering roles, internships, and remote opportunities.</p>
               </div>
-              <span class="level-badge l2">Level 2 • Productivity</span>
             </div>
-            <h3 class="project-title">TaskFlow Productivity</h3>
-            <p class="project-desc">
-              Dual-board task manager (Pending &amp; Completed) with inline editing, priority filtering, localStorage persistence, and an integrated 25-minute Pomodoro focus timer.
-            </p>
-            <div class="tech-pill-list">
-              <span class="tech-pill">LocalStorage</span>
-              <span class="tech-pill">Pomodoro Timer</span>
-              <span class="tech-pill">CSS Flexbox</span>
-              <span class="tech-pill">JavaScript</span>
-            </div>
-            <div class="project-actions">
-              <a href="../WebDev-L2-ToDoWebApp/" target="_blank" rel="noopener noreferrer" class="btn-proj-live">
-                <span>Live Demo</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L2-ToDoWebApp" target="_blank" rel="noopener noreferrer" class="btn-proj-code" aria-label="View TaskFlow source code on GitHub">
-                <span>Code</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- 4. Precision Calculator -->
-          <article class="project-card" data-category="tools">
-            <div class="project-top-row">
-              <div class="project-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
-              </div>
-              <span class="level-badge l2">Level 2 • Computation</span>
-            </div>
-            <h3 class="project-title">NeoCalc Calculator</h3>
-            <p class="project-desc">
-              Arithmetic calculator with chained operations, parenthesis resolution, division-by-zero safeguards, full keyboard event handling, and calculation history drawer.
-            </p>
-            <div class="tech-pill-list">
-              <span class="tech-pill">CSS Grid</span>
-              <span class="tech-pill">Keyboard Events</span>
-              <span class="tech-pill">Math Parser</span>
-              <span class="tech-pill">History Log</span>
-            </div>
-            <div class="project-actions">
-              <a href="../WebDev-L2-Calculator/" target="_blank" rel="noopener noreferrer" class="btn-proj-live">
-                <span>Live Demo</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L2-Calculator" target="_blank" rel="noopener noreferrer" class="btn-proj-code" aria-label="View NeoCalc source code on GitHub">
-                <span>Code</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- 5. APJ Abdul Kalam Tribute -->
-          <article class="project-card" data-category="platform">
-            <div class="project-top-row">
-              <div class="project-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
-              </div>
-              <span class="level-badge l2">Level 2 • Editorial</span>
-            </div>
-            <h3 class="project-title">Abdul Kalam Tribute &amp; Quiz</h3>
-            <p class="project-desc">
-              An interactive tribute page celebrating Dr. APJ Abdul Kalam with chronological career milestones, quote generator, and an interactive 5-question trivia quiz.
-            </p>
-            <div class="tech-pill-list">
-              <span class="tech-pill">Editorial CSS</span>
-              <span class="tech-pill">Interactive Quiz</span>
-              <span class="tech-pill">Timeline</span>
-              <span class="tech-pill">JavaScript</span>
-            </div>
-            <div class="project-actions">
-              <a href="../WebDev-L2-TributePage/" target="_blank" rel="noopener noreferrer" class="btn-proj-live">
-                <span>Live Demo</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L2-TributePage" target="_blank" rel="noopener noreferrer" class="btn-proj-code" aria-label="View Tribute Page source code on GitHub">
-                <span>Code</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- 6. Temperature Converter -->
-          <article class="project-card" data-category="tools">
-            <div class="project-top-row">
-              <div class="project-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
-              </div>
-              <span class="level-badge l1">Level 1 • Math</span>
-            </div>
-            <h3 class="project-title">ThermoPulse Converter</h3>
-            <p class="project-desc">
-              Bi-directional multi-unit temperature converter (Celsius, Fahrenheit, Kelvin, Rankine) with real-time calculations, absolute zero detection, and visual fluid gauge.
-            </p>
-            <div class="tech-pill-list">
-              <span class="tech-pill">Real-Time Math</span>
-              <span class="tech-pill">Validation</span>
-              <span class="tech-pill">CSS Transitions</span>
-              <span class="tech-pill">HTML5</span>
-            </div>
-            <div class="project-actions">
-              <a href="../WebDev-L1-TemperatureConverter/" target="_blank" rel="noopener noreferrer" class="btn-proj-live">
-                <span>Live Demo</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L1-TemperatureConverter" target="_blank" rel="noopener noreferrer" class="btn-proj-code" aria-label="View Temperature Converter source code on GitHub">
-                <span>Code</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- 7. SaaS Landing Page -->
-          <article class="project-card" data-category="platform">
-            <div class="project-top-row">
-              <div class="project-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-              </div>
-              <span class="level-badge l1">Level 1 • Marketing UI</span>
-            </div>
-            <h3 class="project-title">NovaCloud AI Landing</h3>
-            <p class="project-desc">
-              SaaS product landing page featuring interactive monthly/annual billing toggle, live ROI cost estimator, architecture terminal, testimonials, and email token generator.
-            </p>
-            <div class="tech-pill-list">
-              <span class="tech-pill">CSS Grid</span>
-              <span class="tech-pill">ROI Estimator</span>
-              <span class="tech-pill">Responsive</span>
-              <span class="tech-pill">JavaScript</span>
-            </div>
-            <div class="project-actions">
-              <a href="../WebDev-L1-LandingPage/" target="_blank" rel="noopener noreferrer" class="btn-proj-live">
-                <span>Live Demo</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a href="https://github.com/Sourabh123-atl/OIBSIP/tree/main/WebDev-L1-LandingPage" target="_blank" rel="noopener noreferrer" class="btn-proj-code" aria-label="View NovaCloud AI source code on GitHub">
-                <span>Code</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- 8. Master Hub Portal -->
-          <article class="project-card" data-category="platform systems">
-            <div class="project-top-row">
-              <div class="project-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
-              </div>
-              <span class="level-badge l1">Core Suite</span>
-            </div>
-            <h3 class="project-title">OIBSIP Master Suite</h3>
-            <p class="project-desc">
-              All-in-one index portal organizing all 8 applications with search, level filtering, clean architecture overview, and GitHub Pages continuous integration.
-            </p>
-            <div class="tech-pill-list">
-              <span class="tech-pill">Portal Hub</span>
-              <span class="tech-pill">Search Filter</span>
-              <span class="tech-pill">Clean Typography</span>
-              <span class="tech-pill">Vanilla JS</span>
-            </div>
-            <div class="project-actions">
-              <a href="../" class="btn-proj-live">
-                <span>Open Master Hub</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-              </a>
-              <a href="https://github.com/Sourabh123-atl/OIBSIP" target="_blank" rel="noopener noreferrer" class="btn-proj-code" aria-label="View Master Portal source code on GitHub">
-                <span>Code</span>
-              </a>
-            </div>
-          </article>
-
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================================================
-         TECHNICAL SKILLS SECTION
-         ========================================================= -->
+    <!-- Skills Section -->
     <section class="section skills-section" id="skills">
       <div class="container">
         <div class="section-heading">
-          <div class="section-eyebrow">Technical Competencies</div>
-          <h2 class="section-title">Skills &amp; Technologies</h2>
-          <p class="section-desc">Languages, browser APIs, and engineering tools leveraged across my work.</p>
+          <span class="badge-tag">Technical Competencies</span>
+          <h2>My Technical Skills &amp; Stack</h2>
+          <p>Core programming languages, frameworks, and developer tooling.</p>
         </div>
 
-        <div class="skills-categories-grid">
-          <!-- Card 1: Frontend -->
-          <div class="skill-card">
-            <div class="skill-card-head">
-              <div class="skill-icon-badge" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              </div>
+        <div class="skills-grid">
+          <div class="skill-category-card">
+            <div class="category-header">
+              <span class="category-icon">🎨</span>
               <h3>Frontend Engineering</h3>
             </div>
-            <div class="skill-tags-group">
-              <span class="skill-tag-item">HTML5 (Semantic &amp; Accessible)</span>
-              <span class="skill-tag-item">Modern CSS3 (Grid &amp; Flexbox)</span>
-              <span class="skill-tag-item">Vanilla JavaScript (ES6+)</span>
-              <span class="skill-tag-item">DOM State Management</span>
-              <span class="skill-tag-item">Responsive UI (Mobile-First)</span>
-              <span class="skill-tag-item">Cross-Browser Testing</span>
+            <div class="skills-pills">
+              <span class="skill-pill">HTML5 (Semantic)</span>
+              <span class="skill-pill">Modern CSS3 / Grid / Flexbox</span>
+              <span class="skill-pill">JavaScript (ES6+)</span>
+              <span class="skill-pill">Glassmorphism UI</span>
+              <span class="skill-pill">Web Audio API</span>
+              <span class="skill-pill">Responsive Design</span>
+              <span class="skill-pill">Canvas Animations</span>
             </div>
           </div>
 
-          <!-- Card 2: Core & Systems -->
-          <div class="skill-card">
-            <div class="skill-card-head">
-              <div class="skill-icon-badge" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10 13 2 2 5-5"/><rect width="20" height="20" x="2" y="2" rx="4"/></svg>
-              </div>
-              <h3>Languages &amp; Core APIs</h3>
+          <div class="skill-category-card">
+            <div class="category-header">
+              <span class="category-icon">⚙️</span>
+              <h3>Languages &amp; Backend</h3>
             </div>
-            <div class="skill-tags-group">
-              <span class="skill-tag-item">Python 3 (OOP &amp; Scripting)</span>
-              <span class="skill-tag-item">Java (Core &amp; Systems)</span>
-              <span class="skill-tag-item">Web Crypto API (SHA-256)</span>
-              <span class="skill-tag-item">Web Storage (localStorage)</span>
-              <span class="skill-tag-item">RESTful Client Patterns</span>
-              <span class="skill-tag-item">Asynchronous JavaScript</span>
+            <div class="skills-pills">
+              <span class="skill-pill">Python 3</span>
+              <span class="skill-pill">Java (OOP)</span>
+              <span class="skill-pill">REST APIs</span>
+              <span class="skill-pill">Socket Programming</span>
+              <span class="skill-pill">Web Crypto (SHA-256)</span>
+              <span class="skill-pill">SQLite / Relational DBs</span>
             </div>
           </div>
 
-          <!-- Card 3: DevOps & Workflow -->
-          <div class="skill-card">
-            <div class="skill-card-head">
-              <div class="skill-icon-badge" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-              </div>
-              <h3>DevOps &amp; Engineering Tools</h3>
+          <div class="skill-category-card">
+            <div class="category-header">
+              <span class="category-icon">🗄️</span>
+              <h3>Data &amp; DevOps</h3>
             </div>
-            <div class="skill-tags-group">
-              <span class="skill-tag-item">Git &amp; GitHub Version Control</span>
-              <span class="skill-tag-item">GitHub Pages &amp; CI Workflows</span>
-              <span class="skill-tag-item">VS Code Environment</span>
-              <span class="skill-tag-item">Chrome DevTools Debugging</span>
-              <span class="skill-tag-item">Performance Auditing</span>
-              <span class="skill-tag-item">Terminal &amp; CLI Scripting</span>
+            <div class="skills-pills">
+              <span class="skill-pill">Git &amp; GitHub</span>
+              <span class="skill-pill">GitHub Pages CI/CD</span>
+              <span class="skill-pill">Pandas &amp; NumPy</span>
+              <span class="skill-pill">Scikit-Learn (ML)</span>
+              <span class="skill-pill">Data Cleaning &amp; EDA</span>
+              <span class="skill-pill">VS Code / Android Studio</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================================================
-         INTERACTIVE IN-BROWSER CLI TERMINAL
-         ========================================================= -->
-    <section class="terminal-section" id="terminal">
+    <!-- Projects Section -->
+    <section class="section projects-section" id="projects">
       <div class="container">
         <div class="section-heading">
-          <div class="section-eyebrow">Developer Playground</div>
-          <h2 class="section-title">In-Browser CLI Terminal</h2>
-          <p class="section-desc">Type commands directly to query profile metadata, competencies, and system specifications.</p>
+          <span class="badge-tag">Featured Portfolio</span>
+          <h2>Internship Projects &amp; Live Deployments</h2>
+          <p>Real, working applications built for Oasis Infobyte Student Internship Program.</p>
         </div>
 
-        <div class="terminal-card">
-          <div class="terminal-top-bar">
-            <div class="term-dots">
-              <span class="term-dot r"></span>
-              <span class="term-dot y"></span>
-              <span class="term-dot g"></span>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-img-box">
+              <div class="project-preview-mockup" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);">
+                <span class="mockup-tag">SaaS Landing Page</span>
+                <h4>NovaCloud AI Platform</h4>
+              </div>
             </div>
-            <span class="term-title">sourabh@patel-dev:~ (bash)</span>
-            <span style="font-size: 0.75rem; color: #64748b;">Type 'help' for commands</span>
+            <div class="project-details">
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>Vanilla JS</span>
+                <span>SaaS UI</span>
+              </div>
+              <h3 class="project-title">NovaCloud AI Edge Cloud Platform</h3>
+              <p class="project-desc">
+                High-converting product landing page with sticky glass navigation, feature breakdown, architecture terminal preview, customer reviews, and pricing switch.
+              </p>
+              <div class="project-links">
+                <a href="../WebDev-L1-LandingPage/index.html" class="proj-link live-link">
+                  <span>Live App</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a href="https://github.com/Sourabh123-atl/OIBSIP" target="_blank" rel="noopener" class="proj-link github-link">
+                  <span>Repository</span>
+                </a>
+              </div>
+            </div>
           </div>
 
-          <div class="term-body" id="term-output">
-            <div><span style="color: #10b981;">● System Initialized:</span> Sourabh Patel Developer CLI Shell [v2.4.0]</div>
-            <div>Type <span style="color: #38bdf8; font-weight: bold;">help</span> to inspect available commands.</div>
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-img-box">
+              <div class="project-preview-mockup" style="background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);">
+                <span class="mockup-tag">Productivity &amp; Kanban</span>
+                <h4>TaskFlow Daily Manager</h4>
+              </div>
+            </div>
+            <div class="project-details">
+              <div class="project-tags">
+                <span>JavaScript</span>
+                <span>Confetti FX</span>
+                <span>LocalStorage</span>
+                <span>Audio Synth</span>
+              </div>
+              <h3 class="project-title">TaskFlow Focus &amp; Daily Task Manager</h3>
+              <p class="project-desc">
+                Productivity web application with dual pending/completed lists, priority badges, inline task editing, persistent storage, and celebratory confetti cannons!
+              </p>
+              <div class="project-links">
+                <a href="../WebDev-L2-ToDoWebApp/index.html" class="proj-link live-link">
+                  <span>Live App</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a href="https://github.com/Sourabh123-atl/OIBSIP" target="_blank" rel="noopener" class="proj-link github-link">
+                  <span>Repository</span>
+                </a>
+              </div>
+            </div>
           </div>
 
-          <div class="term-input-row">
-            <span class="term-prompt">sourabh:~$</span>
-            <input type="text" id="term-cmd-input" class="term-input" placeholder="type 'help', 'skills', 'projects', 'contact'..." autocomplete="off" spellcheck="false" aria-label="Terminal Command Input">
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-img-box">
+              <div class="project-preview-mockup" style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 100%);">
+                <span class="mockup-tag">Thermal Physics</span>
+                <h4>ThermoPulse Converter</h4>
+              </div>
+            </div>
+            <div class="project-details">
+              <div class="project-tags">
+                <span>Physics Engine</span>
+                <span>Boundary Checks</span>
+                <span>Math</span>
+                <span>Live State</span>
+              </div>
+              <h3 class="project-title">ThermoPulse Temperature Visualizer</h3>
+              <p class="project-desc">
+                Precision bi-directional temperature converter evaluating Celsius, Fahrenheit, Kelvin, and Rankine with physical absolute zero boundary alerts.
+              </p>
+              <div class="project-links">
+                <a href="../WebDev-L1-TemperatureConverter/index.html" class="proj-link live-link">
+                  <span>Live App</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a href="https://github.com/Sourabh123-atl/OIBSIP" target="_blank" rel="noopener" class="proj-link github-link">
+                  <span>Repository</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================================================
-         CONTACT SECTION WITH PERSISTENT INBOX
-         ========================================================= -->
-    <section class="section contact-section" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-info">
-          <div class="section-eyebrow">Connect &amp; Collaborate</div>
-          <h2 class="section-title">Get in Touch</h2>
-          <p class="section-desc">
-            I am currently open to full-time Software Engineer positions, web development roles, and open-source collaborations.
-          </p>
-
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div class="contact-text-group">
-              <span>Direct Email</span>
-              <a href="mailto:sourabhpatel.dev@gmail.com">sourabhpatel.dev@gmail.com</a>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            </div>
-            <div class="contact-text-group">
-              <span>GitHub</span>
-              <a href="https://github.com/Sourabh123-atl" target="_blank" rel="noopener noreferrer">github.com/Sourabh123-atl</a>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div class="contact-text-group">
-              <span>Location</span>
-              <strong>India &bull; Remote &bull; Open for Relocation</strong>
-            </div>
-          </div>
+    <!-- Interactive CLI Terminal Section -->
+    <section class="section terminal-section" id="terminal-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="badge-tag">Interactive Feature</span>
+          <h2>Developer Terminal Emulator</h2>
+          <p>Try running commands in this browser terminal to explore my background, repos, and skills!</p>
         </div>
 
-        <!-- Working Form with LocalStorage Persistence -->
-        <form class="contact-form" id="portfolio-contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="contact-name">Your Full Name</label>
-              <input type="text" id="contact-name" class="form-input" placeholder="e.g. Alex Rivera" required>
+        <div class="terminal-container">
+          <div class="terminal-bar">
+            <span class="term-dot term-red"></span>
+            <span class="term-dot term-yellow"></span>
+            <span class="term-dot term-green"></span>
+            <span class="term-title">sourabh@patel-dev: ~ (bash)</span>
+          </div>
+          <div class="terminal-body" id="term-output">
+            <div>Welcome to Sourabh Patel's interactive terminal portfolio v1.2.</div>
+            <div>Type <span style="color:#38bdf8; font-weight:bold;">help</span> to see available commands.</div>
+            <br>
+          </div>
+          <div class="terminal-input-row">
+            <span class="term-prompt">sourabh:~$</span>
+            <input type="text" id="term-cmd-input" class="term-input" placeholder="Type 'help', 'skills', 'projects', 'contact'..." autocomplete="off">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <span class="badge-tag">Let's Connect</span>
+          <h2>Get In Touch</h2>
+          <p>Have an exciting opportunity, project collaboration, or interview? Drop me a message.</p>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-info-panel">
+            <h3>Contact Information</h3>
+            <p>I respond promptly to recruiter inquiries, open source collaborations, and software discussions.</p>
+            
+            <div class="contact-details-list">
+              <div class="contact-detail-item">
+                <span class="detail-icon">📧</span>
+                <div>
+                  <span class="detail-label">Email</span>
+                  <span class="detail-value"><a href="mailto:sourabhpatel.dev@gmail.com" style="color: inherit; text-decoration: none;">sourabhpatel.dev@gmail.com</a></span>
+                </div>
+              </div>
+              <div class="contact-detail-item">
+                <span class="detail-icon">💼</span>
+                <div>
+                  <span class="detail-label">LinkedIn</span>
+                  <span class="detail-value"><a href="https://linkedin.com" target="_blank" style="color: inherit; text-decoration: none;">linkedin.com/in/sourabh-patel</a></span>
+                </div>
+              </div>
+              <div class="contact-detail-item">
+                <span class="detail-icon">🐙</span>
+                <div>
+                  <span class="detail-label">GitHub</span>
+                  <span class="detail-value"><a href="https://github.com/Sourabh123-atl" target="_blank" style="color: inherit; text-decoration: none;">github.com/Sourabh123-atl</a></span>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="contact-email">Email Address</label>
-              <input type="email" id="contact-email" class="form-input" placeholder="name@example.com" required>
-            </div>
           </div>
 
-          <div class="form-group">
-            <label for="contact-subject">Subject</label>
-            <input type="text" id="contact-subject" class="form-input" placeholder="Role Opportunity / Project Collaboration" required>
+          <div class="contact-form-panel">
+            <form id="portfolio-contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="contact-name">Your Full Name</label>
+                <input type="text" id="contact-name" placeholder="Recruiter / Collaborator Name" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email Address</label>
+                <input type="email" id="contact-email" placeholder="recruiter@company.com" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-subject">Subject</label>
+                <input type="text" id="contact-subject" placeholder="Software Engineering Role / Project Inquiry" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" rows="4" placeholder="Hi Sourabh, we reviewed your Oasis Infobyte projects and would love to chat..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-submit" id="btn-submit-contact">
+                <span>Send Message</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+              <div class="form-toast" id="contact-toast"></div>
+            </form>
           </div>
-
-          <div class="form-group">
-            <label for="contact-message">Message</label>
-            <textarea id="contact-message" class="form-input" rows="4" placeholder="Hello Sourabh, I reviewed your OIBSIP applications and would love to discuss..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="justify-content: center;">
-            <span>Send Direct Message</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          </button>
-
-          <div class="contact-toast" id="contact-toast" role="status" aria-live="polite"></div>
-
-          <!-- Inquiries Preview Drawer -->
-          <div class="inquiries-preview-box">
-            <button type="button" class="inquiries-toggle-btn" id="btn-toggle-inquiries">
-              <span>📂 View Sent Inquiries (<span id="inquiries-count">0</span>)</span>
-            </button>
-            <div class="inquiries-list" id="inquiries-list"></div>
-          </div>
-        </form>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- =========================================================
-       FOOTER
-       ========================================================= -->
   <footer class="portfolio-footer">
-    <div class="container footer-inner">
-      <div class="footer-copy">
-        <span class="footer-title">Sourabh Patel &bull; Software Engineer</span>
-        <span class="footer-sub">&copy; 2026 Oasis Infobyte Student Internship Program (OIBSIP). All rights reserved.</span>
-      </div>
-
-      <div class="footer-links">
-        <a href="https://github.com/Sourabh123-atl" target="_blank" rel="noopener noreferrer" class="footer-sub" style="font-weight: 500;">GitHub</a>
-        <a href="../" class="footer-sub" style="font-weight: 500;">Master Hub</a>
-        <button type="button" class="btn-top" id="btn-portfolio-top" aria-label="Scroll back to top">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-          <span>Back to top</span>
-        </button>
-      </div>
+    <div class="container">
+      <p>&copy; 2026 Sourabh Patel • Oasis Infobyte Student Internship Program (OIBSIP Web Development Track Task 2).</p>
     </div>
   </footer>
+
+  <!-- Toast for Copying LinkedIn Caption -->
+  <div id="caption-toast" class="caption-toast">
+    <span>✅ Ready-to-post LinkedIn Caption copied to clipboard!</span>
+  </div>
 
   <script src="app.js"></script>
 </body>
