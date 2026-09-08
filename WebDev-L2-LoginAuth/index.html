@@ -71,6 +71,14 @@
             <span>Sign In to Dashboard</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
+
+          <!-- Quick 1-Click Demo Login -->
+          <div class="demo-auth-box">
+            <span class="demo-divider">OR INSTANT TESTING</span>
+            <button type="button" class="btn btn-demo-login" id="btn-quick-demo">
+              <span>⚡ Auto Fill Demo Account (Sourabh Patel)</span>
+            </button>
+          </div>
         </form>
 
         <!-- REGISTER FORM -->
@@ -87,7 +95,7 @@
             <label for="reg-username">Username</label>
             <div class="input-container">
               <span class="input-icon">🏷️</span>
-              <input type="text" id="reg-username" placeholder="alexrivera" autocomplete="username" required>
+              <input type="text" id="reg-username" placeholder="sourabhpatel" autocomplete="username" required>
             </div>
           </div>
 
@@ -95,7 +103,7 @@
             <label for="reg-email">Email Address</label>
             <div class="input-container">
               <span class="input-icon">📧</span>
-              <input type="email" id="reg-email" placeholder="alex.rivera@example.com" autocomplete="email" required>
+              <input type="email" id="reg-email" placeholder="sourabhpatel.dev@gmail.com" autocomplete="email" required>
             </div>
           </div>
 
@@ -129,6 +137,9 @@
           <p class="crypto-note">
             🔐 Passwords are salted and hashed using <strong>SHA-256</strong> via Web Crypto API before local persistence.
           </p>
+          <div class="hub-link-wrapper">
+            <a href="../" class="btn-back-hub">← Return to Master Portfolio</a>
+          </div>
         </footer>
       </section>
 
@@ -143,10 +154,13 @@
               <span class="user-role-badge">Verified Authenticated Session</span>
             </div>
           </div>
-          <button type="button" class="btn-logout" id="btn-logout">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-            <span>Sign Out</span>
-          </button>
+          <div class="dash-header-actions">
+            <a href="../" class="btn-hub-inline" title="Back to All Tasks">🏠 Hub</a>
+            <button type="button" class="btn-logout" id="btn-logout">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              <span>Sign Out</span>
+            </button>
+          </div>
         </header>
 
         <!-- Dashboard Content Grid -->
@@ -174,10 +188,14 @@
                 <span class="info-label">Login Timestamp</span>
                 <span class="info-val" id="dash-login-time">--</span>
               </div>
+              <div class="info-row">
+                <span class="info-label">Session Time Left</span>
+                <span class="info-val" id="dash-session-timer">23h 59m 59s</span>
+              </div>
             </div>
           </div>
 
-          <!-- Quick Metrics -->
+          <!-- Quick Metrics & Security Status -->
           <div class="dash-widget">
             <div class="widget-header">
               <span class="widget-icon">⚡</span>
@@ -199,10 +217,74 @@
                 </div>
               </div>
               <p class="guard-explanation">
-                🛡️ This page is protected by route authentication guards. Direct URL visits without an active authenticated session token will immediately trigger a redirect to the Sign In portal.
+                🛡️ Route authentication guard active. Protected views cannot be accessed without a valid verified SHA-256 cryptographic session token.
               </p>
             </div>
           </div>
+
+          <!-- Interactive Profile Editor Widget -->
+          <div class="dash-widget full-width">
+            <div class="widget-header">
+              <span class="widget-icon">✏️</span>
+              <h3>Edit Profile & Bio (Live Database Update)</h3>
+            </div>
+            <div class="widget-body">
+              <form id="profile-edit-form" class="profile-form-grid">
+                <div class="form-group">
+                  <label for="edit-fullname">Full Name</label>
+                  <input type="text" id="edit-fullname" class="dash-input" required>
+                </div>
+                <div class="form-group">
+                  <label for="edit-jobtitle">Role / Track</label>
+                  <input type="text" id="edit-jobtitle" class="dash-input" placeholder="Full Stack Web Developer">
+                </div>
+                <div class="form-group full-row">
+                  <label for="edit-bio">Bio</label>
+                  <textarea id="edit-bio" class="dash-input" rows="2" placeholder="Passionate developer building high-performance web systems."></textarea>
+                </div>
+                <div class="form-actions-row">
+                  <button type="submit" class="btn btn-save-profile">💾 Save Profile Updates</button>
+                  <span class="profile-saved-msg" id="profile-saved-msg"></span>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Change Password Widget -->
+          <div class="dash-widget">
+            <div class="widget-header">
+              <span class="widget-icon">🔒</span>
+              <h3>Change Password</h3>
+            </div>
+            <div class="widget-body">
+              <form id="change-pwd-form">
+                <div class="form-group">
+                  <label for="current-pwd">Current Password</label>
+                  <input type="password" id="current-pwd" class="dash-input" placeholder="••••••••" required>
+                </div>
+                <div class="form-group">
+                  <label for="new-pwd">New Password</label>
+                  <input type="password" id="new-pwd" class="dash-input" placeholder="Min. 8 chars with number" required>
+                </div>
+                <button type="submit" class="btn btn-change-pwd">Update Password</button>
+                <span class="pwd-update-msg" id="pwd-update-msg"></span>
+              </form>
+            </div>
+          </div>
+
+          <!-- Live Security Audit Log -->
+          <div class="dash-widget">
+            <div class="widget-header">
+              <span class="widget-icon">📜</span>
+              <h3>Live Security Audit Log</h3>
+            </div>
+            <div class="widget-body">
+              <ul class="audit-log-list" id="audit-log-list">
+                <!-- Dynamically populated -->
+              </ul>
+            </div>
+          </div>
+
         </div>
       </section>
 

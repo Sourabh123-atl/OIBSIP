@@ -24,6 +24,9 @@ class AuthSystem {
     this.dashLoginTime = document.getElementById('dash-login-time');
     this.btnLogout = document.getElementById('btn-logout');
 
+    // Session Timer
+    this.sessionTimerInterval = null;
+
     this.init();
   }
 
@@ -50,6 +53,42 @@ class AuthSystem {
     localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
   }
 
+  getAuditLogs() {
+    try {
+      const data = localStorage.getItem('securegate_audit_logs_v1');
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  addAuditLog(action) {
+    const logs = this.getAuditLogs();
+    logs.unshift({
+      action,
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+    });
+    if (logs.length > 8) logs.pop();
+    localStorage.setItem('securegate_audit_logs_v1', JSON.stringify(logs));
+    this.renderAuditLogs();
+  }
+
+  renderAuditLogs() {
+    const list = document.getElementById('audit-log-list');
+    if (!list) return;
+    const logs = this.getAuditLogs();
+    if (logs.length === 0) {
+      list.innerHTML = '<li class="audit-log-item"><span class="audit-action">No recent activity</span></li>';
+      return;
+    }
+    list.innerHTML = logs.map(l => `
+      <li class="audit-log-item">
+        <span class="audit-action">${l.action}</span>
+        <span class="audit-time">${l.time}</span>
+      </li>
+    `).join('');
+  }
+
   getSession() {
     try {
       const data = localStorage.getItem(this.SESSION_KEY);
@@ -60,20 +99,32 @@ class AuthSystem {
   }
 
   setSession(user) {
+    const expiresAt = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
     const sessionData = {
       id: user.id,
       fullname: user.fullname,
       username: user.username,
       email: user.email,
+      role: user.jobTitle || 'Full Stack Web Developer',
+      bio: user.bio || 'Building next-generation web applications & systems.',
       token: 'sg_sess_' + Math.random().toString(36).substring(2) + Date.now().toString(36),
-      loginAt: new Date().toLocaleString([], { dateStyle: 'medium', timeStyle: 'medium' })
+      loginAt: new Date().toLocaleString([], { dateStyle: 'medium', timeStyle: 'medium' }),
+      expiresAt
     };
     localStorage.setItem(this.SESSION_KEY, JSON.stringify(sessionData));
+    this.addAuditLog(`User @${user.username} signed in`);
     return sessionData;
   }
 
   clearSession() {
+    const curr = this.getSession();
+    if (curr) {
+      this.addAuditLog(`User @${curr.username} signed out`);
+    }
     localStorage.removeItem(this.SESSION_KEY);
+    if (this.sessionTimerInterval) {
+      clearInterval(this.sessionTimerInterval);
+    }
   }
 
   showAlert(message, type = 'error') {
@@ -180,22 +231,25 @@ class AuthSystem {
       username,
       email,
       passwordHash,
+      jobTitle: 'Full Stack Web Developer',
+      bio: 'Oasis Infobyte Internship Candidate',
       createdAt: new Date().toISOString()
     };
 
     users.push(newUser);
     this.saveUsers(users);
+    this.addAuditLog(`New account created (@${username})`);
 
     this.showAlert('Registration successful! Please sign in with your credentials.', 'success');
     this.registerForm.reset();
     setTimeout(() => {
       this.switchTab('login');
       document.getElementById('login-identifier').value = username;
-    }, 1500);
+    }, 1200);
   }
 
   async handleLogin(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     this.clearAlert();
 
     const identifier = document.getElementById('login-identifier').value.trim().toLowerCase();
@@ -227,6 +281,30 @@ class AuthSystem {
     this.renderDashboard(session);
   }
 
+  startSessionTimer(expiresAt) {
+    if (this.sessionTimerInterval) clearInterval(this.sessionTimerInterval);
+    const timerElem = document.getElementById('dash-session-timer');
+    if (!timerElem) return;
+
+    const updateTimer = () => {
+      const remaining = Math.max(0, expiresAt - Date.now());
+      const hours = Math.floor(remaining / 3600000);
+      const mins = Math.floor((remaining % 3600000) / 60000);
+      const secs = Math.floor((remaining % 60000) / 1000);
+      timerElem.textContent = `${hours}h ${mins}m ${secs}s`;
+
+      if (remaining <= 0) {
+        clearInterval(this.sessionTimerInterval);
+        this.clearSession();
+        this.showAuth();
+        this.showAlert('Session expired. Please sign in again.');
+      }
+    };
+
+    updateTimer();
+    this.sessionTimerInterval = setInterval(updateTimer, 1000);
+  }
+
   renderDashboard(session) {
     this.authView.classList.add('hidden');
     this.dashboardView.classList.remove('hidden');
@@ -236,7 +314,7 @@ class AuthSystem {
       .map(n => n[0])
       .join('')
       .toUpperCase()
-      .substring(0, 2) || 'US';
+      .substring(0, 2) || 'SP';
 
     this.dashAvatar.textContent = initials;
     this.dashUserName.textContent = session.fullname;
@@ -244,6 +322,17 @@ class AuthSystem {
     this.dashUserUsername.textContent = `@${session.username}`;
     this.dashSessionToken.textContent = session.token;
     this.dashLoginTime.textContent = session.loginAt;
+
+    // Populate edit profile inputs
+    const editName = document.getElementById('edit-fullname');
+    const editRole = document.getElementById('edit-jobtitle');
+    const editBio = document.getElementById('edit-bio');
+    if (editName) editName.value = session.fullname;
+    if (editRole) editRole.value = session.role || 'Full Stack Web Developer';
+    if (editBio) editBio.value = session.bio || '';
+
+    this.renderAuditLogs();
+    this.startSessionTimer(session.expiresAt || (Date.now() + 86400000));
   }
 
   showAuth() {
@@ -255,13 +344,18 @@ class AuthSystem {
   // Seed default demo user if empty
   async seedDemoUser() {
     const users = this.getUsers();
-    if (users.length === 0) {
-      const demoHash = await this.hashPassword('Password123');
+    const demoHash = await this.hashPassword('Password123');
+    
+    // Ensure Sourabh Patel demo exists
+    const existingSourabh = users.find(u => u.username === 'sourabhpatel');
+    if (!existingSourabh) {
       users.push({
         id: 'usr_demo_1',
         fullname: 'Sourabh Patel',
         username: 'sourabhpatel',
         email: 'sourabhpatel.dev@gmail.com',
+        jobTitle: 'Full Stack Web Developer',
+        bio: 'Oasis Infobyte Web Development & Designing Intern 2026.',
         passwordHash: demoHash,
         createdAt: new Date().toISOString()
       });
@@ -280,9 +374,102 @@ class AuthSystem {
     this.loginForm.addEventListener('submit', (e) => this.handleLogin(e));
     this.registerForm.addEventListener('submit', (e) => this.handleRegister(e));
 
+    // Quick 1-Click Demo Fill
+    const btnDemo = document.getElementById('btn-quick-demo');
+    if (btnDemo) {
+      btnDemo.addEventListener('click', async () => {
+        document.getElementById('login-identifier').value = 'sourabhpatel';
+        document.getElementById('login-password').value = 'Password123';
+        this.showAlert('Demo credentials loaded! Signing in...', 'success');
+        setTimeout(() => {
+          this.handleLogin();
+        }, 400);
+      });
+    }
+
+    // Edit Profile Form Submit
+    const profileForm = document.getElementById('profile-edit-form');
+    if (profileForm) {
+      profileForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newName = document.getElementById('edit-fullname').value.trim();
+        const newRole = document.getElementById('edit-jobtitle').value.trim();
+        const newBio = document.getElementById('edit-bio').value.trim();
+        const msg = document.getElementById('profile-saved-msg');
+
+        const session = this.getSession();
+        if (session && newName) {
+          session.fullname = newName;
+          session.role = newRole;
+          session.bio = newBio;
+          localStorage.setItem(this.SESSION_KEY, JSON.stringify(session));
+
+          // Also update users array
+          const users = this.getUsers();
+          const uIdx = users.findIndex(u => u.username === session.username);
+          if (uIdx !== -1) {
+            users[uIdx].fullname = newName;
+            users[uIdx].jobTitle = newRole;
+            users[uIdx].bio = newBio;
+            this.saveUsers(users);
+          }
+
+          this.addAuditLog(`Profile updated by @${session.username}`);
+          this.renderDashboard(session);
+
+          msg.className = 'profile-saved-msg success';
+          msg.textContent = '✅ Profile updated successfully!';
+          setTimeout(() => { msg.textContent = ''; }, 3000);
+        }
+      });
+    }
+
+    // Change Password Form Submit
+    const changePwdForm = document.getElementById('change-pwd-form');
+    if (changePwdForm) {
+      changePwdForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const currPwd = document.getElementById('current-pwd').value;
+        const newPwd = document.getElementById('new-pwd').value;
+        const msg = document.getElementById('pwd-update-msg');
+
+        const session = this.getSession();
+        if (!session) return;
+
+        const users = this.getUsers();
+        const targetUser = users.find(u => u.username === session.username);
+
+        if (!targetUser) return;
+
+        const currHash = await this.hashPassword(currPwd);
+        if (currHash !== targetUser.passwordHash) {
+          msg.className = 'pwd-update-msg error';
+          msg.textContent = '⚠️ Current password incorrect.';
+          return;
+        }
+
+        if (newPwd.length < 8 || !/\d/.test(newPwd)) {
+          msg.className = 'pwd-update-msg error';
+          msg.textContent = '⚠️ New password must be 8+ chars with number.';
+          return;
+        }
+
+        targetUser.passwordHash = await this.hashPassword(newPwd);
+        this.saveUsers(users);
+        this.addAuditLog(`Password changed for @${session.username}`);
+
+        changePwdForm.reset();
+        msg.className = 'pwd-update-msg success';
+        msg.textContent = '✅ Password updated securely (SHA-256)!';
+        setTimeout(() => { msg.textContent = ''; }, 3500);
+      });
+    }
+
     // Live password strength
     const regPassword = document.getElementById('reg-password');
-    regPassword.addEventListener('input', () => this.checkPasswordStrength(regPassword.value));
+    if (regPassword) {
+      regPassword.addEventListener('input', () => this.checkPasswordStrength(regPassword.value));
+    }
 
     // Toggle Password Visibility
     document.querySelectorAll('.btn-toggle-pwd').forEach(btn => {

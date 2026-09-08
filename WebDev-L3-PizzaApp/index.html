@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SliceCraft — Pizza Delivery & Inventory Management Platform</title>
+  <meta name="description" content="Production-grade full-stack pizza ordering and inventory management application with custom pizza builder, Razorpay payment simulation, real-time order tracker, and admin stock controls.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="app-navbar">
+    <div class="nav-inner container">
+      <div class="brand">
+        <span class="brand-emoji">🍕</span>
+        <div class="brand-text">
+          <h1>SliceCraft</h1>
+          <span class="brand-tag">Artisan Pizza & Real-Time Tracking</span>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="main-nav">
+        <button class="nav-btn active" data-view="menu-view" id="nav-menu">Pizza Menu</button>
+        <button class="nav-btn" data-view="builder-view" id="nav-builder">Custom Pizza Builder</button>
+        <button class="nav-btn" data-view="orders-view" id="nav-orders">Track Orders <span class="badge-count" id="active-orders-count">0</span></button>
+        <button class="nav-btn admin-toggle-btn" data-view="admin-view" id="nav-admin">🛡️ Admin Portal</button>
+      </nav>
+
+      <div class="nav-cart-box" style="display: flex; gap: 0.6rem; align-items: center;">
+        <a href="../" class="nav-btn" style="text-decoration: none; padding: 0.55rem 0.9rem; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; color: #cbd5e1; display: inline-flex; align-items: center; gap: 0.35rem;" title="Return to Master Portfolio Hub">🏠 Hub</a>
+        <button class="cart-trigger-btn" id="btn-cart-trigger">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-label">Cart</span>
+          <span class="cart-badge" id="cart-badge-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewports Container -->
+  <main class="main-wrapper container">
+
+    <!-- ================= 1. MENU VIEW ================= -->
+    <section class="view-section active" id="menu-view">
+      <div class="section-hero">
+        <div class="hero-tag">🔥 Handcrafted Daily with Fresh Ingredients</div>
+        <h2>Signature Artisan Pizzas</h2>
+        <p>Choose from our chef-curated classics or design your own custom creation using our 4-step builder.</p>
+      </div>
+
+      <div class="pizza-grid" id="pizza-menu-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- ================= 2. CUSTOM PIZZA BUILDER ================= -->
+    <section class="view-section" id="builder-view">
+      <div class="builder-header">
+        <span class="step-badge">Interactive Craft Studio</span>
+        <h2>Build Your Custom Masterpiece</h2>
+        <p>Customize every layer from hand-tossed dough to exotic gourmet toppings.</p>
+      </div>
+
+      <div class="builder-layout">
+        <!-- Steps Controller -->
+        <div class="builder-steps-container">
+          <!-- Step 1: Base -->
+          <div class="builder-card active-step" id="step-base">
+            <div class="step-head">
+              <span class="step-num">Step 1</span>
+              <h3>Choose Your Pizza Crust (Base)</h3>
+            </div>
+            <div class="options-grid" id="base-options-grid"></div>
+          </div>
+
+          <!-- Step 2: Sauce -->
+          <div class="builder-card" id="step-sauce">
+            <div class="step-head">
+              <span class="step-num">Step 2</span>
+              <h3>Select Savory Sauce</h3>
+            </div>
+            <div class="options-grid" id="sauce-options-grid"></div>
+          </div>
+
+          <!-- Step 3: Cheese -->
+          <div class="builder-card" id="step-cheese">
+            <div class="step-head">
+              <span class="step-num">Step 3</span>
+              <h3>Choose Artisanal Cheese</h3>
+            </div>
+            <div class="options-grid" id="cheese-options-grid"></div>
+          </div>
+
+          <!-- Step 4: Vegetables -->
+          <div class="builder-card" id="step-veggies">
+            <div class="step-head">
+              <span class="step-num">Step 4</span>
+              <h3>Select Fresh Farm Vegetables (Multi-select)</h3>
+            </div>
+            <div class="options-grid" id="veggies-options-grid"></div>
+          </div>
+        </div>
+
+        <!-- Live Pizza Visualizer & Summary Box -->
+        <aside class="builder-summary-card">
+          <h3>Your Custom Creation</h3>
+          <div class="pizza-visual-preview" id="pizza-visual-preview">
+            <div class="layer layer-crust" id="preview-crust"></div>
+            <div class="layer layer-sauce" id="preview-sauce"></div>
+            <div class="layer layer-cheese" id="preview-cheese"></div>
+            <div class="layer layer-veggies" id="preview-veggies"></div>
+          </div>
+
+          <div class="spec-summary" id="builder-spec-summary">
+            <div class="spec-line"><span>Base:</span> <strong id="sum-base">Thin Crust</strong></div>
+            <div class="spec-line"><span>Sauce:</span> <strong id="sum-sauce">Classic Marinara</strong></div>
+            <div class="spec-line"><span>Cheese:</span> <strong id="sum-cheese">Mozzarella</strong></div>
+            <div class="spec-line"><span>Vegetables:</span> <strong id="sum-veggies">None</strong></div>
+            <div class="spec-price-line"><span>Custom Total:</span> <strong class="total-highlight" id="sum-price">₹349</strong></div>
+          </div>
+
+          <button class="btn btn-primary btn-add-custom" id="btn-add-custom-to-cart">
+            <span>Add Custom Pizza to Cart</span>
+            <span id="btn-custom-price">₹349</span>
+          </button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ================= 3. ORDERS & REAL-TIME TRACKING ================= -->
+    <section class="view-section" id="orders-view">
+      <div class="orders-header">
+        <span class="step-badge">Live GPS Telemetry</span>
+        <h2>Active Order Status & History</h2>
+        <p>Watch your order progress in real-time from our oven to your doorstep.</p>
+      </div>
+
+      <div class="orders-list" id="orders-list-container">
+        <!-- Rendered Dynamically -->
+      </div>
+    </section>
+
+    <!-- ================= 4. ADMIN INVENTORY & OPERATIONS ================= -->
+    <section class="view-section" id="admin-view">
+      <div class="admin-header">
+        <div>
+          <span class="admin-badge">Admin Operational Console</span>
+          <h2>Live Inventory & Kitchen Queue</h2>
+          <p>Monitor raw ingredient stocks, configure alert thresholds, and advance live order statuses.</p>
+        </div>
+        <div class="admin-top-actions">
+          <button class="btn btn-secondary" id="btn-simulate-stock-alert">🔔 Test Low Stock Alert</button>
+          <button class="btn btn-danger" id="btn-restock-all">🔄 Restock All Units (+50)</button>
+        </div>
+      </div>
+
+      <!-- Stock Alert Notification Banner -->
+      <div class="stock-alert-banner" id="admin-stock-alert">
+        <span class="alert-bell">⚠️</span>
+        <div class="alert-content">
+          <h4>Automated Inventory Threshold Warning</h4>
+          <p id="admin-alert-msg">Stock level for one or more critical items has dropped below minimum threshold (&lt; 20 units).</p>
+        </div>
+      </div>
+
+      <!-- Inventory Grid -->
+      <div class="admin-dashboard-grid">
+        <div class="admin-panel inventory-panel">
+          <div class="panel-head">
+            <h3>Raw Ingredient Inventory</h3>
+            <span class="pill-info">Auto-decrements with every order</span>
+          </div>
+          <div class="inventory-table-wrapper">
+            <table class="inventory-table" id="inventory-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Ingredient</th>
+                  <th>Current Stock</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="inventory-table-body">
+                <!-- Rendered Dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Incoming Orders Kitchen Queue -->
+        <div class="admin-panel orders-panel">
+          <div class="panel-head">
+            <h3>Kitchen Dispatch Queue</h3>
+            <span class="pill-info">Advance status to notify user in real-time</span>
+          </div>
+          <div class="admin-orders-queue" id="admin-orders-queue">
+            <!-- Rendered Dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= SLIDE-OUT SHOPPING CART & RAZORPAY CHECKOUT ================= -->
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <div class="cart-title-box">
+        <span class="cart-icon">🛒</span>
+        <h3>Your Order Cart</h3>
+      </div>
+      <button class="btn-close-cart" id="btn-close-cart">✕</button>
+    </div>
+
+    <div class="cart-items" id="cart-items-container">
+      <!-- Items dynamically rendered -->
+    </div>
+
+    <div class="cart-footer" id="cart-footer">
+      <div class="cart-summary-line">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">₹0</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>Taxes & Kitchen Packaging (5%)</span>
+        <span id="cart-tax">₹0</span>
+      </div>
+      <div class="cart-summary-line total-line">
+        <span>Total Payable</span>
+        <span id="cart-total-payable">₹0</span>
+      </div>
+
+      <!-- Razorpay Test Mode Checkout Button -->
+      <button class="btn btn-razorpay" id="btn-razorpay-checkout">
+        <div class="rzp-icon-wrap">
+          <span class="rzp-shield">🛡️</span>
+          <span>Pay with Razorpay (Test Mode)</span>
+        </div>
+        <span class="rzp-amount" id="btn-rzp-amount">₹0</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Razorpay Test Mode Modal Simulation -->
+  <div class="modal-overlay" id="razorpay-modal">
+    <div class="rzp-modal-card">
+      <div class="rzp-head">
+        <div class="rzp-brand">
+          <span class="rzp-logo">⚡ razorpay</span>
+          <span class="rzp-test-tag">TEST MODE</span>
+        </div>
+        <button class="rzp-close" id="btn-rzp-cancel">✕</button>
+      </div>
+      <div class="rzp-merchant">
+        <h4>SliceCraft Pizzeria Ltd.</h4>
+        <span class="rzp-order-sum" id="rzp-modal-amount">Amount: ₹0</span>
+      </div>
+      <div class="rzp-body">
+        <p class="rzp-notice">This is a simulated Razorpay payment gateway operating in Test Mode. Click "Simulate Payment Success" to confirm your order.</p>
+        <div class="rzp-payment-methods">
+          <div class="rzp-method active">💳 Credit / Debit Cards</div>
+          <div class="rzp-method">📱 UPI / QR Code</div>
+          <div class="rzp-method">🏦 Net Banking</div>
+        </div>
+      </div>
+      <div class="rzp-actions">
+        <button class="btn btn-rzp-success" id="btn-rzp-simulate-success">
+          <span>✓ Simulate Payment Success</span>
+        </button>
+        <button class="btn btn-rzp-fail" id="btn-rzp-simulate-fail">✕ Cancel & Fail</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

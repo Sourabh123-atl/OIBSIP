@@ -29,6 +29,7 @@
 | **Level 2** | **Task 2** | **Tribute Page** | HTML5, CSS3, JavaScript | `COMPLETED` | [🌐 Launch App](https://sourabh123-atl.github.io/OIBSIP/WebDev-L2-TributePage/) |
 | **Level 2** | **Task 3** | **To-Do Web App** | HTML5, CSS3, JavaScript, LocalStorage | `COMPLETED` | [🌐 Launch App](https://sourabh123-atl.github.io/OIBSIP/WebDev-L2-ToDoWebApp/) |
 | **Level 2** | **Task 4** | **Login Authentication System** | HTML5, CSS3, JS, Web Crypto (SHA-256) | `COMPLETED` | [🌐 Launch App](https://sourabh123-atl.github.io/OIBSIP/WebDev-L2-LoginAuth/) |
+| **Level 3** | **Task 1** | **Pizza Delivery & Inventory Platform** | HTML5, CSS3, JS, Dynamic Canvas/SVG | `COMPLETED` | [🌐 Launch App](https://sourabh123-atl.github.io/OIBSIP/WebDev-L3-PizzaApp/) |
 
 ---
 
@@ -42,18 +43,18 @@ git clone https://github.com/Sourabh123-atl/OIBSIP.git
 cd OIBSIP
 ```
 
-### 2. Run Any Project
-You can open the `index.html` file of any project folder directly in any modern web browser, or serve locally with Python or VS Code Live Server:
+### 2. Run All-in-One Master Suite
+You can open the `index.html` master hub directly or serve locally to access all 8 apps with the integrated live sandbox preview:
 
 ```bash
 # Serve the whole workspace locally:
 # Python 3
-python -m http.server 8000
+python -m http.server 3000
 
 # Or with Node.js
 npx serve .
 ```
-Then navigate to `http://localhost:8000` in your web browser.
+Then navigate to `http://localhost:3000` in your web browser.
 
 ---
 
@@ -61,8 +62,8 @@ Then navigate to `http://localhost:8000` in your web browser.
 
 - **Markup & Structure**: HTML5 (Semantic elements, accessible ARIA attributes)
 - **Styling & Layout**: CSS3 (Modern Flexbox, CSS Grid, Glassmorphism, CSS Custom Properties / Design Tokens, Keyframe Animations)
-- **Logic & State**: Modern Vanilla JavaScript (ES6+, DOM Manipulation, Web Storage API, Web Crypto API)
-- **Icons & Typography**: Google Fonts (Inter, Outfit, Playfair Display), Modern SVG Icons
+- **Logic & State**: Modern Vanilla JavaScript (ES6+, DOM Manipulation, Web Storage API, Web Crypto API, Web Audio API, Web Speech API)
+- **Icons & Typography**: Google Fonts (Outfit, Plus Jakarta Sans, Fira Code), Modern SVG Icons
 
 ---
 
@@ -71,59 +72,62 @@ Then navigate to `http://localhost:8000` in your web browser.
 ### 🔹 Level 1 — Foundational Web Engineering
 1. **NovaCloud AI Landing Page (`WebDev-L1-LandingPage`)**:
    - Sticky frosted-glass navigation bar with smooth anchor links.
-   - High-impact hero section with live demo triggers and CTA buttons.
-   - Feature matrix, architecture showcase, customer testimonial cards, and tiered pricing table.
-   - Comprehensive footer with social channels and interactive newsletter signup.
-   - Zero element overlap, fully fluid mobile-to-desktop responsiveness.
+   - Interactive Annual/Monthly billing toggle with instant discount calculation.
+   - Live Interactive Cloud Cost & ROI Calculator with slider controls.
+   - Terminal sandbox, customer testimonial cards, and tiered pricing table.
 
 2. **Personal Developer Portfolio (`WebDev-L1-PersonalPortfolio`)**:
-   - Polished hero introduction with avatar, role tags, and interactive resume download.
-   - Structured "About Me" biographical narrative.
-   - Categorized technical skills grid with animated proficiency indicators.
-   - Interactive project showcase with tag filtering and GitHub/demo buttons.
-   - Validated contact form with interactive toast notification feedback.
+   - Polished hero introduction for **Sourabh Patel** with avatar and resume download.
+   - Interactive in-browser CLI terminal emulator (`help`, `skills`, `projects`, `contact`).
+   - Categorized technical skills grid with animated proficiency indicators and radar.
+   - Live contact form with `localStorage` message inbox and simulated auto-reply.
 
 3. **ThermoPulse Temperature Converter (`WebDev-L1-TemperatureConverter`)**:
-   - Bi-directional conversion supporting Celsius ($^\circ\text{C}$), Fahrenheit ($^\circ\text{F}$), and Kelvin ($\text{K}$).
-   - Instant real-time conversion across all units simultaneously.
-   - Input validation guarding against non-numeric entries with clear error toasts.
-   - Absolute zero physical threshold detection ($< -273.15^\circ\text{C}$ / $< 0\text{K}$).
-   - Dynamic temperature thermal state visualizer gauge.
+   - Bi-directional conversion supporting Celsius ($^\circ\text{C}$), Fahrenheit ($^\circ\text{F}$), Kelvin ($\text{K}$), and Rankine ($^\circ\text{R}$).
+   - Fluid animated thermometer visualizer responding dynamically to temperature.
+   - Absolute zero physical threshold detection ($< -273.15^\circ\text{C}$).
+   - Real-world city weather temperature presets (Delhi, London, Tokyo, Dubai, Antarctic).
 
 ### 🔹 Level 2 — Interactive Applications & Systems
 1. **NeoCalc Arithmetic Calculator (`WebDev-L2-Calculator`)**:
    - Clean CSS Grid layout with tactile push animations and responsive buttons.
-   - Complete arithmetic operation engine supporting chained operations ($5 + 3 \times 2$).
+   - Complete arithmetic operation engine supporting chained operations and parentheses.
    - Division-by-zero protection with user-friendly error banners.
-   - Full keyboard navigation and calculation history drawer.
-   - Pure event listener architecture (0 inline `onclick` attributes).
+   - Full keyboard navigation, Web Audio sound synthesis, and calculation history drawer.
 
 2. **Dr. A.P.J. Abdul Kalam Tribute Page (`WebDev-L2-TributePage`)**:
    - Editorial tribute layout dedicated to India's "Missile Man" and 11th President.
-   - Curated biographical chapters and high-resolution imagery.
    - Interactive chronological timeline covering milestones from 1931 to 2015.
-   - Distinctive typography pairing (Playfair Display serif + Inter sans-serif).
-   - Inspiring quote callouts and awards archive.
+   - Text-to-Speech quote narrator using Web Speech API.
+   - Interactive 5-Question Kalam Trivia Quiz with instant badge scoring.
 
 3. **TaskFlow To-Do Web App (`WebDev-L2-ToDoWebApp`)**:
    - Dual-board task manager dividing Pending and Completed items.
-   - Add tasks with priority tags (High, Medium, Low) and categories.
+   - Add tasks with priority tags (High, Medium, Low), categories, and due dates.
    - Inline real-time editing, item completion toggle, and permanent delete.
-   - Real-time pending/completed counter badges.
-   - ISO timestamps for creation and completion dates.
+   - Confetti celebration FX and victory chimes on completion.
+   - Integrated 25-minute Pomodoro focus timer with alert chimes.
    - Full `localStorage` state persistence.
 
 4. **SecureGate Authentication System (`WebDev-L2-LoginAuth`)**:
-   - Tabbed User Registration and Login interface.
-   - Robust password validation (8+ characters, numbers, uppercase, special symbols) with real-time strength meter.
+   - Tabbed User Registration and Login interface with 1-Click Quick Demo Login.
    - Client-side SHA-256 password hashing via Web Crypto API before storing.
-   - Duplicate account detection and secure generic authentication error handling.
-   - Protected Dashboard page with token validation and unauthorized direct-access redirect.
-   - Authenticated session management with logout and user profile summary.
+   - Real-time password strength meter and duplicate account detection.
+   - Protected Dashboard: live profile editor, password change module, live security audit logs, and 24h session countdown timer.
+
+### 🔹 Level 3 — Advanced Full-Stack Platform
+1. **SliceCraft Pizza Delivery & Inventory Platform (`WebDev-L3-PizzaApp`)**:
+   - 4-Step Custom Pizza Builder with live dynamic visual layers (Crust, Sauce, Cheese, Veggies) and real-time pricing calculation.
+   - Artisan Menu with category filters, dynamic cart system, and coupon code discounts (`OASIS20`).
+   - Simulated Razorpay checkout gateway with OTP verification and instant invoice generation.
+   - Real-time animated order progress tracker (Order Placed ➔ Baking in Oven ➔ Quality Check ➔ Out for Delivery ➔ Delivered).
+   - Admin Inventory Portal to manage ingredient stock counts and item availability.
 
 ---
 
 ## 📜 Submission & Evaluation Notes
+- **Candidate Name**: **Sourabh Patel**
+- **Track**: Web Development & Designing (OIBSIP 2026)
 - **Repository Name**: `OIBSIP` (Strict compliance)
 - **Folder Format**: `OIBSIP/[TrackName]-[Level/Task]-[ProjectName]/`
 - **Demo Videos**: Follows the required 2-second static title card format `[Full Name] | [Track] | [Task Title]` prior to end-to-end screen recordings.

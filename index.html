@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OIBSIP Web Development Portfolio — Oasis Infobyte Internship</title>
-  <meta name="description" content="Master portfolio showcase for Oasis Infobyte Student Internship Program (OIBSIP) featuring Level 1 and Level 2 web applications.">
+  <title>OIBSIP Web Development &amp; Designing All-in-One Master Suite — Sourabh Patel</title>
+  <meta name="description" content="All-in-one master interactive web suite for Oasis Infobyte Student Internship Program (OIBSIP) featuring 8 full-scale Level 1, Level 2, and Level 3 web applications by Sourabh Patel.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
   <script>
     // Bulletproof GitHub Pages subfolder resolution:
-    // If URL has no trailing slash (e.g. /OIBSIP), redirect to /OIBSIP/ so relative links don't 404
     if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
       window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
     }
@@ -18,7 +17,7 @@
   <style>
     :root {
       --bg: #07090e;
-      --card-bg: rgba(17, 24, 39, 0.75);
+      --card-bg: rgba(17, 24, 39, 0.78);
       --card-border: rgba(255, 255, 255, 0.08);
       --primary: #6366f1;
       --primary-hover: #4f46e5;
@@ -28,9 +27,11 @@
       --accent-amber: #f59e0b;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
+      --text-dim: #64748b;
       --font-heading: 'Outfit', sans-serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
-      --radius: 18px;
+      --font-mono: 'Fira Code', monospace;
+      --radius: 20px;
       --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,15 +41,122 @@
       font-family: var(--font-body);
       line-height: 1.6;
       min-height: 100vh;
-      padding: 3rem 1.5rem;
+      padding: 2.5rem 1.5rem 4rem 1.5rem;
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.18), transparent 450px),
-        radial-gradient(circle at 85% 25%, rgba(6, 182, 212, 0.15), transparent 400px),
-        radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.12), transparent 500px);
+        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.18), transparent 500px),
+        radial-gradient(circle at 90% 20%, rgba(6, 182, 212, 0.16), transparent 450px),
+        radial-gradient(circle at 50% 90%, rgba(236, 72, 153, 0.12), transparent 550px);
       background-attachment: fixed;
     }
-    .container { max-width: 1200px; margin: 0 auto; }
+    .container { max-width: 1280px; margin: 0 auto; }
     
+    /* Sticky Top Control Bar */
+    .top-all-in-one-bar {
+      position: sticky;
+      top: 15px;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 0.85rem 1.4rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+    .quick-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #10b981;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.7; }
+    }
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .brand-cand {
+      font-size: 0.82rem;
+      color: #38bdf8;
+      font-weight: 600;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    .search-box {
+      flex: 1;
+      max-width: 380px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 0.55rem 1rem 0.55rem 2.4rem;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      outline: none;
+      transition: all var(--transition);
+    }
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+    }
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+    .level-filters {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+    .filter-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    }
+
+    /* Main Hero Header */
     header { text-align: center; margin-bottom: 3.5rem; position: relative; }
     .badge {
       display: inline-flex;
@@ -57,7 +165,7 @@
       background: rgba(99, 102, 241, 0.15);
       border: 1px solid rgba(99, 102, 241, 0.4);
       color: #a5b4fc;
-      padding: 0.45rem 1.2rem;
+      padding: 0.45rem 1.3rem;
       border-radius: 9999px;
       font-size: 0.85rem;
       font-weight: 700;
@@ -68,7 +176,7 @@
     }
     h1 {
       font-family: var(--font-heading);
-      font-size: 3.2rem;
+      font-size: 3.4rem;
       font-weight: 900;
       letter-spacing: -1.5px;
       margin-bottom: 0.8rem;
@@ -76,16 +184,54 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .subtitle { color: var(--text-muted); font-size: 1.15rem; max-width: 720px; margin: 0 auto 2rem auto; }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.18rem;
+      max-width: 800px;
+      margin: 0 auto 2.2rem auto;
+      line-height: 1.65;
+    }
+
+    /* Quick Jump Pill Bar */
+    .quick-jump-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .jump-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .jump-pill:hover {
+      background: rgba(99, 102, 241, 0.2);
+      border-color: rgba(99, 102, 241, 0.5);
+      color: #fff;
+      transform: translateY(-2px);
+    }
 
     /* LinkedIn Video Studio Promo Banner */
     .linkedin-studio-card {
-      background: linear-gradient(135deg, rgba(30, 27, 75, 0.9), rgba(15, 23, 42, 0.9));
+      background: linear-gradient(135deg, rgba(30, 27, 75, 0.92), rgba(15, 23, 42, 0.95));
       border: 2px solid rgba(99, 102, 241, 0.5);
       border-radius: 24px;
       padding: 2.2rem;
+      margin-top: 3.5rem;
       margin-bottom: 4rem;
-      box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.3);
+      box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.35);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -99,14 +245,14 @@
       position: absolute;
       top: -50%;
       right: -10%;
-      width: 300px;
-      height: 300px;
+      width: 320px;
+      height: 320px;
       background: radial-gradient(circle, rgba(6, 182, 212, 0.25), transparent 70%);
       pointer-events: none;
     }
     .studio-text h2 {
       font-family: var(--font-heading);
-      font-size: 1.8rem;
+      font-size: 1.85rem;
       font-weight: 800;
       color: #38bdf8;
       margin-bottom: 0.5rem;
@@ -117,8 +263,8 @@
     .studio-text p {
       color: #cbd5e1;
       font-size: 1rem;
-      max-width: 650px;
-      line-height: 1.5;
+      max-width: 680px;
+      line-height: 1.55;
     }
     .studio-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-studio {
@@ -128,7 +274,7 @@
       padding: 0.9rem 1.8rem;
       border-radius: 12px;
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -150,6 +296,9 @@
       cursor: pointer;
       text-decoration: none;
       transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     .btn-outline:hover {
       background: rgba(255, 255, 255, 0.12);
@@ -160,32 +309,46 @@
     .level-heading {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
       gap: 1rem;
-      margin: 3rem 0 1.8rem 0;
+      margin: 3.5rem 0 1.8rem 0;
       border-bottom: 1px solid var(--card-border);
-      padding-bottom: 1rem;
+      padding-bottom: 1.1rem;
     }
-    .level-heading h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; }
+    .level-title-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .level-heading h2 {
+      font-family: var(--font-heading);
+      font-size: 1.7rem;
+      font-weight: 800;
+    }
     .level-tag {
       font-size: 0.8rem;
       font-weight: 800;
-      padding: 0.3rem 0.8rem;
+      padding: 0.35rem 0.9rem;
       border-radius: 9999px;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
     }
-    .level-tag.l1 { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
-    .level-tag.l2 { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .level-tag.l1 { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); }
+    .level-tag.l2 { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); }
+    .level-tag.l3 { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.35); }
 
-    /* Grid & Cards */
+    /* Grid & Task Cards */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+      gap: 2.2rem;
       margin-bottom: 3rem;
     }
     .card {
       background: var(--card-bg);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
       padding: 2.2rem;
@@ -207,44 +370,90 @@
     }
     .card:hover {
       transform: translateY(-6px);
-      border-color: rgba(99, 102, 241, 0.4);
-      box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.5);
+      border-color: rgba(99, 102, 241, 0.45);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
     }
     .card:hover::before { opacity: 1; }
-    .card-icon {
-      font-size: 2.4rem;
+    
+    .card-top { margin-bottom: 1.5rem; }
+    .card-icon-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 1.2rem;
+    }
+    .card-icon {
+      font-size: 2.5rem;
       display: inline-block;
       filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
     }
-    .task-num {
-      font-size: 0.8rem;
+    .status-badge-live {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      font-size: 0.75rem;
       font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .task-num {
+      font-size: 0.82rem;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--accent);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       display: block;
     }
     .card h3 {
       font-family: var(--font-heading);
-      font-size: 1.45rem;
-      font-weight: 700;
+      font-size: 1.55rem;
+      font-weight: 800;
       margin-bottom: 0.75rem;
+      color: #ffffff;
     }
     .card p {
       color: var(--text-muted);
       font-size: 0.95rem;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.2rem;
       line-height: 1.6;
     }
-    .card-footer {
+
+    /* Key Feature Checklist */
+    .feature-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1.5rem;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+    }
+    .feature-checklist li {
+      font-size: 0.82rem;
+      color: #cbd5e1;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .feature-checklist li::before {
+      content: '✓';
+      color: #10b981;
+      font-weight: 800;
+    }
+
+    /* Card Footer & Actions */
+    .card-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
       padding-top: 1.2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      gap: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
     .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
     .tag {
@@ -254,15 +463,40 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 6px;
       color: #94a3b8;
+      font-family: var(--font-mono);
     }
-    .actions-group { display: flex; gap: 0.5rem; align-items: center; }
+    .actions-group {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-sandbox {
+      background: linear-gradient(135deg, #0284c7, #6366f1);
+      color: #ffffff;
+      border: none;
+      padding: 0.6rem 1.1rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all var(--transition);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+    .btn-sandbox:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.5);
+    }
     .btn-record {
-      background: rgba(239, 68, 68, 0.15);
+      background: rgba(239, 68, 68, 0.12);
       color: #f87171;
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      padding: 0.5rem 0.9rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      padding: 0.55rem 0.9rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
@@ -277,17 +511,158 @@
     .btn-launch {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f8fafc;
+      text-decoration: none;
+      padding: 0.55rem 0.95rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all var(--transition);
+    }
+    .btn-launch:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #38bdf8;
+    }
+
+    /* ========================================================= */
+    /* ALL-IN-ONE IN-APP LIVE SANDBOX PREVIEW MODAL              */
+    /* ========================================================= */
+    #sandbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 6, 12, 0.92);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      z-index: 9999;
+      display: none;
+      flex-direction: column;
+      padding: 1.2rem;
+      animation: modalFadeIn 0.25s ease-out;
+    }
+    #sandbox-modal.active { display: flex; }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    .sandbox-header-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px 14px 0 0;
+      padding: 0.75rem 1.4rem;
+    }
+    .sandbox-app-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .sandbox-select {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      outline: none;
+      cursor: pointer;
+    }
+    .device-switcher {
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0.2rem;
+      gap: 0.2rem;
+    }
+    .dev-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all var(--transition);
+    }
+    .dev-btn:hover { color: #fff; }
+    .dev-btn.active {
       background: var(--primary);
       color: #fff;
+    }
+    .sandbox-tools {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .btn-tool {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
       text-decoration: none;
-      padding: 0.55rem 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all var(--transition);
+    }
+    .btn-tool:hover { background: rgba(255, 255, 255, 0.18); }
+    .btn-close-sandbox {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      padding: 0.45rem 0.9rem;
       border-radius: 8px;
       font-size: 0.9rem;
-      font-weight: 600;
-      transition: background var(--transition);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition);
     }
-    .btn-launch:hover { background: var(--primary-hover); }
+    .btn-close-sandbox:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    .sandbox-viewport-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #020408;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: none;
+      border-radius: 0 0 14px 14px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sandbox-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #fff;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sandbox-iframe.desktop { width: 100%; }
+    .sandbox-iframe.tablet { width: 768px; box-shadow: 0 0 40px rgba(0,0,0,0.8); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; }
+    .sandbox-iframe.mobile { width: 390px; box-shadow: 0 0 40px rgba(0,0,0,0.8); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; }
 
     /* Cinematic 2-Second Video Title Card Modal */
     #title-card-overlay {
@@ -371,31 +746,75 @@
 
     footer {
       text-align: center;
-      margin-top: 4rem;
-      padding-top: 2rem;
+      margin-top: 5rem;
+      padding-top: 2.5rem;
       border-top: 1px solid var(--card-border);
       color: #64748b;
       font-size: 0.95rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      h1 { font-size: 2.5rem; }
+      .grid { grid-template-columns: 1fr; }
+      .top-all-in-one-bar { flex-direction: column; align-items: stretch; }
+      .search-box { max-width: 100%; }
+      .tc-name { font-size: 2.4rem; }
     }
   </style>
 </head>
 <body>
   <div class="container">
+
+    <!-- Sticky Top Control & Navigation Bar -->
+    <nav class="top-all-in-one-bar" id="master-nav">
+      <div class="quick-brand">
+        <span class="status-dot" title="Live Server Active"></span>
+        <span class="brand-title">OIBSIP 2026 Master Suite</span>
+        <span class="brand-cand">Candidate: Sourabh Patel</span>
+      </div>
+
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="task-search-input" class="search-input" placeholder="Search tasks, auth, pizza, math, audio..." aria-label="Search Projects">
+      </div>
+
+      <div class="level-filters">
+        <button class="filter-btn active" data-filter="all">All (8 Tasks)</button>
+        <button class="filter-btn" data-filter="l1">Level 1 (3)</button>
+        <button class="filter-btn" data-filter="l2">Level 2 (4)</button>
+        <button class="filter-btn" data-filter="l3">Level 3 (1)</button>
+      </div>
+    </nav>
+
+    <!-- Main Header -->
     <header>
-      <div class="badge">OASIS INFOBYTE • SIP 2026</div>
+      <div class="badge">OASIS INFOBYTE • STUDENT INTERNSHIP PROGRAM</div>
       <h1>Web Development &amp; Designing</h1>
-      <p class="subtitle">Complete portfolio submission featuring 7 interactive web applications adhering strictly to Level 1 and Level 2 specifications.</p>
+      <p class="subtitle">Complete, production-ready portfolio submission featuring <strong>8 real-world interactive applications</strong> with client-side SHA-256 cryptography, full pizza builder &amp; order tracking, scientific calculations, and responsive UI engineering.</p>
+      
+      <!-- Quick Jump Pills -->
+      <div class="quick-jump-container">
+        <span class="jump-pill" onclick="openSandboxModal('WebDev-L1-LandingPage/', 'Task 1: NovaCloud SaaS Landing Page')">🚀 SaaS Landing</span>
+        <span class="jump-pill" onclick="openSandboxModal('WebDev-L1-PersonalPortfolio/', 'Task 2: Personal Portfolio')">👨‍💻 Sourabh Portfolio</span>
+        <span class="jump-pill" onclick="openSandboxModal('WebDev-L1-TemperatureConverter/', 'Task 3: Temperature Converter')">🌡️ Temp Converter</span>
+        <span class="jump-pill" onclick="openSandboxModal('WebDev-L2-Calculator/', 'Task 4: NeoCalc Scientific Calculator')">🧮 Calculator</span>
+        <span class="jump-pill" onclick="openSandboxModal('WebDev-L2-TributePage/', 'Task 5: Dr. APJ Abdul Kalam Tribute')">🕊️ Tribute &amp; Quiz</span>
+        <span class="jump-pill" onclick="openSandboxModal('WebDev-L2-ToDoWebApp/', 'Task 6: TaskFlow Productivity')">⚡ To-Do Kanban</span>
+        <span class="jump-pill" onclick="openSandboxModal('WebDev-L2-LoginAuth/', 'Task 7: SecureGate Auth &amp; Dashboard')">🛡️ SHA-256 Auth</span>
+        <span class="jump-pill" onclick="openSandboxModal('WebDev-L3-PizzaApp/', 'Task 8: SliceCraft Pizza Delivery Platform')">🍕 SliceCraft Pizza</span>
+      </div>
     </header>
 
     <!-- LinkedIn Video Demo Recording Studio Banner -->
     <div class="linkedin-studio-card">
       <div class="studio-text">
         <h2>🎬 LinkedIn Video Post Recording Studio</h2>
-        <p>Prepare professional 30-60 second video demos for your LinkedIn submission with a built-in <strong>Oasis Infobyte 2-Second Title Card</strong> (Full Name + Track + Task Title) mandated by the official internship guidelines.</p>
+        <p>Prepare professional 30-60 second video walkthroughs for LinkedIn with the official <strong>Oasis Infobyte 2-Second Title Card</strong> (Sourabh Patel • Web Development &amp; Designing • Task Title) mandated by the official internship guidelines.</p>
       </div>
       <div class="studio-actions">
-        <button class="btn-studio" onclick="openTitleCard('WebDev-L1-LandingPage/', 'Task 1: Landing Page (NovaCloud AI)')">
-          🎥 Record Task 1 Demo
+        <button class="btn-studio" onclick="openTitleCard('WebDev-L3-PizzaApp/', 'Level 3 Task: SliceCraft Pizza Ordering &amp; Tracking Platform')">
+          🎥 Record Level 3 Pizza App Demo
         </button>
         <a href="LINKEDIN_POSTS_GUIDE.md" target="_blank" class="btn-outline">
           📋 View Post Captions &amp; Scripts
@@ -403,175 +822,329 @@
       </div>
     </div>
 
-    <!-- LEVEL 1 -->
-    <div class="level-heading">
-      <span class="level-tag l1">Level 1</span>
-      <h2>Foundational Web Experiences (3 Tasks)</h2>
+    <!-- ================= LEVEL 1 ================= -->
+    <div class="level-section" data-level="l1">
+      <div class="level-heading">
+        <div class="level-title-group">
+          <span class="level-tag l1">Level 1</span>
+          <h2>Foundational Web Experiences (3 Tasks)</h2>
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- Task 1 -->
+        <div class="card" data-keywords="landing page novacloud saas pricing roi calculator architecture dark mode ui">
+          <div class="card-top">
+            <div class="card-icon-bar">
+              <span class="card-icon">🚀</span>
+              <span class="status-badge-live">🟢 Live Ready</span>
+            </div>
+            <span class="task-num">Level 1 • Task 1</span>
+            <h3>SaaS Landing Page</h3>
+            <p>NovaCloud AI — Ultra-modern cloud infrastructure SaaS landing page with frosted-glass navigation, live monthly/annual pricing switch, ROI savings estimator, interactive terminal, and newsletter token generator.</p>
+            <ul class="feature-checklist">
+              <li>Annual / Monthly Billing Switcher with instant pricing discount</li>
+              <li>Live Interactive Cloud Cost &amp; ROI Calculator</li>
+              <li>Terminal Sandbox &amp; Verified Security Badges</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS Grid</span>
+              <span class="tag">ROI Calculator</span>
+            </div>
+            <div class="actions-group">
+              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L1-LandingPage/', 'Task 1: NovaCloud SaaS Landing Page')">⚡ Live Sandbox</button>
+              <button class="btn-record" onclick="openTitleCard('WebDev-L1-LandingPage/', 'Task 1: Landing Page (NovaCloud AI)')">🔴 Video</button>
+              <a href="WebDev-L1-LandingPage/" class="btn-launch" target="_blank">↗ Full</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Task 2 -->
+        <div class="card" data-keywords="personal portfolio sourabh patel digital resume cli terminal skills radar contact inbox theme">
+          <div class="card-top">
+            <div class="card-icon-bar">
+              <span class="card-icon">👨‍💻</span>
+              <span class="status-badge-live">🟢 Live Ready</span>
+            </div>
+            <span class="task-num">Level 1 • Task 2</span>
+            <h3>Personal Portfolio</h3>
+            <p>Sourabh Patel Portfolio — Professional digital résumé featuring an interactive in-browser CLI terminal emulator, live project repository matrix, technical skills radar, theme toggle, and persistent contact messaging.</p>
+            <ul class="feature-checklist">
+              <li>Interactive In-Browser CLI Terminal (help, skills, projects, contact)</li>
+              <li>Live Contact Form with LocalStorage inbox &amp; auto-reply simulation</li>
+              <li>Interactive Skills Radar &amp; Project Filtering</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag">Sourabh Patel</span>
+              <span class="tag">CLI Terminal</span>
+              <span class="tag">Live Inbox</span>
+            </div>
+            <div class="actions-group">
+              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L1-PersonalPortfolio/', 'Task 2: Personal Portfolio (Sourabh Patel)')">⚡ Live Sandbox</button>
+              <button class="btn-record" onclick="openTitleCard('WebDev-L1-PersonalPortfolio/', 'Task 2: Personal Portfolio')">🔴 Video</button>
+              <a href="WebDev-L1-PersonalPortfolio/" class="btn-launch" target="_blank">↗ Full</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="card" data-keywords="temperature converter celsius fahrenheit kelvin rankine absolute zero thermo fluid weather">
+          <div class="card-top">
+            <div class="card-icon-bar">
+              <span class="card-icon">🌡️</span>
+              <span class="status-badge-live">🟢 Live Ready</span>
+            </div>
+            <span class="task-num">Level 1 • Task 3</span>
+            <h3>Temperature Converter</h3>
+            <p>ThermoPulse Converter — Real-time bi-directional conversion engine for Celsius, Fahrenheit, Kelvin, and Rankine with physical Absolute Zero boundary detection, fluid thermometer animation, and global city presets.</p>
+            <ul class="feature-checklist">
+              <li>4-Unit Bi-directional Conversion (Celsius, Fahrenheit, Kelvin, Rankine)</li>
+              <li>Fluid Mercury Level Animation &amp; Thermal Sensation Warnings</li>
+              <li>Global Weather Presets (Delhi, London, Tokyo, Dubai, Antarctic)</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag">Real-Time Math</span>
+              <span class="tag">SVG Thermometer</span>
+              <span class="tag">City Presets</span>
+            </div>
+            <div class="actions-group">
+              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L1-TemperatureConverter/', 'Task 3: Temperature Converter (ThermoPulse)')">⚡ Live Sandbox</button>
+              <button class="btn-record" onclick="openTitleCard('WebDev-L1-TemperatureConverter/', 'Task 3: Temperature Converter')">🔴 Video</button>
+              <a href="WebDev-L1-TemperatureConverter/" class="btn-launch" target="_blank">↗ Full</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="grid">
-      <!-- Task 1 -->
-      <div class="card">
-        <div>
-          <div class="card-icon">🚀</div>
-          <span class="task-num">Level 1 • Task 1</span>
-          <h3>Landing Page</h3>
-          <p>NovaCloud AI — Ultra-modern SaaS product landing page with sticky frosted-glass navigation, feature grid, architecture terminal, testimonials, and tiered pricing.</p>
-        </div>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">HTML5</span>
-            <span class="tag">CSS3</span>
-            <span class="tag">SaaS UI</span>
-          </div>
-          <div class="actions-group">
-            <button class="btn-record" onclick="openTitleCard('WebDev-L1-LandingPage/', 'Task 1: Landing Page')">🔴 Video Mode</button>
-            <a href="WebDev-L1-LandingPage/" class="btn-launch">Launch ↗</a>
-          </div>
+    <!-- ================= LEVEL 2 ================= -->
+    <div class="level-section" data-level="l2">
+      <div class="level-heading">
+        <div class="level-title-group">
+          <span class="level-tag l2">Level 2</span>
+          <h2>Interactive Applications &amp; Systems (4 Tasks)</h2>
         </div>
       </div>
 
-      <!-- Task 2 -->
-      <div class="card">
-        <div>
-          <div class="card-icon">👨‍💻</div>
-          <span class="task-num">Level 1 • Task 2</span>
-          <h3>Personal Portfolio</h3>
-          <p>Sourabh Patel Portfolio — Production-grade digital résumé featuring an interactive in-browser CLI terminal emulator, live project repository matrix, technical skills radar, and persistent contact messaging.</p>
-        </div>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Sourabh Patel</span>
-            <span class="tag">CLI Terminal</span>
-            <span class="tag">Live Showcase</span>
+      <div class="grid">
+        <!-- Task 1 -->
+        <div class="card" data-keywords="calculator neocalc arithmetic scientific math keyboard history sounds audio web audio">
+          <div class="card-top">
+            <div class="card-icon-bar">
+              <span class="card-icon">🧮</span>
+              <span class="status-badge-live">🟢 Live Ready</span>
+            </div>
+            <span class="task-num">Level 2 • Task 1</span>
+            <h3>Calculator</h3>
+            <p>NeoCalc Arithmetic Calculator — CSS Grid keypad layout with operator chaining, division-by-zero protection, keyboard support, calculation history drawer, and Web Audio sound synthesis.</p>
+            <ul class="feature-checklist">
+              <li>Arithmetic &amp; Percentage calculation with parentheses support</li>
+              <li>Calculation History Drawer with restore and clear functions</li>
+              <li>Full Keyboard Support + Sci-Fi Audio feedback</li>
+            </ul>
           </div>
-          <div class="actions-group">
-            <button class="btn-record" onclick="openTitleCard('WebDev-L1-PersonalPortfolio/', 'Task 2: Personal Portfolio')">🔴 Video Mode</button>
-            <a href="WebDev-L1-PersonalPortfolio/" class="btn-launch">Launch ↗</a>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag">CSS Grid</span>
+              <span class="tag">Web Audio API</span>
+              <span class="tag">History Log</span>
+            </div>
+            <div class="actions-group">
+              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L2-Calculator/', 'Task 4: Precision Calculator (NeoCalc)')">⚡ Live Sandbox</button>
+              <button class="btn-record" onclick="openTitleCard('WebDev-L2-Calculator/', 'Task 4: Precision Calculator')">🔴 Video</button>
+              <a href="WebDev-L2-Calculator/" class="btn-launch" target="_blank">↗ Full</a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Task 3 -->
-      <div class="card">
-        <div>
-          <div class="card-icon">🌡️</div>
-          <span class="task-num">Level 1 • Task 3</span>
-          <h3>Temperature Converter</h3>
-          <p>ThermoPulse Converter — Real-time bi-directional conversion tool for Celsius, Fahrenheit, Kelvin, and Rankine with physical Absolute Zero boundary detection.</p>
-        </div>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Converter</span>
-            <span class="tag">Thermo Fluid</span>
-            <span class="tag">Real-Time</span>
+        <!-- Task 2 -->
+        <div class="card" data-keywords="tribute page apj abdul kalam missile man quotes quiz text to speech audio timeline">
+          <div class="card-top">
+            <div class="card-icon-bar">
+              <span class="card-icon">🕊️</span>
+              <span class="status-badge-live">🟢 Live Ready</span>
+            </div>
+            <span class="task-num">Level 2 • Task 2</span>
+            <h3>Tribute Page</h3>
+            <p>Dr. A.P.J. Abdul Kalam Tribute — Multi-palette editorial experience detailing the Missile Man's life, career milestones timeline, awards, quote generator with text-to-speech voice narration, and interactive trivia quiz.</p>
+            <ul class="feature-checklist">
+              <li>Interactive Career Timeline (ISRO, DRDO, Presidency, Vision 2020)</li>
+              <li>Text-to-Speech Quote Narrator (Web Speech API)</li>
+              <li>Interactive 5-Question Kalam Trivia Quiz with Badge Scoring</li>
+            </ul>
           </div>
-          <div class="actions-group">
-            <button class="btn-record" onclick="openTitleCard('WebDev-L1-TemperatureConverter/', 'Task 3: Temperature Converter')">🔴 Video Mode</button>
-            <a href="WebDev-L1-TemperatureConverter/" class="btn-launch">Launch ↗</a>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag">Editorial UI</span>
+              <span class="tag">Web Speech API</span>
+              <span class="tag">Interactive Quiz</span>
+            </div>
+            <div class="actions-group">
+              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L2-TributePage/', 'Task 5: Tribute Page (Dr. APJ Abdul Kalam)')">⚡ Live Sandbox</button>
+              <button class="btn-record" onclick="openTitleCard('WebDev-L2-TributePage/', 'Tribute Page (Dr. APJ Abdul Kalam)')">🔴 Video</button>
+              <a href="WebDev-L2-TributePage/" class="btn-launch" target="_blank">↗ Full</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="card" data-keywords="todo to-do taskflow kanban productivity pomodoro focus timer confetti localstorage tags priority">
+          <div class="card-top">
+            <div class="card-icon-bar">
+              <span class="card-icon">⚡</span>
+              <span class="status-badge-live">🟢 Live Ready</span>
+            </div>
+            <span class="task-num">Level 2 • Task 3</span>
+            <h3>To-Do Web App</h3>
+            <p>TaskFlow Productivity App — Dual-board task manager (Pending &amp; Completed) with inline text editing, timestamps, priority tags, confetti celebration on completion, Pomodoro focus timer, and localStorage persistence.</p>
+            <ul class="feature-checklist">
+              <li>Dual Kanban Boards (Pending &amp; Completed) with Inline Editing</li>
+              <li>Confetti Particle FX &amp; Victory Chimes on Task Completion</li>
+              <li>Integrated 25-minute Pomodoro Focus Timer with Chime Alerts</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag">LocalStorage</span>
+              <span class="tag">Confetti FX</span>
+              <span class="tag">Pomodoro Timer</span>
+            </div>
+            <div class="actions-group">
+              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L2-ToDoWebApp/', 'Task 6: TaskFlow Productivity Web App')">⚡ Live Sandbox</button>
+              <button class="btn-record" onclick="openTitleCard('WebDev-L2-ToDoWebApp/', 'Task 6: TaskFlow Productivity Web App')">🔴 Video</button>
+              <a href="WebDev-L2-ToDoWebApp/" class="btn-launch" target="_blank">↗ Full</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Task 4 -->
+        <div class="card" data-keywords="login auth authentication sha-256 web crypto password hashing dashboard session security audit log demo">
+          <div class="card-top">
+            <div class="card-icon-bar">
+              <span class="card-icon">🛡️</span>
+              <span class="status-badge-live">🟢 Live Ready</span>
+            </div>
+            <span class="task-num">Level 2 • Task 4</span>
+            <h3>Login Authentication</h3>
+            <p>SecureGate Auth System — Zero-Knowledge SHA-256 password hashing with Web Crypto API, real user registration, 1-click demo account filler, route guards, live profile editor, password changer, and live security audit logs.</p>
+            <ul class="feature-checklist">
+              <li>Real SHA-256 Web Crypto Hashing + Salt &amp; Strength Meter</li>
+              <li>1-Click Quick Demo Login (Sourabh Patel credentials pre-filled)</li>
+              <li>Protected Dashboard: Profile Editor, Password Changer &amp; Audit Logs</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag">SHA-256 Crypto</span>
+              <span class="tag">Route Guard</span>
+              <span class="tag">Live Dashboard</span>
+            </div>
+            <div class="actions-group">
+              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L2-LoginAuth/', 'Task 7: SecureGate Authentication &amp; Dashboard')">⚡ Live Sandbox</button>
+              <button class="btn-record" onclick="openTitleCard('WebDev-L2-LoginAuth/', 'Login Authentication System')">🔴 Video</button>
+              <a href="WebDev-L2-LoginAuth/" class="btn-launch" target="_blank">↗ Full</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- LEVEL 2 -->
-    <div class="level-heading">
-      <span class="level-tag l2">Level 2</span>
-      <h2>Interactive Applications &amp; Systems (4 Tasks)</h2>
-    </div>
-
-    <div class="grid">
-      <!-- Task 1 -->
-      <div class="card">
-        <div>
-          <div class="card-icon">🧮</div>
-          <span class="task-num">Level 2 • Task 1</span>
-          <h3>Calculator</h3>
-          <p>NeoCalc Arithmetic Calculator — CSS Grid keypad layout with operator chaining, division-by-zero protection, keyboard support, and calculation history drawer.</p>
-        </div>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">CSS Grid</span>
-            <span class="tag">Sci-Fi Sounds</span>
-            <span class="tag">History</span>
-          </div>
-          <div class="actions-group">
-            <button class="btn-record" onclick="openTitleCard('WebDev-L2-Calculator/', 'Task 4: Precision Calculator')">🔴 Video Mode</button>
-            <a href="WebDev-L2-Calculator/" class="btn-launch">Launch ↗</a>
-          </div>
+    <!-- ================= LEVEL 3 ================= -->
+    <div class="level-section" data-level="l3">
+      <div class="level-heading">
+        <div class="level-title-group">
+          <span class="level-tag l3">Level 3</span>
+          <h2>Advanced Full-Stack Systems (1 Task)</h2>
         </div>
       </div>
 
-      <!-- Task 2 -->
-      <div class="card">
-        <div>
-          <div class="card-icon">🕊️</div>
-          <span class="task-num">Level 2 • Task 2</span>
-          <h3>Tribute Page</h3>
-          <p>Dr. A.P.J. Abdul Kalam Tribute — Multi-palette editorial design detailing the Missile Man's life, career milestones timeline, awards, and immortal quotes.</p>
-        </div>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Editorial</span>
-            <span class="tag">Timeline</span>
-            <span class="tag">Quotes</span>
+      <div class="grid">
+        <!-- Level 3 Task 1 -->
+        <div class="card" data-keywords="pizza delivery slicecraft custom builder cart checkout razorpay tracking inventory admin stock order">
+          <div class="card-top">
+            <div class="card-icon-bar">
+              <span class="card-icon">🍕</span>
+              <span class="status-badge-live">🟢 Live Ready</span>
+            </div>
+            <span class="task-num">Level 3 • Task 1</span>
+            <h3>Pizza Delivery &amp; Inventory App</h3>
+            <p>SliceCraft Artisan Platform — Full-stack food ordering platform featuring a 4-step custom pizza builder (Crust, Sauce, Cheese, Veggies), live cart &amp; payment simulator, real-time animated order status tracker, and admin inventory portal.</p>
+            <ul class="feature-checklist">
+              <li>4-Step Custom Pizza Builder with dynamic visual layers &amp; price calculator</li>
+              <li>Cart &amp; Simulated Checkout with Coupon codes (OASIS20) &amp; Invoice</li>
+              <li>Real-Time Order Progress Tracker (Baking ➔ Out for Delivery ➔ Delivered)</li>
+              <li>Admin Portal: Manage ingredient stock counts and item availability</li>
+            </ul>
           </div>
-          <div class="actions-group">
-            <button class="btn-record" onclick="openTitleCard('WebDev-L2-TributePage/', 'Tribute Page (Dr. APJ Abdul Kalam)')">🔴 Video Mode</button>
-            <a href="WebDev-L2-TributePage/" class="btn-launch">Launch ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Task 3 -->
-      <div class="card">
-        <div>
-          <div class="card-icon">⚡</div>
-          <span class="task-num">Level 2 • Task 3</span>
-          <h3>To-Do Web App</h3>
-          <p>TaskFlow Productivity App — Dual-board task manager (Pending & Completed) with inline text editing, timestamps, priority tags, and localStorage persistence.</p>
-        </div>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Kanban</span>
-            <span class="tag">Confetti FX</span>
-            <span class="tag">Pomodoro</span>
-          </div>
-          <div class="actions-group">
-            <button class="btn-record" onclick="openTitleCard('WebDev-L2-ToDoWebApp/', 'Task 5: TaskFlow Productivity Web App')">🔴 Video Mode</button>
-            <a href="WebDev-L2-ToDoWebApp/" class="btn-launch">Launch ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Task 4 -->
-      <div class="card">
-        <div>
-          <div class="card-icon">🛡️</div>
-          <span class="task-num">Level 2 • Task 4</span>
-          <h3>Login Authentication</h3>
-          <p>SecureGate Auth System — Client-side authentication with Web Crypto SHA-256 password hashing, strength meter, route guards, and protected user dashboard.</p>
-        </div>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">SHA-256</span>
-            <span class="tag">Auth Guard</span>
-            <span class="tag">Dashboard</span>
-          </div>
-          <div class="actions-group">
-            <button class="btn-record" onclick="openTitleCard('WebDev-L2-LoginAuth/', 'Login Authentication System')">🔴 Video Mode</button>
-            <a href="WebDev-L2-LoginAuth/" class="btn-launch">Launch ↗</a>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag">Pizza Builder</span>
+              <span class="tag">Order Tracker</span>
+              <span class="tag">Admin Inventory</span>
+            </div>
+            <div class="actions-group">
+              <button class="btn-sandbox" onclick="openSandboxModal('WebDev-L3-PizzaApp/', 'Level 3: SliceCraft Pizza Delivery &amp; Inventory Platform')">⚡ Live Sandbox</button>
+              <button class="btn-record" onclick="openTitleCard('WebDev-L3-PizzaApp/', 'Level 3 Task: SliceCraft Pizza Platform')">🔴 Video</button>
+              <a href="WebDev-L3-PizzaApp/" class="btn-launch" target="_blank">↗ Full</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <footer>
-      <p>&copy; 2026 Oasis Infobyte Student Internship Program (OIBSIP) • Candidate: <strong>Sourabh Patel</strong> • Repository: <strong>OIBSIP</strong></p>
+      <p>&copy; 2026 Oasis Infobyte Student Internship Program (OIBSIP) • Candidate: <strong>Sourabh Patel</strong> • Track: <strong>Web Development &amp; Designing</strong></p>
+      <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #94a3b8;">All 8 interactive web applications are running live on the local development environment with zero placeholders.</p>
     </footer>
   </div>
 
-  <!-- Cinematic 2-Second Title Card Overlay -->
+  <!-- ========================================================= -->
+  <!-- ALL-IN-ONE IN-APP LIVE SANDBOX PREVIEW MODAL              -->
+  <!-- ========================================================= -->
+  <div id="sandbox-modal" role="dialog" aria-modal="true">
+    <div class="sandbox-header-bar">
+      <div class="sandbox-app-switcher">
+        <span style="font-weight: 700; color: #38bdf8; font-size: 0.9rem;">📱 Live App Sandbox:</span>
+        <select id="sandbox-app-select" class="sandbox-select" onchange="onSandboxSelectChange(this.value)">
+          <option value="WebDev-L1-LandingPage/">🚀 Level 1: SaaS Landing Page</option>
+          <option value="WebDev-L1-PersonalPortfolio/">👨‍💻 Level 1: Sourabh Patel Portfolio</option>
+          <option value="WebDev-L1-TemperatureConverter/">🌡️ Level 1: Temperature Converter</option>
+          <option value="WebDev-L2-Calculator/">🧮 Level 2: NeoCalc Calculator</option>
+          <option value="WebDev-L2-TributePage/">🕊️ Level 2: APJ Abdul Kalam Tribute</option>
+          <option value="WebDev-L2-ToDoWebApp/">⚡ Level 2: TaskFlow To-Do App</option>
+          <option value="WebDev-L2-LoginAuth/">🛡️ Level 2: SecureGate Auth System</option>
+          <option value="WebDev-L3-PizzaApp/">🍕 Level 3: SliceCraft Pizza Platform</option>
+        </select>
+      </div>
+
+      <div class="device-switcher">
+        <button class="dev-btn active" data-device="desktop" onclick="setDeviceMode('desktop')">💻 Desktop (100%)</button>
+        <button class="dev-btn" data-device="tablet" onclick="setDeviceMode('tablet')">📋 Tablet (768px)</button>
+        <button class="dev-btn" data-device="mobile" onclick="setDeviceMode('mobile')">📱 Mobile (390px)</button>
+      </div>
+
+      <div class="sandbox-tools">
+        <button class="btn-tool" onclick="reloadSandboxIframe()" title="Reload App">🔄 Reload</button>
+        <a href="#" id="sandbox-ext-link" class="btn-tool" target="_blank" title="Open in New Tab">↗ Full Page</a>
+        <button class="btn-close-sandbox" onclick="closeSandboxModal()">✕ Close</button>
+      </div>
+    </div>
+
+    <div class="sandbox-viewport-wrapper">
+      <iframe id="sandbox-frame" class="sandbox-iframe desktop" src="about:blank" title="Live Project Sandbox"></iframe>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- CINEMATIC 2-SECOND TITLE CARD MODAL                       -->
+  <!-- ========================================================= -->
   <div id="title-card-overlay">
     <div class="tc-box">
       <button class="tc-close" onclick="closeTitleCard()">✕</button>
@@ -579,12 +1152,12 @@
       <div class="tc-name" id="tc-candidate-name">SOURABH PATEL</div>
       <div class="tc-track">Web Development &amp; Designing Track</div>
       <div class="tc-task-badge" id="tc-task-title">Task 1: Landing Page</div>
-      <div class="tc-timer" id="tc-status-msg">Title Card Active (2 seconds) — Launching app demonstration...</div>
+      <div class="tc-timer" id="tc-status-msg">Showing Title Card for recording (2s remaining)...</div>
     </div>
   </div>
 
   <script>
-    let timerId = null;
+    let titleTimerId = null;
 
     // Web Audio Synthesizer for Title Card Chime
     function playChime() {
@@ -610,6 +1183,67 @@
       return new URL(relativePath, base).href;
     }
 
+    // =========================================================
+    // IN-APP LIVE SANDBOX MODAL LOGIC
+    // =========================================================
+    function openSandboxModal(urlPath, taskTitle) {
+      const modal = document.getElementById('sandbox-modal');
+      const iframe = document.getElementById('sandbox-frame');
+      const select = document.getElementById('sandbox-app-select');
+      const extLink = document.getElementById('sandbox-ext-link');
+      const fullUrl = resolveSafeUrl(urlPath);
+
+      modal.classList.add('active');
+      iframe.src = fullUrl;
+      extLink.href = fullUrl;
+
+      // Update select dropdown value
+      if (select) {
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].value === urlPath) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSandboxModal() {
+      const modal = document.getElementById('sandbox-modal');
+      const iframe = document.getElementById('sandbox-frame');
+      modal.classList.remove('active');
+      iframe.src = 'about:blank';
+      document.body.style.overflow = '';
+    }
+
+    function onSandboxSelectChange(urlPath) {
+      const iframe = document.getElementById('sandbox-frame');
+      const extLink = document.getElementById('sandbox-ext-link');
+      const fullUrl = resolveSafeUrl(urlPath);
+      iframe.src = fullUrl;
+      extLink.href = fullUrl;
+    }
+
+    function setDeviceMode(mode) {
+      const iframe = document.getElementById('sandbox-frame');
+      iframe.className = `sandbox-iframe ${mode}`;
+      document.querySelectorAll('.dev-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.device === mode);
+      });
+    }
+
+    function reloadSandboxIframe() {
+      const iframe = document.getElementById('sandbox-frame');
+      const current = iframe.src;
+      iframe.src = '';
+      setTimeout(() => { iframe.src = current; }, 50);
+    }
+
+    // =========================================================
+    // 2-SECOND RECORDING TITLE CARD LOGIC
+    // =========================================================
     function openTitleCard(destinationUrl, taskTitle) {
       const overlay = document.getElementById('title-card-overlay');
       const taskElem = document.getElementById('tc-task-title');
@@ -623,12 +1257,12 @@
       let secondsRemaining = 2;
       statusElem.textContent = `Showing Title Card for recording (${secondsRemaining}s remaining)...`;
 
-      timerId = setInterval(() => {
+      titleTimerId = setInterval(() => {
         secondsRemaining--;
         if (secondsRemaining > 0) {
           statusElem.textContent = `Showing Title Card for recording (${secondsRemaining}s remaining)...`;
         } else {
-          clearInterval(timerId);
+          clearInterval(titleTimerId);
           statusElem.textContent = "Launching live project demonstration...";
           setTimeout(() => {
             window.location.href = targetUrl;
@@ -638,16 +1272,62 @@
     }
 
     function closeTitleCard() {
-      if (timerId) clearInterval(timerId);
+      if (titleTimerId) clearInterval(titleTimerId);
       document.getElementById('title-card-overlay').classList.remove('active');
     }
 
-    // Auto-sanitize all relative launch links on page load
+    // =========================================================
+    // SEARCH & FILTERING LOGIC
+    // =========================================================
     document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('a.btn-launch').forEach(a => {
-        const rel = a.getAttribute('href');
-        if (rel && !rel.startsWith('http') && !rel.startsWith('#')) {
-          a.href = resolveSafeUrl(rel);
+      const searchInput = document.getElementById('task-search-input');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.card');
+      const levelSections = document.querySelectorAll('.level-section');
+
+      function filterCards() {
+        const query = searchInput.value.trim().toLowerCase();
+        const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+
+        cards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          const keywords = card.dataset.keywords || '';
+          const matchesSearch = !query || text.includes(query) || keywords.includes(query);
+          
+          const section = card.closest('.level-section');
+          const level = section?.dataset.level;
+          const matchesLevel = activeFilter === 'all' || level === activeFilter;
+
+          if (matchesSearch && matchesLevel) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Hide entire section if no cards match
+        levelSections.forEach(sec => {
+          const visibleInSec = sec.querySelectorAll('.card[style*="display: flex"], .card:not([style*="display"])');
+          const isVisible = Array.from(visibleInSec).some(c => c.style.display !== 'none');
+          sec.style.display = isVisible ? 'block' : 'none';
+        });
+      }
+
+      searchInput.addEventListener('input', filterCards);
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          filterCards();
+        });
+      });
+
+      // Close modals on Escape
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeSandboxModal();
+          closeTitleCard();
         }
       });
     });
