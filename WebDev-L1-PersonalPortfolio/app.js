@@ -1,181 +1,296 @@
-// Personal Portfolio Interactions & Interactive CLI Terminal
-document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.getElementById('portfolio-menu-toggle');
-  const navBar = document.getElementById('portfolio-nav');
-  const navLinks = document.querySelectorAll('.nav-item');
-  const contactForm = document.getElementById('portfolio-contact-form');
-  const contactToast = document.getElementById('contact-toast');
+/**
+ * Sourabh Patel — Personal Engineering Portfolio
+ * Interactive Functionality & Utilities
+ */
 
-  // Mobile menu toggle
-  if (menuToggle && navBar) {
+document.addEventListener('DOMContentLoaded', () => {
+  // --------------------------------------------------------------------------
+  // 1. Mobile Navigation Drawer
+  // --------------------------------------------------------------------------
+  const menuToggle = document.getElementById('portfolio-menu-toggle');
+  const mobileDrawer = document.getElementById('mobile-nav-drawer');
+  const allNavLinks = document.querySelectorAll('.nav-item');
+
+  if (menuToggle && mobileDrawer) {
     menuToggle.addEventListener('click', () => {
-      navBar.classList.toggle('open');
+      const isOpen = mobileDrawer.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close mobile drawer when any navigation link is clicked
+    allNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
     });
   }
 
-  // Close menu on navigation click
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (navBar && navBar.classList.contains('open')) {
-        navBar.classList.remove('open');
-      }
-    });
-  });
+  // --------------------------------------------------------------------------
+  // 2. Active Link Scroll Spy
+  // --------------------------------------------------------------------------
+  const sections = document.querySelectorAll('section[id], main[id]');
+  const desktopNavLinks = document.querySelectorAll('#portfolio-nav .nav-item');
 
-  // Smooth Scroll Active Link Spy
-  const sections = document.querySelectorAll('section[id]');
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY + 150;
+  const updateActiveSection = () => {
+    const scrollPos = window.scrollY + 140;
     sections.forEach(section => {
       const top = section.offsetTop;
       const height = section.offsetHeight;
       const id = section.getAttribute('id');
-      const activeLink = document.querySelector(`.nav-item[href="#${id}"]`);
+      const matchingLink = document.querySelector(`#portfolio-nav .nav-item[href="#${id}"]`);
 
-      if (activeLink) {
+      if (matchingLink) {
         if (scrollPos >= top && scrollPos < top + height) {
-          activeLink.classList.add('active');
-        } else {
-          activeLink.classList.remove('active');
+          desktopNavLinks.forEach(l => l.classList.remove('active'));
+          matchingLink.classList.add('active');
         }
       }
     });
+  };
+
+  window.addEventListener('scroll', updateActiveSection, { passive: true });
+  updateActiveSection();
+
+  // --------------------------------------------------------------------------
+  // 3. Project Category Filter Tabs
+  // --------------------------------------------------------------------------
+  const tabButtons = document.querySelectorAll('.project-tab-btn');
+  const projectCards = document.querySelectorAll('#portfolio-projects-grid .project-card');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetCategory = btn.getAttribute('data-category');
+
+      // Update tab active states
+      tabButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      // Filter cards
+      projectCards.forEach(card => {
+        const cardCategories = card.getAttribute('data-category') || '';
+        if (targetCategory === 'all' || cardCategories.includes(targetCategory)) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
   });
 
-  // Contact Form Submission Handler with LocalStorage Persistence
-  if (contactForm && contactToast) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('contact-name').value.trim();
-      const email = document.getElementById('contact-email').value.trim();
-      const subject = document.getElementById('contact-subject').value.trim();
-      const message = document.getElementById('contact-message').value.trim();
-
-      if (!name || !email || !subject || !message) {
-        contactToast.style.color = '#ef4444';
-        contactToast.textContent = 'Please fill out all required fields.';
-        return;
-      }
-
-      // Save message to local inquiries list
-      const inquiries = JSON.parse(localStorage.getItem('portfolio_inquiries') || '[]');
-      inquiries.push({ name, email, subject, message, date: new Date().toISOString() });
-      localStorage.setItem('portfolio_inquiries', JSON.stringify(inquiries));
-
-      contactToast.style.color = '#34d399';
-      contactToast.textContent = `Thank you, ${name}! Your message has been received. I will respond to ${email} promptly.`;
-      contactForm.reset();
-
-      setTimeout(() => {
-        contactToast.textContent = '';
-      }, 7000);
-    });
-  }
-
-  // Interactive CLI Terminal Emulator
+  // --------------------------------------------------------------------------
+  // 4. Interactive CLI Terminal Emulator
+  // --------------------------------------------------------------------------
   const termInput = document.getElementById('term-cmd-input');
   const termOutput = document.getElementById('term-output');
+
+  const escapeHtml = (str) => {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  };
 
   if (termInput && termOutput) {
     termInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        const cmd = termInput.value.trim().toLowerCase();
+        const rawCmd = termInput.value.trim();
+        const cmd = rawCmd.toLowerCase();
         termInput.value = '';
 
-        const cmdRow = document.createElement('div');
-        cmdRow.innerHTML = `<span style="color:#38bdf8;">sourabh:~$</span> <span>${escapeHtml(cmd)}</span>`;
-        termOutput.appendChild(cmdRow);
+        if (!rawCmd) return;
 
-        let response = '';
+        // Print input prompt line
+        const promptLine = document.createElement('div');
+        promptLine.innerHTML = `<span style="color:#38bdf8; font-weight: 600;">sourabh:~$</span> <span>${escapeHtml(rawCmd)}</span>`;
+        termOutput.appendChild(promptLine);
+
+        let responseHtml = '';
+
         switch (cmd) {
           case 'help':
-            response = `<div style="color:#94a3b8;">Available Commands:
-  • <span style="color:#38bdf8;">whoami</span>    - Brief intro about Sourabh Patel
-  • <span style="color:#38bdf8;">skills</span>    - List core competencies & technical toolbelt
-  • <span style="color:#38bdf8;">projects</span>  - Show featured internship applications
-  • <span style="color:#38bdf8;">contact</span>   - Get official contact details
-  • <span style="color:#38bdf8;">github</span>    - Link to GitHub profile
-  • <span style="color:#38bdf8;">clear</span>     - Clear terminal buffer</div>`;
+            responseHtml = `<div style="color: #94a3b8; line-height: 1.6;">
+Available Terminal Commands:
+  • <span style="color: #38bdf8; font-weight: 600;">whoami</span>    - Personal bio & engineering focus
+  • <span style="color: #38bdf8; font-weight: 600;">skills</span>    - Technical toolbelt & competencies
+  • <span style="color: #38bdf8; font-weight: 600;">projects</span>  - Featured live applications
+  • <span style="color: #38bdf8; font-weight: 600;">contact</span>   - Official email & communication channels
+  • <span style="color: #38bdf8; font-weight: 600;">github</span>    - Open GitHub developer profile
+  • <span style="color: #38bdf8; font-weight: 600;">date</span>      - Show current system timestamp
+  • <span style="color: #38bdf8; font-weight: 600;">clear</span>     - Clear terminal buffer
+</div>`;
             break;
+
           case 'whoami':
-            response = `<div style="color:#34d399;">Sourabh Patel — Full-Stack Software Engineer & Web Developer.
-Intern at Oasis Infobyte (OIBSIP) specializing in modern web systems, JavaScript, and Python.</div>`;
+            responseHtml = `<div style="color: #10b981; line-height: 1.5;">
+<strong>Sourabh Patel</strong> — Full-Stack Software Engineer &amp; Web Developer.
+Intern at Oasis Infobyte (OIBSIP) specializing in modern JavaScript (ES6+),
+semantic web architectures, client-side cryptographic security, and clean UX.
+</div>`;
             break;
+
           case 'skills':
-            response = `<div style="color:#a5b4fc;">Technical Toolbelt:
-  - Frontend: HTML5, CSS3 Grid/Flexbox, JavaScript (ES6+), Canvas, Audio API
-  - Backend : Python, Java, REST APIs, Socket Programming, Web Crypto (SHA-256)
-  - Data    : Pandas, NumPy, Scikit-Learn, SQLite, Data Cleaning Pipeline</div>`;
+            responseHtml = `<div style="color: #cbd5e1; line-height: 1.6;">
+<strong style="color: #38bdf8;">Languages:</strong> JavaScript (ES6+), Python 3, Java, HTML5, CSS3
+<strong style="color: #38bdf8;">Browser APIs:</strong> Web Crypto (SHA-256), Web Storage, Fetch/REST, Audio API
+<strong style="color: #38bdf8;">Tooling:</strong> Git, GitHub Pages, CI/CD Actions, VS Code, Chrome DevTools
+<strong style="color: #38bdf8;">Practices:</strong> Semantic Accessibility, Responsive Mobile-First, Zero-Bloat
+</div>`;
             break;
+
           case 'projects':
-            response = `<div style="color:#fbbf24;">Featured Works:
-  1. NovaCloud AI — SaaS Product Landing Page (WebDev-L1)
-  2. TaskFlow — Kanban Focus Manager with Confetti Celebrations (WebDev-L2)
-  3. ThermoPulse — Real-Time Thermal Physics Suite (WebDev-L1)
-  4. NeoCalc — Precision Calculator with Web Audio Synth (WebDev-L2)</div>`;
+            responseHtml = `<div style="color: #fbbf24; line-height: 1.6;">
+8 Completed Web Applications:
+  1. SliceCraft Pizza Platform (Level 3 - Full-Stack Builder)
+  2. SecureGate Auth System (Level 2 - Web Crypto SHA-256)
+  3. TaskFlow Productivity (Level 2 - To-Do & Pomodoro)
+  4. NeoCalc Precision Calculator (Level 2 - Arithmetic)
+  5. Dr. APJ Abdul Kalam Tribute (Level 2 - Timeline & Quiz)
+  6. ThermoPulse Thermal Converter (Level 1 - Physics Math)
+  7. NovaCloud AI Landing Page (Level 1 - SaaS ROI Calc)
+  8. OIBSIP Master Suite Portal (Core All-in-One Hub)
+</div>`;
             break;
+
           case 'contact':
-            response = `<div>Email : <a href="mailto:sourabhpatel.dev@gmail.com" style="color:#38bdf8;">sourabhpatel.dev@gmail.com</a>
-GitHub: <a href="https://github.com/Sourabh123-atl" target="_blank" style="color:#38bdf8;">github.com/Sourabh123-atl</a></div>`;
+            responseHtml = `<div>
+Email : <a href="mailto:sourabhpatel.dev@gmail.com" style="color: #38bdf8; text-decoration: underline;">sourabhpatel.dev@gmail.com</a><br>
+GitHub: <a href="https://github.com/Sourabh123-atl" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: underline;">github.com/Sourabh123-atl</a><br>
+Status: Available for full-time Software Engineer &amp; Web roles.
+</div>`;
             break;
+
           case 'github':
-            response = `<div>Redirecting to GitHub... <a href="https://github.com/Sourabh123-atl" target="_blank" style="color:#38bdf8;">github.com/Sourabh123-atl</a></div>`;
+            responseHtml = `<div>Opening <a href="https://github.com/Sourabh123-atl" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: underline;">github.com/Sourabh123-atl</a> in a new tab...</div>`;
             window.open('https://github.com/Sourabh123-atl', '_blank');
             break;
+
+          case 'date':
+            responseHtml = `<div style="color: #94a3b8;">${new Date().toUTCString()}</div>`;
+            break;
+
           case 'clear':
             termOutput.innerHTML = '';
             return;
-          case '':
-            return;
+
           default:
-            response = `<div style="color:#ef4444;">Command not recognized: '${escapeHtml(cmd)}'. Type 'help' for available commands.</div>`;
+            responseHtml = `<div style="color: #ef4444;">command not found: "${escapeHtml(rawCmd)}". Type <span style="color: #38bdf8;">help</span> for available commands.</div>`;
+            break;
         }
 
-        const resDiv = document.createElement('div');
-        resDiv.innerHTML = response;
-        termOutput.appendChild(resDiv);
+        const respDiv = document.createElement('div');
+        respDiv.innerHTML = responseHtml;
+        termOutput.appendChild(respDiv);
         termOutput.scrollTop = termOutput.scrollHeight;
       }
     });
   }
 
-  function escapeHtml(text) {
-    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
-    return text.replace(/[&<>"']/g, m => map[m]);
+  // --------------------------------------------------------------------------
+  // 5. Contact Form & Local Inquiries Storage
+  // --------------------------------------------------------------------------
+  const contactForm = document.getElementById('portfolio-contact-form');
+  const contactToast = document.getElementById('contact-toast');
+  const inquiriesCountEl = document.getElementById('inquiries-count');
+  const inquiriesListEl = document.getElementById('inquiries-list');
+  const btnToggleInquiries = document.getElementById('btn-toggle-inquiries');
+
+  const loadInquiries = () => {
+    try {
+      return JSON.parse(localStorage.getItem('portfolio_inquiries') || '[]');
+    } catch {
+      return [];
+    }
+  };
+
+  const renderInquiries = () => {
+    const list = loadInquiries();
+    if (inquiriesCountEl) {
+      inquiriesCountEl.textContent = list.length;
+    }
+
+    if (inquiriesListEl) {
+      if (list.length === 0) {
+        inquiriesListEl.innerHTML = `<div style="padding: 10px; color: var(--text-secondary); font-size: 0.82rem; font-style: italic;">No inquiries submitted yet from this browser.</div>`;
+      } else {
+        inquiriesListEl.innerHTML = list.map((item, idx) => `
+          <div class="inquiry-item">
+            <div>
+              <strong>${escapeHtml(item.name)}</strong> (${escapeHtml(item.email)})
+              <div style="color: var(--text-secondary); font-size: 0.76rem;">${escapeHtml(item.subject)}</div>
+            </div>
+            <span style="color: var(--text-muted); font-size: 0.72rem;">${new Date(item.date).toLocaleDateString()}</span>
+          </div>
+        `).join('');
+      }
+    }
+  };
+
+  // Initial render of inquiries
+  renderInquiries();
+
+  if (btnToggleInquiries && inquiriesListEl) {
+    btnToggleInquiries.addEventListener('click', () => {
+      inquiriesListEl.classList.toggle('open');
+    });
   }
 
-  // Copy LinkedIn Post Caption Helper for Task 2
-  const btnCopyCaption = document.getElementById('btn-copy-caption-portfolio');
-  const captionToast = document.getElementById('caption-toast');
+  if (contactForm && contactToast) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-  if (btnCopyCaption && captionToast) {
-    const task2Caption = `👨‍💻 Excited to showcase Task 2 of my Web Development & Designing Internship at Oasis Infobyte!
+      const nameInput = document.getElementById('contact-name');
+      const emailInput = document.getElementById('contact-email');
+      const subjectInput = document.getElementById('contact-subject');
+      const messageInput = document.getElementById('contact-message');
 
-For this milestone, I engineered my Personal Developer Portfolio — a modern, production-grade digital résumé tailored for full-stack engineering roles.
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const subject = subjectInput.value.trim();
+      const message = messageInput.value.trim();
 
-🌟 Technical Highlights:
-✅ Interactive in-browser CLI Terminal Emulator (try: whoami, skills, projects, github)
-✅ Filterable project repository matrix & interactive skill badges
-✅ Contact inquiry system with localStorage persistence
-✅ Audio-synthesized interactions & responsive glassmorphism aesthetic
-✅ Semantic HTML5, modern CSS Grid/Flexbox, and vanilla JavaScript
+      if (!name || !email || !subject || !message) {
+        contactToast.className = 'contact-toast error';
+        contactToast.textContent = 'Please fill out all required fields.';
+        return;
+      }
 
-🔗 Live Portfolio: https://sourabh123-atl.github.io/OIBSIP/WebDev-L1-PersonalPortfolio/
-📁 GitHub Repository: https://github.com/Sourabh123-atl/OIBSIP
-
-Grateful to @Oasis Infobyte for this enriching learning experience!
-
-#oasisinfobyte #webdevelopment #portfolio #fullstack #javascript #html5 #css3 #softwareengineering #developer`;
-
-    btnCopyCaption.addEventListener('click', () => {
-      navigator.clipboard.writeText(task2Caption).then(() => {
-        captionToast.classList.add('show');
-        setTimeout(() => {
-          captionToast.classList.remove('show');
-        }, 3500);
-      }).catch(() => {
-        alert('Caption ready! Please check LINKEDIN_POSTS_GUIDE.md');
+      // Save inquiry to localStorage
+      const inquiries = loadInquiries();
+      inquiries.unshift({
+        id: Date.now(),
+        name,
+        email,
+        subject,
+        message,
+        date: new Date().toISOString()
       });
+      localStorage.setItem('portfolio_inquiries', JSON.stringify(inquiries));
+
+      // Visual feedback
+      contactToast.className = 'contact-toast success';
+      contactToast.textContent = `Thank you, ${name}! Your message has been safely recorded. I will follow up via ${email} soon.`;
+      contactForm.reset();
+      renderInquiries();
+
+      setTimeout(() => {
+        contactToast.textContent = '';
+        contactToast.className = 'contact-toast';
+      }, 6000);
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 6. Scroll Back to Top Button
+  // --------------------------------------------------------------------------
+  const btnTop = document.getElementById('btn-portfolio-top');
+  if (btnTop) {
+    btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 });
